@@ -15,3 +15,13 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::get("/login",function(){
+    if(!Auth::check()){
+        return View::make("login");
+    }else{
+
+    }
+});
+

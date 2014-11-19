@@ -17,15 +17,15 @@ return array(
     'url' => 'http://billingsystem/',
 
     'providers' => append_config(array(
-        'Way\Generators\GeneratorsServiceProvider',
-        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
+//        'Way\Generators\GeneratorsServiceProvider',
+//        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+//        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+//        'Barryvdh\Debugbar\ServiceProvider',
     )),
 
 
     'aliases' => append_config(array(
-        'Debugbar' => 'Barryvdh\Debugbar\Facade',
+//        'Debugbar' => 'Barryvdh\Debugbar\Facade',
     )),
 
 );

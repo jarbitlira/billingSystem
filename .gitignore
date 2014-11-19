@@ -1,4 +1,3 @@
-.idea
 /bootstrap/compiled.php
 /vendor
 composer.phar
@@ -7,3 +6,5 @@ composer.lock
 .env.php
 .DS_Store
 Thumbs.db
+.idea
+_ide_helper.php
