@@ -14,7 +14,7 @@ return array(
     */
 
     'debug' => true,
-    'url' => 'http://billingsystem/',
+    'url' => 'http://billingsystem.uni.me/',
 
     'providers' => append_config(array(
 //        'Way\Generators\GeneratorsServiceProvider',
