@@ -9,13 +9,13 @@
   		<nav id="side_nav">
   			<ul>
   				<li>
-  					<a href="dashboard.html"><span class="ion-speedometer"></span> <span class="nav_title">Dashboard</span></a>
+  					<a href="dashboard.html"><span class="ion-speedometer"></span> <span class="nav_title">DASHBOARD</span></a>
   				</li>
   				<li>
   					<a href="#">
   						<span class="label label-danger">32</span>
   						<span class="ion-clipboard"></span>
-  						<span class="nav_title">Todo</span>
+  						<span class="nav_title">INVOICES</span>
   					</a>
   					<div class="sub_panel">
   						<div class="side_inner">
@@ -86,7 +86,7 @@
   				<li>
   					<a href="#">
   						<span class="ion-bag"></span>
-  						<span class="nav_title">Ecommerce</span>
+  						<span class="nav_title">STOCK</span>
   					</a>
   					<div class="sub_panel">
   						<div class="side_inner">
