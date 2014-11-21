@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+//Route::get('/', function()
+//{
+//	return View::make('hello');
+//});
 
+Route::get('/', 'DashboardController@index');
 
 Route::get("/login",function(){
     if(!Auth::check()){
