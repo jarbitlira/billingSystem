@@ -25,8 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-	'local' => array('billingsystem'),
-	'production' => array('billingsystem.uni.me')
+	'production' => array('billingsystem.uni.me'),
+	'local' => array('billingsystem',gethostname())
 ));
 
 /*

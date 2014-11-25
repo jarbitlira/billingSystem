@@ -17,22 +17,22 @@
  	<!-- bootstrap framework -->
  	<link href="/public/template/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  	<!-- google webfonts -->
- 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+ 	{{--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>--}}
 
  	<link href="/public/template/assets/css/login.css" rel="stylesheet">
 
  </head>
  <body>
  	<div class="login_container">
- 		<form id="login_form" action="dashboard.html" method="get">
+ 		<form id="login_form" action="{{URL::to("/login")}}" method="post">
  			<h1 class="login_heading">Login <span>/ <a href="#" class="open_register_form">register</a></span></h1>
  			<div class="form-group">
  				<label for="login_username">Username</label>
- 				<input type="text" class="form-control input-lg" placeholder="user" id="login_username">
+ 				<input type="text" name="username" class="form-control input-lg" placeholder="user" id="login_username">
  			</div>
  			<div class="form-group">
  				<label for="login_password">Password</label>
- 				<input type="password" class="form-control input-lg" placeholder="password" id="login_password">
+ 				<input type="password" name="password" class="form-control input-lg" placeholder="password" id="login_password">
  				<span class="help-block"><a href="#">Forgot password?</a></span>
  			</div>
  			<div class="submit_section">

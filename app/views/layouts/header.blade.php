@@ -58,7 +58,7 @@
  							<li><a href="mail_inbox.html">My messages</a></li>
  							<li><a href="tasks_summary.html">My tasks</a></li>
  							<li class="divider"></li>
- 							<li><a href="login_page.html">Log Out</a></li>
+ 							<li><a href="{{URL::to("/logout")}}">Log Out</a></li>
  						</ul>
  					</li>
  				</ul>

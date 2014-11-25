@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://billingsystem.uni.me/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -121,6 +121,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
+        /****************************************/
+        'Repositories\RepositoriesServiceProvider',
 
 	),
 
