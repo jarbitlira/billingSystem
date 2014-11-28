@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,18 +9,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 $domain = App::environment() == 'local' ? 'billingsystem' : 'billingsystem.uni.me';
-
 Route::group(array('domain' => $domain), function () {
     Route::get('/', function () {
         return View::make('index');
     });
-
 });
 
 Route::group(array('domain' => 'admin.' . $domain), function () {
-
     Route::group(array('before' => 'auth'), function () {
         Route::get('/', 'DashboardController@index');
 
@@ -33,9 +28,15 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
             Auth::logout();
             return Redirect::to("/login");
         });
-
     });
 
+    Route::get("/login", function () {
+        if (!Auth::check()) {
+            return View::make("login");
+        } else {
+            return Redirect::to("/");
+        }
+    });
 
     Route::post("/login", function () {
         $user = [];
@@ -47,7 +48,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
             return Redirect::back()->withInput();
         }
     });
-
-    Route::resource('product', 'ProductsController');
 });
+
+Route::resource('product', 'ProductsController');
 

@@ -88,7 +88,7 @@
                                         <td class="sub_col">
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>
-                                                <a href="#" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ URL::to('product'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="btn btn-xs"><i class="fa fa-close"></i></a>
                                             </div>
 
