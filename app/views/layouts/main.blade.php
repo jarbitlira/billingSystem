@@ -7,12 +7,7 @@
  */ ?>
 @include('layouts.header')
     <!-- main content -->
-    <div id="main_wrapper">
-        <div class="page_content">
-            <div class="container-fluid">
-                {{ $content }}
-            </div>
-        </div>
-    </div>
+        {{ $content }}
+    <!-- /main content-->
 @include('layouts.sidenav')
 @include('layouts.footer')
