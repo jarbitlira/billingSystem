@@ -42,6 +42,8 @@ Route::post("/login", function () {
     }
 });
 
+Route::resource('product', 'ProductsController');
+
 
 Route::get('/logout',function(){
    Auth::logout();
