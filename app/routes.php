@@ -11,41 +11,43 @@
 |
 */
 
-Route::group(['before'=>'auth'],function(){
-    Route::get('/', 'DashboardController@index');
+$domain = App::environment() == 'local' ? 'billingsystem' : 'billingsystem.uni.me';
+
+Route::group(array('domain' => $domain), function () {
+    Route::get('/', function () {
+        return View::make('index');
+    });
+
 });
 
-//Route::get('/', function()
-//{
-//	return View::make('hello');
-//});
+Route::group(array('domain' => 'admin.' . $domain), function () {
+
+    Route::group(array('before' => 'auth'), function () {
+        Route::get('/', 'DashboardController@index');
+
+        Route::any('/login', function () {
+            return Redirect::to('/');
+        });
+
+        Route::get('/logout', function () {
+            Auth::logout();
+            return Redirect::to("/login");
+        });
+
+    });
 
 
+    Route::post("/login", function () {
+        $user = [];
+        $user["email"] = Input::get("email");
+        $user["password"] = Input::get("password");
+        if (Auth::attempt($user)) {
+            return Redirect::to("/");
+        } else {
+            return Redirect::back()->withInput();
+        }
+    });
 
-Route::get("/login", function () {
-    if (!Auth::check()) {
-        return View::make("login");
-    }else{
-        return Redirect::to("/");
-    }
+    Route::resource('product', 'ProductsController');
 });
 
-Route::post("/login", function () {
-    $user = [];
-//    $user["email"] = Input::get("email");
-    $user["username"] = Input::get("username");
-    $user["password"] = Input::get("password");
-    if(Auth::attempt($user)){
-        return Redirect::to("/");
-    }else{
-        return Redirect::back()->withInput();
-    }
-});
-
-Route::resource('product', 'ProductsController');
-
-
-Route::get('/logout',function(){
-   Auth::logout();
-    return Redirect::to("/login");
-});
