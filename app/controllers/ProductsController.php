@@ -23,9 +23,26 @@ class ProductsController extends BaseController
         $this->layout->content = \View::make('admin.products.index', compact('products'));
     }
 
+    public function create()
+    {
+        $this->layout->content = \View::make('admin.products.create')->with('title', 'New Product');
+    }
+
+    public function store()
+    {
+    }
+
     public function edit($id)
     {
         $product = $this->product->find($id);
         $this->layout->content = \View::make('admin.products.edit', compact('product'));
+    }
+
+    public function update($id)
+    {
+    }
+
+    public function destroy()
+    {
     }
 }

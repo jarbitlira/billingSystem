@@ -6,7 +6,7 @@
                 <p class="text-muted">{{ count($products) }} <a href="#">products</a> in 6 <a href="#">categories</a></p>
             </div>
             <div class="col-md-2 text-right">
-                <button class="btn btn-success">Add Product</button>
+                <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
             </div>
         </div>
     </div>
@@ -83,12 +83,12 @@
                                             {{ $product['provider_id'] }}
                                         </td>
                                         <td class="sub_col"><span class="label label-success">
-                                            {{ $product['available'] }}
+                                            {{ $product->available }}
                                         </span></td>
                                         <td class="sub_col">
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ URL::to('product'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ URL::to('product/'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="btn btn-xs"><i class="fa fa-close"></i></a>
                                             </div>
 

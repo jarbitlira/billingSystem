@@ -3,7 +3,7 @@
         <div class="page_bar clearfix">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="page_title">{{ $product->name }}</h1>
+                    <h1 class="page_title">{{ $title }}</h1>
                     <p class="text-muted">Lorem ipsum dolor sit amet&hellip;</p>
                 </div>
                 <div class="col-md-4 text-right">
@@ -41,7 +41,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <label for="p_name" class="req">Product name</label>
-                                                        <input type="text" id="p_name" class="form-control" value="{{ $product->name }}">
+                                                        <input type="text" id="p_name" class="form-control" ">
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <label for="p_model">Model</label>
@@ -53,7 +53,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <label for="p_description" class="req">Product description</label>
-                                                        <textarea name="p_description" id="p_description" cols="30" rows="4" class="form-control">{{$product->description}}
+                                                        <textarea name="p_description" id="p_description" cols="30" rows="4" class="form-control">
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -73,21 +73,21 @@
                                                     <div class="row">
                                                         <div class="col-lg-3">
                                                             <label for="p_sku">SKU</label>
-                                                            <input type="text" id="p_sku" class="form-control" value="{{$product->sku}}">
+                                                            <input type="text" id="p_sku" class="form-control" value="">
                                                             <span class="help-block">Stock Keeping Unit</span>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="p_ean">Length</label>
-                                                            <input type="text" id="p_ean" class="form-control" value="{{$product->length}}">
+                                                            <input type="text" id="p_ean" class="form-control">
                                                             <span class="help-block">EAN European Article Number</span>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="p_isbn">Weigth</label>
-                                                            <input type="text" id="p_isbn" class="form-control" value="{{$product->weight}}">
+                                                            <input type="text" id="p_isbn" class="form-control">
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="p_mpn">MPN</label>
-                                                            <input type="text" id="p_mpn" class="form-control" value="{{$product->provider->name}}">
+                                                            <input type="text" id="p_mpn" class="form-control" >
                                                         </div>
                                                     </div>
                                                 </div>
