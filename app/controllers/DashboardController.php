@@ -10,7 +10,7 @@ class DashboardController extends \BaseController
 {
 
 //    protected $layout = 'layouts.dashboard';
-    protected $layout = 'layouts.main';
+    protected $layout = 'admin.layouts.main';
 
     public function __construct()
     {
@@ -18,6 +18,6 @@ class DashboardController extends \BaseController
 
     public function index()
     {
-        $this->layout->content = \View::make('dashboard.index');
+        $this->layout->content = \View::make('admin.dashboard.index');
     }
 }

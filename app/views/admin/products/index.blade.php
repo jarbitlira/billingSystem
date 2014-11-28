@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10">
                 <h1 class="page_title">Manage Products</h1>
-                <p class="text-muted">26 <a href="#">products</a> in 6 <a href="#">categories</a></p>
+                <p class="text-muted">{{ count($products) }} <a href="#">products</a> in 6 <a href="#">categories</a></p>
             </div>
             <div class="col-md-2 text-right">
                 <button class="btn btn-success">Add Product</button>
@@ -21,11 +21,8 @@
                                 <tr>
                                     <th><input type="checkbox" class="check_all" data-target-el="prod_table"></th>
                                     <th class="visible-lg"></th>
-                                    <th>Name</th>
                                     <th class="sub_col">SKU</th>
                                     <th class="sub_col">Name</th>
-                                    {{--<th class="sub_col">Description</th>--}}
-                                    {{--<th class="sub_col">Notes</th>--}}
                                     <th class="sub_col">Unit Price</th>
                                     <th class="sub_col">Length</th>
                                     <th class="sub_col">Weight</th>
@@ -41,14 +38,12 @@
                                         <input type="checkbox" class="check_row" name="prod_check_1" id="prod_check_1">
                                     </td>
                                     <td class="col_sm visible-lg"><img src="assets/img/examples/image_60x60.gif" class="img-thumbnail" alt=""></td>
+                                    <td class="sub_col">1j27a111</td>
                                     <td>
-                                        <h5><a href="newsletter_report.html">Occaecati veritatis libero.</a></h5>
+                                        <a href="newsletter_report.html">Occaecati veritatis libero.</a><br/>
                                         <span class="text-muted">Added 12 Feb 2014 12:45</span>
                                     </td>
-                                    <td class="sub_col">1j27a111</td>
-                                    {{--<td class="sub_col">Description</td>--}}
-                                    {{--<td class="sub_col">Notes</td>--}}
-                                    <td class="sub_col"><strong>$87.72</strong></td>
+                                    <td class="sub_col"><strong>C$87.72</strong></td>
                                     <td class="sub_col">27m</td>
                                     <td class="sub_col">27kg</td>
                                     <td class="sub_col">Category</td>
@@ -62,20 +57,18 @@
                                         <td class="col_sm sub_col">
                                             <input type="checkbox" class="check_row" name="prod_check_1" id="prod_check_1">
                                         </td>
-                                        <td class="col_sm visible-lg"><img src="assets/img/examples/image_60x60.gif" class="img-thumbnail" alt=""></td>
-                                        <td>
-                                            <h5><a href="newsletter_report.html">
-                                            {{ $product['name'] }}
-                                            </a></h5>
-                                            <span class="text-muted">Added {{ $product['created_at'] }}</span>
+                                        <td class="col_sm visible-lg">
+                                            <img src="assets/img/examples/image_60x60.gif" class="img-thumbnail" alt="">
                                         </td>
                                         <td class="sub_col">
                                             {{ $product['sku'] }}
                                         </td>
-                                        {{--<td class="sub_col">Description</td>--}}
-                                        {{--<td class="sub_col">Notes</td>--}}
+                                        <td>
+                                            <h5><a href="newsletter_report.html"> {{ $product['name'] }} </a></h5>
+                                            <span class="text-muted">Added {{ $product['created_at'] }}</span>
+                                        </td>
                                         <td class="sub_col"><strong>
-                                            {{ $product['unit_price'] }}
+                                            C${{ $product['unit_price'] }}
                                         </strong></td>
                                         <td class="sub_col">
                                             {{ $product['length'] }}
@@ -92,7 +85,14 @@
                                         <td class="sub_col"><span class="label label-success">
                                             {{ $product['available'] }}
                                         </span></td>
-                                        <td class="sub_col"><a href="#" class="btn btn-default btn-sm"><span class="fa fa-pencil-square-o fa-lg"></span> Details</a></td>
+                                        <td class="sub_col">
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>
+                                                <a href="#" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" class="btn btn-xs"><i class="fa fa-close"></i></a>
+                                            </div>
+
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -9,7 +9,7 @@
   		<nav id="side_nav">
   			<ul>
   				<li>
-  					<a href="dashboard.html"><span class="ion-speedometer"></span> <span class="nav_title">DASHBOARD</span></a>
+  					<a href="{{ URL::to('/') }}"><span class="ion-speedometer"></span> <span class="nav_title">DASHBOARD</span></a>
   				</li>
   				<li>
   					<a href="#">
@@ -93,7 +93,7 @@
   							<h4 class="panel_heading">Pages</h4>
   							<ul>
   								<li><a href="ecommerce_sales_report.html">Sales Report</a></li>
-  								<li><a href="ecommerce_products_list.html">Products List</a></li>
+  								<li><a href="{{ URL::to('product') }}">Products List</a></li>
   								<li><a href="ecommerce_product_edit.html">Product Edit</a></li>
   							</ul>
   							<h4 class="panel_heading">Top Products</h4>
