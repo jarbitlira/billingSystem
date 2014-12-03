@@ -5,7 +5,6 @@
  * Date: 27/11/2014
  * Time: 06:40 PM
  */
-use \Product;
 
 class ProductsController extends BaseController
 {
@@ -30,6 +29,10 @@ class ProductsController extends BaseController
 
     public function store()
     {
+        $except = array_merge( ['_token']);
+        $input = array_except( Input::all() , $except);
+        $this->product->save($input);
+//        dd($product);
     }
 
     public function edit($id)

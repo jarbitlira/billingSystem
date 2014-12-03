@@ -5,9 +5,9 @@
  * Date: 27/11/2014
  * Time: 06:27 PM
  */
-use Illuminate\Database\Eloquent\Model as Eloquent;
+//use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Product extends Eloquent
+class Product extends ModelBase
 {
     protected $table = 'product';
 

@@ -12,10 +12,16 @@
   					<a href="{{ URL::to('/') }}"><span class="ion-speedometer"></span> <span class="nav_title">DASHBOARD</span></a>
   				</li>
   				<li>
+                    <a href="{{ URL::to('product') }}">
+                        <span class="ion-bag"></span>
+                        <span class="nav_title">Products</span>
+                    </a>
+                </li>
+  				<li>
   					<a href="#">
   						<span class="label label-danger">32</span>
   						<span class="ion-clipboard"></span>
-  						<span class="nav_title">INVOICES</span>
+  						<span class="nav_title">Todo</span>
   					</a>
   					<div class="sub_panel">
   						<div class="side_inner">
@@ -86,7 +92,7 @@
   				<li>
   					<a href="#">
   						<span class="ion-bag"></span>
-  						<span class="nav_title">STOCK</span>
+  						<span class="nav_title">Ecommerce</span>
   					</a>
   					<div class="sub_panel">
   						<div class="side_inner">
