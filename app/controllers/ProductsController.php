@@ -6,19 +6,22 @@
  * Time: 06:40 PM
  */
 
+use Illuminate\Support\Facades\Input;
+use Repositories\ProductRepository;
+
 class ProductsController extends BaseController
 {
     protected $layout = 'admin.layouts.main';
     protected $product;
 
-    public function __construct()
+    public function __construct(ProductRepository $product)
     {
-        $this->product = new product;
+        $this->product = $product;
     }
 
     public function index()
     {
-        $products = $this->product->all();
+        $products = $this->product->getAll();
         $this->layout->content = \View::make('admin.products.index', compact('products'));
     }
 
