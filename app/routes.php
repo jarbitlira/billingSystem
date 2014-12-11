@@ -48,7 +48,6 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
             return Redirect::back()->withInput();
         }
     });
+
+    Route::resource('product', 'ProductsController');
 });
-
-Route::resource('product', 'ProductsController');
-
