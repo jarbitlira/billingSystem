@@ -29,7 +29,7 @@
                                     <th class="sub_col">Category</th>
                                     <th class="sub_col">Provider</th>
                                     <th class="sub_col">Available</th>
-                                    <th>.</th>
+                                    <th> - </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -88,8 +88,10 @@
                                         <td class="sub_col">
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>
-                                                <a href="{{ URL::to('product/'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-xs"><i class="fa fa-close"></i></a>
+                                                <a href="{{ ('product/'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
+                                                {{--{{Form::model($product,['method' => 'DELETE','route' => ['v2.almacen.entradas.destroy', $entrada->getId() ],'class'=>'hidden','id'=>'delete-entrada-'.$entrada->getId()])}}--}}
+                                                {{--{{ Form::close() }}--}}
+                                                <a href="{{ URL::to('product/destroy/'.$product->id) }}" class="btn btn-xs"><i class="fa fa-close"></i></a>
                                             </div>
 
                                         </td>

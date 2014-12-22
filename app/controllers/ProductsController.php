@@ -5,7 +5,6 @@
  * Date: 27/11/2014
  * Time: 06:40 PM
  */
-
 use Illuminate\Support\Facades\Input;
 use Repositories\ProductRepository;
 
@@ -32,23 +31,39 @@ class ProductsController extends BaseController
 
     public function store()
     {
-        $except = array_merge( ['_token']);
-        $input = array_except( Input::all() , $except);
-        $this->product->save($input);
-//        dd($product);
+        $except = ['_token'];
+        $input = array_except(Input::all(), $except);
+        $product = $this->product->create($input);
+        if ($this->product->succeeded()) {
+            return \Redirect::to('product');
+        }
     }
 
     public function edit($id)
     {
-        $product = $this->product->find($id);
+        $product = $this->product->findById($id);
         $this->layout->content = \View::make('admin.products.edit', compact('product'));
     }
 
     public function update($id)
     {
+        $except = ['_token'];
+        $input = array_except(Input::all(), $except);
+        $this->product->update($id, $input);
+        if ($this->product->succeeded()) {
+            return \Redirect::to('product');
+        } else {
+            return \Redirect::back()->withInput()
+                ->with('errors', $this->product->errors());
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        if ($this->product->delete($id)) {
+            return \Redirect::to('product');
+        } else {
+            return \Redirect::back();
+        }
     }
 }
