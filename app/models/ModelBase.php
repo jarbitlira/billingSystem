@@ -10,6 +10,8 @@ class ModelBase extends EloquentValidation
 {
 
     protected $softDelete = true;
+    protected $guarded = [];
+    protected $defaults = [];
 
     public function getId()
     {

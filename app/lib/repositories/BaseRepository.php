@@ -14,9 +14,20 @@ class BaseRepository
 
     protected $model = null;
 
-    public function getAll()
+    public function getAll($field = null)
     {
+        $this->orderBy($field);
         return $this->model->all();
+    }
+
+    public function orderBy($field){
+        if (!is_null($field)){
+            $this->model->orderBy($field, 'DESC');
+        }
+        else{
+            $this->model->orderBy('id', 'DESC');
+        }
+        return $this->model;
     }
 
     public function findById($id)
