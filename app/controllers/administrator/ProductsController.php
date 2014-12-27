@@ -7,7 +7,7 @@
  */
 namespace Administrator;
 use Illuminate\Support\Facades\Input;
-use Repositories\ProductRepository;
+use Repositories\Administrator\ProductRepository;
 
 class ProductsController extends \BaseController
 {

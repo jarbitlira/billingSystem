@@ -5,9 +5,9 @@
  * Date: 27/11/2014
  * Time: 06:27 PM
  */
-//use Illuminate\Database\Eloquent\Model as Eloquent;
+namespace Administrator;
 
-class Product extends ModelBase
+class Product extends \ModelBase
 {
     protected $table = 'product';
 

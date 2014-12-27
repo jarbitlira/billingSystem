@@ -6,7 +6,7 @@
  * Time: 11:58 PM
  */
 
-namespace Repositories;
+namespace Repositories\Administrator;
 interface ProductRepository {
 
 }

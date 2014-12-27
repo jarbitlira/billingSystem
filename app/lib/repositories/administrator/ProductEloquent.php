@@ -6,8 +6,8 @@
  * Time: 12:02 AM
  */
 
-namespace Repositories;
-use Product;
+namespace Repositories\Administrator;
+use Administrator\Product;
 
 class ProductEloquent extends \Repositories\BaseRepository implements ProductRepository{
 
