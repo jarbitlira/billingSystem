@@ -15,5 +15,6 @@ class RepositoriesServiceProvider extends ServiceProvider {
     public function register(){
         $app = $this->app;
         $app->bind('Repositories\Administrator\ProductRepository', 'Repositories\Administrator\ProductEloquent');
+        $app->bind('Repositories\Administrator\ProductCategoryRepository', 'Repositories\Administrator\ProductCategoryEloquent');
     }
 } 
