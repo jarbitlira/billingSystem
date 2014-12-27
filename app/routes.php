@@ -18,7 +18,7 @@ Route::group(array('domain' => $domain), function () {
 
 Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::group(array('before' => 'auth'), function () {
-        Route::get('/', 'DashboardController@index');
+        Route::get('/', 'Administrator\DashboardController@index');
 
         Route::any('/login', function () {
             return Redirect::to('/');
@@ -49,5 +49,5 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         }
     });
 
-    Route::resource('product', 'ProductsController');
+    Route::resource('product', 'Administrator\ProductsController');
 });

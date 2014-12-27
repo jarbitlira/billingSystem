@@ -5,10 +5,11 @@
  * Date: 27/11/2014
  * Time: 06:40 PM
  */
+namespace Administrator;
 use Illuminate\Support\Facades\Input;
 use Repositories\ProductRepository;
 
-class ProductsController extends BaseController
+class ProductsController extends \BaseController
 {
     protected $layout = 'admin.layouts.main';
     protected $product;

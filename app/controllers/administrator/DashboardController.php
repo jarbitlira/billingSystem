@@ -6,6 +6,7 @@
  * Date: 20/11/2014
  * Time: 10:11 PM
  */
+namespace Administrator;
 class DashboardController extends \BaseController
 {
 
