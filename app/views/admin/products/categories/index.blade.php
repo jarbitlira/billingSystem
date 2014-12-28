@@ -19,16 +19,19 @@
                                 <thead>
                                 <tr>
                                     <th class="sub_col">Name</th>
+                                    <th class="sub_col">Products</th>
                                     <th class="sub_col">Created</th>
-                                    <th> Actions </th>
+                                    <th class="sub_col"> Actions </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    @foreach($categories as $category)
+                                @foreach($categories as $category)
                                 <tr>
                                     <td class="sub_col">
                                             {{ $category->name }}
+                                    </td>
+                                    <td class="sub_col">
+                                            {{ count($category->products)  }}
                                     </td>
                                     <td class="sub_col">
                                             {{ $category->created_at }}

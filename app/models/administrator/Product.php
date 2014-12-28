@@ -13,7 +13,7 @@ class Product extends \ModelBase
 
     public function Category()
     {
-        return $this->belongsTo('product_category', 'category_id');
+        return $this->belongsTo('Administrator\ProductCategory', 'category_id');
     }
 
     public function provider()

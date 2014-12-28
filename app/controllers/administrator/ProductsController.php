@@ -8,32 +8,38 @@
 namespace Administrator;
 use Illuminate\Support\Facades\Input;
 use Repositories\Administrator\ProductRepository;
+use Repositories\Administrator\ProductCategoryRepository;
 
 class ProductsController extends \BaseController
 {
     protected $layout = 'admin.layouts.main';
     protected $product;
+    protected $categories;
 
-    public function __construct(ProductRepository $product)
+    public function __construct(ProductRepository $product, ProductCategoryRepository $categories)
     {
         $this->product = $product;
+        $this->categories = $categories;
     }
 
     public function index()
     {
         $products = $this->product->getAll();
-        $this->layout->content = \View::make('admin.products.index', compact('products'));
+        $categories = count($this->categories);
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
     }
 
     public function create()
     {
-        $this->layout->content = \View::make('admin.products.create')->with('title', 'New Product');
+        $categories = $this->categories->getAll();
+        $this->layout->content = \View::make('admin.products.create', compact('categories'))->with('title', 'New Product');
     }
 
     public function store()
     {
         $except = ['_token'];
         $input = array_except(Input::all(), $except);
+        $input['available'] = (Input::get('available')) ? 1 : 0;
         $product = $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');

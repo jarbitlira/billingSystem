@@ -79,10 +79,10 @@
                                         <div class="row">
                                             <div class="form-group">
                                                 <div class="col-lg-4">
-                                                    <label for="product_catgory" class="req">Category</label>
+                                                    <label for="product_category" class="req">Category</label>
                                                     {{ Form::select('category_id',
-                                                                    [''=>'Choose at least a category...'],
-                                                                    null, ["class" => "input required form-control", "id" => "product_catgory"]) }}
+                                                                    [''=>'Choose a category...'] + array_match($categories, 'id', 'name'),
+                                                                    null, ['class' => 'input required form-control', 'id' => 'product_category']) }}
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <label for="product_provider" class="req">Provider</label>
@@ -96,7 +96,8 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <br/><label for="product_available" class="checkbox checkbox-inline">
-                                                        <input type="checkbox" name="available" id="product_available"/> <b>Available</b>
+                                                        {{ Form::checkbox('available', 1, '', ['id'=>'product_available']) }}
+                                                        <b>Available</b>
                                                     </label>
                                                 </div>
                                             </div>

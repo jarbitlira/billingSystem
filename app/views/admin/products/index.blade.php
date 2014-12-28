@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10">
                 <h1 class="page_title">Manage Products</h1>
-                <p class="text-muted">{{ count($products) }} <a href="#">products</a> in 6 <a href="#">categories</a></p>
+                <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ $categories }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
             </div>
             <div class="col-md-2 text-right">
                 <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
@@ -61,29 +61,29 @@
                                             <img src="assets/img/examples/image_60x60.gif" class="img-thumbnail" alt="">
                                         </td>
                                         <td class="sub_col">
-                                            {{ $product['sku'] }}
+                                            {{ $product->sku }}
                                         </td>
                                         <td>
-                                            <h5><a href="newsletter_report.html"> {{ $product['name'] }} </a></h5>
-                                            <span class="text-muted">Added {{ $product['created_at'] }}</span>
+                                            <h5><a href="newsletter_report.html"> {{ $product->name }} </a></h5>
+                                            <span class="text-muted">Added {{ $product->created_at }}</span>
                                         </td>
                                         <td class="sub_col"><strong>
-                                            C${{ $product['unit_price'] }}
+                                            C${{ $product->unit_price }}
                                         </strong></td>
                                         <td class="sub_col">
-                                            {{ $product['length'] }}
+                                            {{ $product->length }}
                                         </td>
                                         <td class="sub_col">
-                                            {{ $product['weight'] }}
+                                            {{ $product->weight }}
                                         </td>
                                         <td class="sub_col">
-                                            {{ $product['category_id'] }}
+                                            {{ $product->category->name }}
                                         </td>
                                         <td class="sub_col">
-                                            {{ $product['provider_id'] }}
+                                            {{ $product->provider_id }}
                                         </td>
                                         <td class="sub_col"><span class="label label-success">
-                                            {{ $product->available }}
+                                            {{ $product['available'] }}
                                         </span></td>
                                         <td class="sub_col">
                                             <div class="btn-group">
@@ -92,9 +92,7 @@
                                                 <a href="{{ ('product/'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
                                                 <button class="btn btn-xs" type="submit"><i class="fa fa-close"></i></button>
                                                 {{ Form::close() }}
-{{--                                                <a href="{{ URL::to('product/destroy/'.$product->id) }}" class="btn btn-xs"><i class="fa fa-close"></i></a>--}}
                                             </div>
-
                                         </td>
                                     </tr>
                                     @endforeach
@@ -117,5 +115,4 @@
             </div>
         </div>
     </div>
-
 </div>
