@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10">
                 <h1 class="page_title">Manage Products</h1>
-                <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ $categories }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
+                <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ count($categories) }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
             </div>
             <div class="col-md-2 text-right">
                 <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
@@ -82,9 +82,13 @@
                                         <td class="sub_col">
                                             {{ $product->provider_id }}
                                         </td>
-                                        <td class="sub_col"><span class="label label-success">
-                                            {{ $product['available'] }}
-                                        </span></td>
+                                        <td class="sub_col">
+                                            @if($product->available == 1)
+                                            <span class="label label-success"><i class="fa fa-thumbs-up"></i></span>
+                                            @else
+                                            <span class="label label-danger"><i class="fa fa-thumbs-down"></i></span>
+                                            @endif
+                                        </td>
                                         <td class="sub_col">
                                             <div class="btn-group">
                                                 {{ Form::open(['method' => 'DELETE','route' => ['product.destroy', $product->id ]]) }}
