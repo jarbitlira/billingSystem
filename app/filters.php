@@ -88,3 +88,12 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+function array_match( $array, $key, $val )
+{
+	$results = [];
+	foreach( $array as $element ) {
+		$results[ $element[$key] ] = $element[$val];
+	}
+	return $results;
+}
