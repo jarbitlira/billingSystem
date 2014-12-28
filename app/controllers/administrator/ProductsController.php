@@ -25,7 +25,7 @@ class ProductsController extends \BaseController
     public function index()
     {
         $products = $this->product->getAll();
-        $categories = count($this->categories);
+        $categories = $this->categories->getAll();
         $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
     }
 
@@ -37,7 +37,7 @@ class ProductsController extends \BaseController
 
     public function store()
     {
-        $except = ['_token'];
+        $except = ['_token', '_method'];
         $input = array_except(Input::all(), $except);
         $input['available'] = (Input::get('available')) ? 1 : 0;
         $product = $this->product->create($input);
@@ -49,13 +49,14 @@ class ProductsController extends \BaseController
     public function edit($id)
     {
         $product = $this->product->findById($id);
-        $this->layout->content = \View::make('admin.products.edit', compact('product'));
+        $categories = $this->categories->getAll();
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories'))->with('title', 'Edit ');
     }
 
     public function update($id)
     {
-        $except = ['_token'];
-        $input = array_except(Input::all(), $except);
+        $except = ['_token', '_method'];
+        $input = array_except(\Input::all(), $except);
         $this->product->update($id, $input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');
