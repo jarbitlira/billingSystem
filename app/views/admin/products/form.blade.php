@@ -36,7 +36,7 @@
             </div>
             <div class="col col-lg-4">
                 <label for="product_weight" class="req">Weight</label>
-                {{ Form::text('weight', null, ['class'=>'form-control', 'id'=>'product_weight']) }}
+                {{ Form::text('weight', NULL, ['class'=>'form-control', 'id'=>'product_weight']) }}
             </div>
             <!-- <div class="col col-lg-4">
             <label for="product_name" class="req">Sale Price</label>
@@ -50,7 +50,7 @@
                 <label for="product_category" class="req">Category</label>
                 {{ Form::select('category_id',
                                 ['-1'=>'Choose a category...'] + array_match($categories, 'id', 'name'),
-                                NULL, ['class' => 'input required form-control', 'id' => 'product_category']) }}
+                                NULL, ['class' => 'input required form-control', 'id' => 'product_category', 'required'=>'required']) }}
             </div>
             <div class="col-lg-4">
                 <label for="product_provider" class="req">Provider</label>
@@ -76,18 +76,18 @@
     <div class="row">
         <div class="form-group">
             <label for="product_description">Description</label>
-            {{ Form::textarea('description', null,
+            {{ Form::textarea('description', NULL,
                 ['class'=> 'form-control', 'id'=>'product_description', 'size'=>'30x4']) }}
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label for="product_notes">Notes</label>
-            {{ Form::textarea('notes', null, ['class'=>'form-control', 'id'=>'product_notes', 'size'=>'30x4' ]) }}
+            {{ Form::textarea('notes', NULL, ['class'=>'form-control', 'id'=>'product_notes', 'size'=>'30x4' ]) }}
         </div>
     </div>
 </div>
 <div class="row pull-right">
     <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-save"></i> Save</button>
-    <a href="<? Redirect::back() ?>" class="btn btn-default">Cancel</a>
+    <a href="{{ URL::previous() }}" class="btn btn-default">Cancel</a>
 </div>

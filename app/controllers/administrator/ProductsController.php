@@ -13,6 +13,7 @@ use Repositories\Administrator\ProductCategoryRepository;
 class ProductsController extends \BaseController
 {
     protected $layout = 'admin.layouts.main';
+    protected $breadcrumbs = ['Dashboard' => '/', 'Products' => 'product'];
     protected $product;
     protected $categories;
 
@@ -26,13 +27,16 @@ class ProductsController extends \BaseController
     {
         $products = $this->product->getAll();
         $categories = $this->categories->getAll();
-        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'))
+            ->with('title', 'Manage Products');
     }
 
     public function create()
     {
         $categories = $this->categories->getAll();
-        $this->layout->content = \View::make('admin.products.create', compact('categories'))->with('title', 'New Product');
+        $this->layout->breadcrumbs = $this->breadcrumbs;
+        $this->layout->content = \View::make('admin.products.create', compact('categories'))
+            ->with('title', 'New Product');
     }
 
     public function store()
@@ -50,7 +54,9 @@ class ProductsController extends \BaseController
     {
         $product = $this->product->findById($id);
         $categories = $this->categories->getAll();
-        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories'))->with('title', 'Edit ');
+        $this->layout->breadcrumbs = $this->breadcrumbs;
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories'))
+            ->with('title', 'Edit ');
     }
 
     public function update($id)
