@@ -10,19 +10,9 @@
 </div>
 @endsection
 
-<div class="page_content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        {{ Form::model($product, ['method' => 'PUT', 'id'=>'updateProduct', 'route' => ['product.update', $product->id ]] ) }}
-                        @include('admin.products.form')
-                        {{ Form::close() }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="panel-body">
+    {{ Form::model($product, ['method' => 'PUT', 'id'=>'updateProduct', 'route' => ['product.update', $product->id ]] ) }}
+    @include('admin.products.form')
+    {{ Form::close() }}
 </div>
 
