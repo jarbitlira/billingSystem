@@ -5,28 +5,27 @@
  * Date: 27/11/2014
  * Time: 18:41
  */
-
 namespace Repositories;
-
-
 class BaseRepository
 {
 
-    protected $model = null;
+    protected $model = NULL;
 
-    public function getAll($field = null)
+    public function getAll($field = NULL)
     {
         $this->orderBy($field);
+
         return $this->model->all();
     }
 
-    public function orderBy($field){
-        if (!is_null($field)){
-            $this->model->orderBy($field, 'DESC');
+    public function orderBy($field)
+    {
+        if (!is_null($field)) {
+            $this->model->orderBy($field, 'DESC')->get();
+        } else {
+            $this->model->orderBy('id', 'DESC')->get();
         }
-        else{
-            $this->model->orderBy('id', 'DESC');
-        }
+
         return $this->model;
     }
 
@@ -43,7 +42,8 @@ class BaseRepository
     public function update($id, $attributes)
     {
         $this->model = $this->model->find($id);
-        return $this->model->fill($id, $attributes)->save();
+
+        return $this->model->fill($attributes)->save();
     }
 
     public function delete($id)
@@ -60,6 +60,4 @@ class BaseRepository
     {
         return $this->model->hasErrors();
     }
-
-
-} 
+}

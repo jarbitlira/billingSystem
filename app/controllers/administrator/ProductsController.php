@@ -13,6 +13,7 @@ use Repositories\Administrator\ProductCategoryRepository;
 class ProductsController extends \BaseController
 {
     protected $layout = 'admin.layouts.main';
+    protected $breadcrumbs = ['Dashboard' => '/', 'Products' => 'product'];
     protected $product;
     protected $categories;
 
@@ -25,22 +26,25 @@ class ProductsController extends \BaseController
     public function index()
     {
         $products = $this->product->getAll();
-        $categories = count($this->categories);
-        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
+        $categories = $this->categories->getAll();
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'))
+            ->with('title', 'Manage Products');
     }
 
     public function create()
     {
         $categories = $this->categories->getAll();
-        $this->layout->content = \View::make('admin.products.create', compact('categories'))->with('title', 'New Product');
+        $this->layout->breadcrumbs = $this->breadcrumbs;
+        $this->layout->content = \View::make('admin.products.create', compact('categories'))
+            ->with('title', 'New Product');
     }
 
     public function store()
     {
-        $except = ['_token'];
+        $except = ['_token', '_method'];
         $input = array_except(Input::all(), $except);
         $input['available'] = (Input::get('available')) ? 1 : 0;
-        $product = $this->product->create($input);
+        $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');
         }
@@ -49,13 +53,16 @@ class ProductsController extends \BaseController
     public function edit($id)
     {
         $product = $this->product->findById($id);
-        $this->layout->content = \View::make('admin.products.edit', compact('product'));
+        $categories = $this->categories->getAll();
+        $this->layout->breadcrumbs = $this->breadcrumbs;
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories'))
+            ->with('title', 'Edit ');
     }
 
     public function update($id)
     {
-        $except = ['_token'];
-        $input = array_except(Input::all(), $except);
+        $except = ['_token', '_method'];
+        $input = array_except(\Input::all(), $except);
         $this->product->update($id, $input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');
