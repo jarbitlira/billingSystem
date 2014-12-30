@@ -73,7 +73,9 @@
                     {{ $product->category->name }}
                 </td>
                 <td class="sub_col">
-                    {{ $product->provider_id }}
+                    @if (isset($product->provider->name))
+                    {{ $product->provider->name }}
+                    @endif
                 </td>
                 <td class="sub_col">
                     @if($product->available == 1)

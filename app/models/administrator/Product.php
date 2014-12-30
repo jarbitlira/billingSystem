@@ -11,17 +11,17 @@ class Product extends \ModelBase
 {
     protected $table = 'product';
 
-    public function Category()
+    public function category()
     {
         return $this->belongsTo('Administrator\ProductCategory', 'category_id');
     }
 
     public function provider()
     {
-        return $this->belongsTo('provider', 'provider_id');
+        return $this->belongsTo('Administrator\Provider', 'provider_id');
     }
 
-    public function Invoices()
+    public function invoices()
     {
         return $this->belongsToMany('invoice', 'invoice_products');
     }

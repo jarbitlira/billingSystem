@@ -9,18 +9,19 @@ namespace Administrator;
 use Illuminate\Support\Facades\Input;
 use Repositories\Administrator\ProductRepository;
 use Repositories\Administrator\ProductCategoryRepository;
+use Repositories\Administrator\ProviderRepository;
 
 class ProductsController extends \BaseController
 {
     protected $layout = 'admin.layouts.main';
     protected $breadcrumbs = ['Dashboard' => '/', 'Products' => 'product'];
-    protected $product;
-    protected $categories;
+    protected $product, $categories, $providers;
 
-    public function __construct(ProductRepository $product, ProductCategoryRepository $categories)
+    public function __construct(ProductRepository $product, ProductCategoryRepository $categories, ProviderRepository $providers)
     {
         $this->product = $product;
         $this->categories = $categories;
+        $this->providers = $providers;
     }
 
     public function index()
@@ -34,8 +35,9 @@ class ProductsController extends \BaseController
     public function create()
     {
         $categories = $this->categories->getAll();
+        $providers = $this->providers->getAll();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.create', compact('categories'))
+        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'))
             ->with('title', 'New Product');
     }
 
@@ -54,8 +56,9 @@ class ProductsController extends \BaseController
     {
         $product = $this->product->findById($id);
         $categories = $this->categories->getAll();
+        $providers = $this->providers->getAll();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories'))
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'))
             ->with('title', 'Edit ');
     }
 
