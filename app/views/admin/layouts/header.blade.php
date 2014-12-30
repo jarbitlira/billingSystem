@@ -36,14 +36,14 @@
  		<header class="navbar navbar-fixed-top" role="banner">
  			<div class="container-fluid">
  				<div class="navbar-header">
- 					<a href="dashboard.html" class="navbar-brand"><img src="/public/template/assets/img/blank.gif" alt="Logo"></a>
+ 					<a href="{{ URL::to("/") }}" class="navbar-brand"><img src="/public/template/assets/img/blank.gif" alt="Logo"></a>
  				</div>
  				<ul class="top_links">
  					<li>
- 						<a href="tasks_summary.html"><span>23</span>Tasks</a>
+ 						<a href="#"><span>23</span>Tasks</a>
  					</li>
  					<li>
- 						<a href="mail_inbox.html"><span>8</span>Mails</a>
+ 						<a href="#"><span>8</span>Mails</a>
  					</li>
  				</ul>
  				<ul class="nav navbar-nav navbar-right">
