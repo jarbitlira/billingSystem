@@ -44,7 +44,7 @@ class ProductsController extends \BaseController
         $except = ['_token', '_method'];
         $input = array_except(Input::all(), $except);
         $input['available'] = (Input::get('available')) ? 1 : 0;
-        $product = $this->product->create($input);
+        $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');
         }
