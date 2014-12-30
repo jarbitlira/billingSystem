@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
 	<title>Billing 4T3Co v0.1</title>
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="shortcut icon" href="/public/favicon.ico"/>
 	<!-- bootstrap framework -->
 	<link href="/public/template/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<!-- custom icons -->

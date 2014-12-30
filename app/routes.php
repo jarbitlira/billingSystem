@@ -49,6 +49,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         }
     });
 
-    Route::resource('product/category', 'Administrator\ProductsCategoriesController');
+    Route::resource('provider', 'Administrator\ProviderController');
     Route::resource('product', 'Administrator\ProductsController');
+    Route::resource('product/category', 'Administrator\ProductsCategoriesController');
 });
