@@ -11,19 +11,24 @@ class BaseRepository
 
     protected $model = NULL;
 
+    public function lists(){
+
+        return $this->model->all();
+    }
+
     public function getAll($field = NULL)
     {
         $this->orderBy($field);
 
-        return $this->model->all();
+        return $this->model;
     }
 
     public function orderBy($field)
     {
         if (!is_null($field)) {
-            $this->model->orderBy($field, 'DESC')->get();
+            $this->model->orderBy($field, 'DESC'); // ->get()
         } else {
-            $this->model->orderBy('id', 'DESC')->get();
+            $this->model->orderBy('id', 'DESC');
         }
 
         return $this->model;
