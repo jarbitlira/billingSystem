@@ -1,5 +1,5 @@
 @section('page-top')
-    <div class="col-md-8">
+    <div class="col-xs-8">
         <h1 class="page-title">{{ $title }}</h1>
         <p class="muted">...</p>
     </div>

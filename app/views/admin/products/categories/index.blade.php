@@ -1,11 +1,11 @@
 @section('page-top')
-    <div class="col-md-10">
+    <div class="col-xs-10">
         <h1 class="page_title">{{ $title }}</h1>
 
         <p class="text-muted">There are {{ count($categories) }} <a
                     href="{{ URL::to( 'product/category') }}">categories </a>in stock</p>
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-xs-2 text-right">
         <a href="{{ URL::to('product/category/create') }}" class="btn btn-success">Add Category</a>
     </div>
 @endsection
