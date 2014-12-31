@@ -1,15 +1,15 @@
 @section('page-top')
-    <div class="col-md-10">
+    <div class="col-xs-10">
         <h1 class="page-title">Provider List</h1>
         <p class="muted">Providers registered: <b>{{ count($providers) }}</b></p>
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-xs-2 text-right">
         <a href="{{ URL::to('provider/create') }}" class="btn btn-success">Add Provider</a>
     </div>
 @endsection
 
 <div class="table-responsive">
-    <table class="table info-table">
+    <table class="table info_table">
         <thead>
             <tr>
                 <th class="sub_col">Name</th>
@@ -39,13 +39,6 @@
 </div>
 
 <div class="text-center">
-    <ul class="pagination pagination-sm">
-        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><span>...</span></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
+    {{ $providers->links() }}
+    {{--@include('admin.layouts.pagination', ['model'=>$providers])--}}
 </div>

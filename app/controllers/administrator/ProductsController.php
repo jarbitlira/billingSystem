@@ -6,7 +6,6 @@
  * Time: 06:40 PM
  */
 namespace Administrator;
-use Illuminate\Support\Facades\Input;
 use Repositories\Administrator\ProductRepository;
 use Repositories\Administrator\ProductCategoryRepository;
 use Repositories\Administrator\ProviderRepository;
@@ -26,16 +25,16 @@ class ProductsController extends \BaseController
 
     public function index()
     {
-        $products = $this->product->getAll();
-        $categories = $this->categories->getAll();
+        $products = $this->product->getAll()->paginate(10);
+        $categories = $this->categories->lists();
         $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'))
             ->with('title', 'Manage Products');
     }
 
     public function create()
     {
-        $categories = $this->categories->getAll();
-        $providers = $this->providers->getAll();
+        $categories = $this->categories->lists();
+        $providers = $this->providers->lists();
         $this->layout->breadcrumbs = $this->breadcrumbs;
         $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'))
             ->with('title', 'New Product');
@@ -44,8 +43,8 @@ class ProductsController extends \BaseController
     public function store()
     {
         $except = ['_token', '_method'];
-        $input = array_except(Input::all(), $except);
-        $input['available'] = (Input::get('available')) ? 1 : 0;
+        $input = array_except(\Input::all(), $except);
+        $input['available'] = (\Input::get('available')) ? 1 : 0;
         $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product');
@@ -55,8 +54,8 @@ class ProductsController extends \BaseController
     public function edit($id)
     {
         $product = $this->product->findById($id);
-        $categories = $this->categories->getAll();
-        $providers = $this->providers->getAll();
+        $categories = $this->categories->lists();
+        $providers = $this->providers->lists();
         $this->layout->breadcrumbs = $this->breadcrumbs;
         $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'))
             ->with('title', 'Edit ');

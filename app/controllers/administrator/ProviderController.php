@@ -22,7 +22,7 @@ class ProviderController extends \BaseController
 
     public function index()
     {
-        $providers = $this->provider->getAll();
+        $providers = $this->provider->getAll()->paginate(10);
         $this->layout->content = \View::make('admin.providers.index', compact('providers'));
     }
 
@@ -48,8 +48,10 @@ class ProviderController extends \BaseController
         $provider = $this->provider->findById($id);
         $this->layout->breadcrumbs = $this->breadcrumbs;
         $this->layout->content = \View::make('admin.providers.edit', compact('provider'))
-            ->with('title', 'Edit provider'
-        );
+            ->with(
+                'title',
+                'Edit provider'
+            );
     }
 
     public function update($id)

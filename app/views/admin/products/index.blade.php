@@ -99,13 +99,5 @@
     </table>
 </div>
 <div class="text-center">
-    <ul class="pagination pagination-sm">
-        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><span>...</span></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
+    {{ $products->links() }}
 </div>

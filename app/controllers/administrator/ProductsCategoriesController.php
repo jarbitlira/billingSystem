@@ -22,7 +22,7 @@ class ProductsCategoriesController extends \BaseController
 
     public function index()
     {
-        $categories = $this->category->getAll();
+        $categories = $this->category->getAll()->paginate(10);
         $this->layout->content = \View::make('admin.products.categories.index', compact('categories'))
             ->with('title', 'Manage product categories');
     }
