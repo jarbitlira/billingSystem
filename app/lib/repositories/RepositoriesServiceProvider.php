@@ -17,5 +17,6 @@ class RepositoriesServiceProvider extends ServiceProvider {
         $app->bind('Repositories\Administrator\ProductRepository', 'Repositories\Administrator\ProductEloquent');
         $app->bind('Repositories\Administrator\ProductCategoryRepository', 'Repositories\Administrator\ProductCategoryEloquent');
         $app->bind('Repositories\Administrator\ProviderRepository', 'Repositories\Administrator\ProviderEloquent');
+        $app->bind('Repositories\Administrator\ClientRepository', 'Repositories\Administrator\ClientEloquent');
     }
 } 
