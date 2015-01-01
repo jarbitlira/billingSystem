@@ -15,7 +15,6 @@
             <li class="sep">\</li>
             @endif
             @endforeach
-            {{--@yield('breadcrumbs')--}}
         </ul>
     </nav>
     @endif
@@ -23,6 +22,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="panel panel-default">
+                    @include('admin.layouts.messages')
                     {{ $content }}
                 </div>
             </div>
