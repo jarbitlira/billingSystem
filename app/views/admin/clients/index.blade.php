@@ -1,6 +1,6 @@
 @section('page-top')
     <div class="col-xs-10">
-        <h1 class="page-title">{{ $title }}</h1>
+        <h1 class="page-title">Manage Clients</h1>
     </div>
     <div class="col-xs-2 text-right">
         <a class="btn btn-success" href="{{ URL::to('client/create') }}">Add Client</a>

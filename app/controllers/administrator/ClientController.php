@@ -22,18 +22,15 @@ class ClientController extends \BaseController
 
     public function index()
     {
-        $clients = $this->client->getAll()->paginate(1);
+        $clients = $this->client->getAll()->paginate(10);
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.clients.index', compact('clients'))->with(
-            'title',
-            'Manage clients'
-        );
+        $this->layout->content = \View::make('admin.clients.index', compact('clients'));
     }
 
     public function create()
     {
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.clients.create')->with('title', 'Add new Client');
+        $this->layout->content = \View::make('admin.clients.create');
     }
 
     public function store()
@@ -41,7 +38,7 @@ class ClientController extends \BaseController
         $input = array_except(\Input::all(), ['_token', '_method']);
         $this->client->create($input);
         if ($this->client->succeeded()) {
-            return \Redirect::to('client');
+            return \Redirect::to('client')->with('notice', 'Client was created successfully');
         } else {
             return \Redirect::back()->withInput()->with('errors', $this->client->errors());
         }
@@ -59,7 +56,7 @@ class ClientController extends \BaseController
         $input = array_except(\Input::all(), ['_method', '_token']);
         $this->client->update($id, $input);
         if ($this->client->succeeded()) {
-            return \Redirect::to('client');
+            return \Redirect::to('client')->with('notice', 'Client was saved successfully');
         } else {
             return \Redirect::back()->withInput()->with('errors', $this->client->errors());
         }
@@ -68,7 +65,7 @@ class ClientController extends \BaseController
     public function destroy($id)
     {
         if ($this->client->delete($id)) {
-            return \Redirect::to('client');
+            return \Redirect::to('client')->with('notice', 'Client was deleted successfully');
         } else {
             return \Redirect::back()->withInput()->with('errors', $this->client->errors());
         }

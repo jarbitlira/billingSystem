@@ -1,6 +1,6 @@
 @section('page-top')
     <div class="col-xs-10">
-        <h1 class="page-title"> {{ $title }}</h1>
+        <h1 class="page-title"> Add new Client</h1>
     </div>
 @endsection
 

@@ -1,6 +1,6 @@
 @section('page-top')
     <div class="col-xs-8">
-        <h1 class="page-title">Edit Client {{$client->name}}</h1>
+        <h1 class="page-title">Edit Client <b>{{$client->name}}</b></h1>
     </div>
 @endsection
 
