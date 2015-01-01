@@ -27,8 +27,7 @@ class ProductsController extends \BaseController
     {
         $products = $this->product->getAll()->paginate(10);
         $categories = $this->categories->lists();
-        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'))
-            ->with('title', 'Manage Products');
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
     }
 
     public function create()
@@ -36,8 +35,7 @@ class ProductsController extends \BaseController
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'))
-            ->with('title', 'New Product');
+        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'));
     }
 
     public function store()
@@ -47,7 +45,7 @@ class ProductsController extends \BaseController
         $input['available'] = (\Input::get('available')) ? 1 : 0;
         $this->product->create($input);
         if ($this->product->succeeded()) {
-            return \Redirect::to('product');
+            return \Redirect::to('product')->with('notice', 'Product was created successfully');
         }
     }
 
@@ -57,8 +55,7 @@ class ProductsController extends \BaseController
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'))
-            ->with('title', 'Edit ');
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'));
     }
 
     public function update($id)
@@ -77,9 +74,9 @@ class ProductsController extends \BaseController
     public function destroy($id)
     {
         if ($this->product->delete($id)) {
-            return \Redirect::to('product');
+            return \Redirect::to('product')->with('Product was deleted successfully');
         } else {
-            return \Redirect::back();
+            return \Redirect::back()->with('errors', $this->product->errors());
         }
     }
 }
