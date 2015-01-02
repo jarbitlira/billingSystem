@@ -70,7 +70,6 @@ class ProductsController extends \BaseController
                 ->with('errors', $this->product->errors());
         }
     }
-
     public function destroy($id)
     {
         if ($this->product->delete($id)) {

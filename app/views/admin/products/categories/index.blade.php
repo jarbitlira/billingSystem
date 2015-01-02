@@ -1,6 +1,6 @@
 @section('page-top')
     <div class="col-xs-10">
-        <h1 class="page_title">{{ $title }}</h1>
+        <h1 class="page_title">Manage product categories </h1>
 
         <p class="text-muted">There are {{ count($categories) }} <a
                     href="{{ URL::to( 'product/category') }}">categories </a>in stock</p>

@@ -1,7 +1,6 @@
 @section('page-top')
     <div class="col-xs-8">
-        <h1 class="page-title">{{ $title }}</h1>
-        <p class="text-muted">_____</p>
+        <h1 class="page-title">Create Category</h1>
     </div>
 @endsection
 
