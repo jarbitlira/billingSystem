@@ -54,10 +54,10 @@
 						<span class="navbar_el_icon ion-person"></span> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="user_profile.html">Profile</a></li>
-						<li><a href="mail_inbox.html">My messages</a></li>
+						<li><a href="{{ URL::to('profile') }}">Profile</a></li>
+						<!-- <li><a href="mail_inbox.html">My messages</a></li>
 						<li><a href="tasks_summary.html">My tasks</a></li>
-						<li class="divider"></li>
+						<li class="divider"></li> -->
 						<li><a href="{{URL::to("/logout")}}">Log Out</a></li>
 					</ul>
 				</li>
