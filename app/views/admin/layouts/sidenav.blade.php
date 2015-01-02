@@ -60,6 +60,12 @@
 						</div>
 					</div>
 				</li>
+				<li>
+					<a href="{{ URL::to('client') }}">
+						<span class="fa fa-user"></span>
+						<span class="nav_title">CLIENTS</span>
+					</a>
+				</li>
   				<li>
   					<a href="#">
   						<span class="label label-danger">32</span>
