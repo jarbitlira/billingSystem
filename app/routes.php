@@ -56,4 +56,5 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::resource('product', 'Administrator\ProductsController', ['except'=>'show']);
     Route::resource('product/category', 'Administrator\ProductsCategoriesController');
     Route::resource('client', 'Administrator\ClientController');
+    Route::resource('invoice', 'Administrator\InvoiceController', ['only'=>['index', 'show']]);
 });

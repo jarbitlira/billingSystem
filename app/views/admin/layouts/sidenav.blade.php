@@ -66,6 +66,12 @@
 						<span class="nav_title">CLIENTS</span>
 					</a>
 				</li>
+				<li>
+					<a href="{{ URL::to('invoice') }}">
+						<span class="fa fa-newspaper-o"></span>
+						<span class="nav_title">INVOICES</span>
+					</a>
+				</li>
   				<li>
   					<a href="#">
   						<span class="label label-danger">32</span>
