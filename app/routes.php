@@ -49,6 +49,11 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         }
     });
 
+    Route::get('profile', 'UsersController@profile');
+    Route::put('profile', 'UsersController@profile');
+
+    Route::resource('provider', 'Administrator\ProviderController');
+    Route::resource('product', 'Administrator\ProductsController', ['except'=>'show']);
     Route::resource('product/category', 'Administrator\ProductsCategoriesController');
-    Route::resource('product', 'Administrator\ProductsController');
+    Route::resource('client', 'Administrator\ClientController');
 });

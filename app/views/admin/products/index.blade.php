@@ -1,9 +1,9 @@
 @section('page-top')
-<div class="col-md-10">
-    <h1 class="page_title">{{ $title }}</h1>
+<div class="col-xs-10">
+    <h1 class="page_title">Manage Products</h1>
     <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ count($categories) }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
 </div>
-<div class="col-md-2 text-right">
+<div class="col-xs-2 text-right">
     <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
 </div>
 @endsection
@@ -73,7 +73,9 @@
                     {{ $product->category->name }}
                 </td>
                 <td class="sub_col">
-                    {{ $product->provider_id }}
+                    @if (isset($product->provider->name))
+                    {{ $product->provider->name }}
+                    @endif
                 </td>
                 <td class="sub_col">
                     @if($product->available == 1)
@@ -97,13 +99,5 @@
     </table>
 </div>
 <div class="text-center">
-    <ul class="pagination pagination-sm">
-        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><span>...</span></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
+    {{ $products->links() }}
 </div>

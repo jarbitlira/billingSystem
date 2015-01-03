@@ -22,16 +22,14 @@ class ProductsCategoriesController extends \BaseController
 
     public function index()
     {
-        $categories = $this->category->getAll();
-        $this->layout->content = \View::make('admin.products.categories.index', compact('categories'))
-            ->with('title', 'Manage product categories');
+        $categories = $this->category->getAll()->paginate(10);
+        $this->layout->content = \View::make('admin.products.categories.index', compact('categories'));
     }
 
     public function create()
     {
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.categories.create')
-            ->with('title', 'Create Category');
+        $this->layout->content = \View::make('admin.products.categories.create');
     }
 
     public function store()
@@ -39,7 +37,9 @@ class ProductsCategoriesController extends \BaseController
         $input = array_except(\Input::all(), ['_token']);
         $this->category->create($input);
         if ($this->category->succeeded()) {
-            return \Redirect::to('product/category');
+            return \Redirect::to('product/category')->with('notice', 'Category was created successfully');
+        } else {
+            return \Redirect::back()->withInput()->with('errors', $this->category->errors());
         }
     }
 
@@ -47,8 +47,7 @@ class ProductsCategoriesController extends \BaseController
     {
         $category = $this->category->findById($id);
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.categories.edit', compact('category'))
-            ->with('title', 'Edit Category');
+        $this->layout->content = \View::make('admin.products.categories.edit', compact('category'));
     }
 
     public function update($id)
@@ -56,7 +55,7 @@ class ProductsCategoriesController extends \BaseController
         $input = array_except(\Input::all(), ['_method', '_token']);
         $this->category->update($id, $input);
         if ($this->category->succeeded()) {
-            return \Redirect::to('product/category');
+            return \Redirect::to('product/category')->with('notice', 'Category was updated successfully');
         } else {
             return \Rediret::back()->withInput()->with('errors', $this->category->errors());
         }
@@ -65,7 +64,7 @@ class ProductsCategoriesController extends \BaseController
     public function destroy($id)
     {
         if ($this->category->delete($id)) {
-            return \Redirect::to('product/category');
+            return \Redirect::to('product/category')->with('notice', 'Category', 'Category was deleted successfully');
         } else {
             return \Redirect::back()->withInput()->with('errors', $this->category->errors());
         }

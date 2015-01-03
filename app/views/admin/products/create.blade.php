@@ -1,6 +1,6 @@
 @section('page-top')
-<div class="col-md-8">
-    <h1 class="page_title">{{ $title }}</h1>
+<div class="col-xs-8">
+    <h1 class="page_title">New Product</h1>
     <p class="text-muted">Insert data of new Product</p>
 </div>
 @endsection

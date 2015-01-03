@@ -2,6 +2,7 @@
 
 class UsersController extends \BaseController {
 
+	protected $layout = 'admin.layouts.main';
 	/**
 	 * Display a listing of users
 	 *
@@ -102,6 +103,21 @@ class UsersController extends \BaseController {
 		User::destroy($id);
 
 		return Redirect::route('users.index');
+	}
+
+	public function profile(){
+		if(\Auth::check()){
+			$user = User::find(\Auth::user()->id);
+			if (\Request::isMethod('put')) {
+				$input = array_except(\Input::all(), ['_method', '_token']);
+				$user->update($input);
+				return \Redirect::back()->with('notice', 'Your data has been updated');
+			}
+			$this->layout->content = \View::make('users.profile', compact('user'));
+		}
+		else{
+			return \Redirect::to('/');
+		}
 	}
 
 }

@@ -15,14 +15,17 @@
             <li class="sep">\</li>
             @endif
             @endforeach
-            {{--@yield('breadcrumbs')--}}
         </ul>
     </nav>
     @endif
     <div class="page_content">
         <div class="container-fluid">
             <div class="row">
+                @yield('pre-panel')
+            </div>
+            <div class="row">
                 <div class="panel panel-default">
+                    @include('admin.layouts.messages')
                     {{ $content }}
                 </div>
             </div>

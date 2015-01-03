@@ -36,6 +36,36 @@
 						</div>
 					</div>
                 </li>
+				<li>
+					<a href="#">
+						<span class="ion-home"></span>
+						<span class="nav_title">PROVIDERS</span>
+					</a>
+					<div class="sub_panel">
+						<div class="side_inner">
+							<h4 class="panel_heading panel_heading_first">Contacts</h4>
+							<ul>
+								<li><a href="{{ URL::to('provider') }}"><span class="side_icon ion-ios7-folder-outline"></span> List</a></li>
+							</ul>
+							<h4 class="panel_heading">Top Providers</h4>
+							<ul>
+								<li><a href="#"><span class="badge badge-success">*</span> Provider A</a></li>
+								<li><a href="#"><span class="badge badge-default">*</span> Provider B</a></li>
+								<li><a href="#"><span class="badge badge-default">*</span> Provider C</a></li>
+							</ul>
+							<h4 class="panel_heading">Reports</h4>
+							<ul>
+								<li><a href="#">Provider Report</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="{{ URL::to('client') }}">
+						<span class="fa fa-user"></span>
+						<span class="nav_title">CLIENTS</span>
+					</a>
+				</li>
   				<li>
   					<a href="#">
   						<span class="label label-danger">32</span>

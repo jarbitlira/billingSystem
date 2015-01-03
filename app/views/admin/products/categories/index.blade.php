@@ -1,11 +1,11 @@
 @section('page-top')
-    <div class="col-md-10">
-        <h1 class="page_title">{{ $title }}</h1>
+    <div class="col-xs-10">
+        <h1 class="page_title">Manage product categories </h1>
 
         <p class="text-muted">There are {{ count($categories) }} <a
                     href="{{ URL::to( 'product/category') }}">categories </a>in stock</p>
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-xs-2 text-right">
         <a href="{{ URL::to('product/category/create') }}" class="btn btn-success">Add Category</a>
     </div>
 @endsection
@@ -48,13 +48,5 @@
     </table>
 </div>
 <div class="text-center">
-    <ul class="pagination pagination-sm">
-        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><span>...</span></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
+    {{ $categories->links() }}
 </div>
