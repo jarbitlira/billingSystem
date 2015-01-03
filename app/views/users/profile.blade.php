@@ -1,6 +1,6 @@
 @section('page-top')
     <div class="col-xs-10">
-        <h1 class="page-title"><span class="text-muted">Profile:</span> {{ $user->first_name }}</h1>
+        <h1 class="page-title"><span class="text-muted">Profile:</span> {{ $user->username }}</h1>
         <p><span class="text-muted">Role:</span> SuperAdmin</p>
     </div>
 @endsection
@@ -59,28 +59,46 @@
             </ul>
             <div class="tab-content">
                 <div id="profile_general_pane" class="tab-pane active">
-                    <div class="form-group">
-                        <label for="profile_username" class="col-xs-2 control-label">Username</label>
-                        <div class="col-xs-10">
-                            {{Form::text('username', null, ['class'=>'form-control', 'id'=>'profile_username'])}}
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="profile_username" class="col-xs-2 control-label">Username</label>
+                            <div class="col-xs-8">
+                                {{Form::text('username', null, ['class'=>'form-control', 'id'=>'profile_username'])}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_email" class="col-xs-2 control-label">Email</label>
+                            <div class="col-xs-8">
+                                {{ Form::email('email', null, ['class'=>'form-control', 'id'=>'profile_email']) }}
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="profile_fname" class="col-xs-2 control-label">First Name</label>
-                        <div class="col-xs-10">
-                            {{ Form::text('first_name', null, ['class'=>'form-control', 'id'=>'profile_fname']) }}
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="profile_fname" class="col-xs-3 control-label">First Name</label>
+                            <div class="col-xs-8">
+                                {{ Form::text('first_name', null, ['class'=>'form-control', 'id'=>'profile_fname']) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_lname" class="col-xs-3 control-label">Last Name</label>
+                            <div class="col-xs-8">
+                                {{ Form::text('last_name', null, ['class'=>'form-control', 'id'=>'profile_lname']) }}
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="profile_lname" class="col-xs-2 control-label">Last Name</label>
-                        <div class="col-xs-10">
-                            {{ Form::text('last_name', null, ['class'=>'form-control', 'id'=>'profile_lname']) }}
+                    <div class="row text-center">
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label" for="profile_password">Password</label>
+                            <div class="col-xs-5">
+                                {{ Form::password('password', ['class'=>'form-control', 'id'=>'profile_password']) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="profile_email" class="col-xs-2 control-label">Email</label>
-                        <div class="col-xs-10">
-                            {{ Form::email('email', null, ['class'=>'form-control', 'id'=>'profile_email']) }}
+                        <div class="form-group">
+                            <label class="col-xs-4 control-label req" for="profile_repassword">Re-type password</label>
+                            <div class="col-xs-5">
+                                {{ Form::password('password_confirmation', ['class'=>'form-control', 'id'=>'profile_repassword', 'required']) }}
+                            </div>
                         </div>
                     </div>
                     <!-- <div class="form-group">
