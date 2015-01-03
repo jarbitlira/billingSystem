@@ -9,7 +9,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Billing 4T3Co v0.1</title>
+	<title>{{ site_config('site_header')}}</title>
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<link rel="shortcut icon" href="/public/favicon.ico"/>
 	<!-- bootstrap framework -->
@@ -26,6 +26,8 @@
 	<link rel="stylesheet" href="/public/template/assets/lib/owl-carousel/owl.carousel.css">
 	<!-- main stylesheet -->
 	<link href="/public/template/assets/css/style.css" rel="stylesheet" media="screen">
+
+	<link href="/public/css/admin.css" rel="stylesheet" media="screen">
 	<!-- google webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>
 	<!-- moment.js (date library) -->
@@ -36,7 +38,9 @@
 	<header class="navbar navbar-fixed-top" role="banner">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="dashboard.html" class="navbar-brand"><img src="/public/template/assets/img/blank.gif" alt="Logo"></a>
+				<a href="{{URL::to('/')}}" class="navbar-brand">
+					{{site_config('site_name')}}
+				</a>
 			</div>
 			<ul class="top_links">
 				<li>
@@ -47,7 +51,9 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="navbar_el_icon ion-ios7-gear"></span> <span class="navbar_el_title">Settings</span></a></li>
+
+				<li><a href="{{URL::to('config')}}"><span class="navbar_el_icon ion-ios7-gear"></span> <span
+								class="navbar_el_title">Settings</span></a></li>
 				<li><a href="#"><span class="navbar_el_icon ion-help-buoy"></span> <span class="navbar_el_title">Help</span></a></li>
 				<li class="user_menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">

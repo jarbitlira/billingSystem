@@ -72,7 +72,7 @@
 						<span class="nav_title">INVOICES</span>
 					</a>
 				</li>
-  				<li>
+				<!--<li>
   					<a href="#">
   						<span class="label label-danger">32</span>
   						<span class="ion-clipboard"></span>
@@ -288,6 +288,12 @@
   							</ul>
   						</div>
   					</div>
-  				</li>
+  				</li> -->
+				<li>
+					<a href="{{ URL::to('config') }}">
+						<span class="fa fa-cog"></span>
+						<span class="nav_title">CONFIG</span>
+					</a>
+				</li>
   			</ul>
   		</nav>
