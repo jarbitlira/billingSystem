@@ -23,11 +23,12 @@
 
  </head>
  <body>
- 	<div class="login_container">
- 		<form id="login_form" action="{{URL::to("/login")}}" method="post">
+ <div class="login_container">
+		<form id="login_form" action="{{URL::to("/login")}}" method="post">
  			<h1 class="login_heading">Login <span>/ <a href="#" class="open_register_form">register</a></span></h1>
- 			<div class="form-group">
- 				<label for="login_username">email</label>
+			@include('admin.layouts.messages')
+			<div class="form-group">
+				<label for="login_username">email</label>
  				<input type="email" name="email" class="form-control input-lg" placeholder="email" id="login_email">
  			</div>
  			<div class="form-group">

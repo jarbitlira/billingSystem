@@ -32,7 +32,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
 
     Route::get("/login", function () {
         if (!Auth::check()) {
-            return View::make("login");
+            return View::make("login")->with('error', 'Email or password is not correct');
         } else {
             return Redirect::to("/");
         }
