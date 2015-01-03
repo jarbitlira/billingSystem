@@ -54,14 +54,9 @@
             </div>
             <div class="col-lg-4">
                 <label for="product_provider" class="req">Provider</label>
-                <select id="product_provider" name='provider_id' class="form-control" data-parsley-required="true"
-                        data-parsley-trigger="change">
-                    <option value="">Select its provider . .</option>
-                    <optgroup label="Alaskan/Hawaiian Time Zone">
-                        <option value="1">Alaska</option>
-                        <option value="2">Hawaii</option>
-                    </optgroup>
-                </select>
+                {{Form::select('provider_id',array(''=>'Select its provider . .',1=>'Alaska',2=>'Hawaii'),null,
+                array('id'=>'product_provider','class'=>'form-control','data-parsley-required'=>'true'))}}
+
             </div>
             <div class="col-lg-4">
                 <label for="product_available" class="checkbox checkbox-inline">
