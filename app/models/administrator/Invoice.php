@@ -13,10 +13,12 @@ class Invoice extends \ModelBase
 
     public function client()
     {
-        return $this->belongsTo('client', 'client_id');
+        return $this->belongsTo('Administrator\Client', 'client_id');
     }
 
-//    public function products(){
-//        return $this->hasMany('product', '')
-//    }
+    public function products()
+    {
+        return $this->belongsToMany('Administrator\Product', 'invoices_products');
+    }
+
 }

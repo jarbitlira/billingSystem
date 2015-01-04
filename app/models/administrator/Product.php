@@ -23,6 +23,6 @@ class Product extends \ModelBase
 
     public function invoices()
     {
-        return $this->belongsToMany('invoice', 'invoice_products');
+        return $this->belongsToMany('Administrator\Invoice', 'invoices_products');
     }
 }
