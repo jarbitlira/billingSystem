@@ -19,11 +19,15 @@
 <script src="/public/template/assets/js/tisa_common.js"></script>
 <!-- style switcher -->
 <script src="/public/template/assets/js/tisa_style_switcher.js"></script>
+<!-- select2 -->
+<script src="/public/template/assets/lib/select2-stable/select2.min.js"></script>
+<script src="/public/billing.js"></script>
 <!-- page specific plugins -->
     <!-- nvd3 charts -->
     <script src="/public/template/assets/lib/d3/d3.min.js"></script>
     <script src="/public/template/assets/lib/novus-nvd3/nv.d3.min.js"></script>
-    <!-- flot charts-->
+
+<!-- flot charts-->
     <script src="/public/template/assets/lib/flot/jquery.flot.min.js"></script>
     <script src="/public/template/assets/lib/flot/jquery.flot.pie.min.js"></script>
     <script src="/public/template/assets/lib/flot/jquery.flot.resize.min.js"></script>

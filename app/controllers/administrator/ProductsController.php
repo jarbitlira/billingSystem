@@ -78,4 +78,13 @@ class ProductsController extends \BaseController
             return \Redirect::back()->with('errors', $this->product->errors());
         }
     }
+
+    public function json(){
+        $products = $this->product->lists()->toArray();
+        if(count($products))
+//            return \Response::json(['status'=>1, 'data'=>$products]);
+            return \Response::json($products);
+        else
+            return \Response::json(['status'=>0, 'items'=>'No data']);
+    }
 }

@@ -19,6 +19,8 @@
 		<link href="/public/template/assets/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
 		<!-- ionicons -->
 		<link href="/public/template/assets/icons/ionicons/css/ionicons.min.css" rel="stylesheet" media="screen">
+		<!-- select2 -->
+		<link href="/public/template/assets/lib/select2-stable/select2.css" rel="stylesheet" media="screen">
 	<!-- page specific stylesheets -->
 	<!-- nvd3 charts -->
 	<link rel="stylesheet" href="/public/template/assets/lib/novus-nvd3/nv.d3.min.css">

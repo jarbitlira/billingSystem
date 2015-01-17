@@ -58,4 +58,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::resource('client', 'Administrator\ClientController');
     Route::resource('invoice', 'Administrator\InvoiceController', ['only'=>['index', 'show']]);
     Route::controller('config', 'Administrator\ConfigController');
+    //temporal billing route
+    Route::controller('billing', 'Billing\InvoiceController');
+    Route::get('product/json', 'Administrator\ProductsController@json');
 });
