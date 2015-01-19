@@ -14,6 +14,8 @@
 	<link rel="shortcut icon" href="/public/favicon.ico"/>
 	<!-- bootstrap framework -->
 	<link href="public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!-- select2 -->
+	<link href="public/vendor/select2/select2.css" rel="stylesheet">
 	<!-- custom icons -->
 		<!-- font awesome icons -->
 		<link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
