@@ -12,7 +12,7 @@
 <!-- easing -->
 <script src="/public/template/assets/js/jquery.easing.1.3.min.js"></script>
 <!-- select2 -->
-<script src="public/vendor/select2/selec2.min.js"></script>
+<script src="public/vendor/select2/select2.min.js"></script>
 <!-- top dropdown navigation -->
 <script src="/public/template/assets/js/tinynav.min.js"></script>
 <!-- perfect scrollbar -->
