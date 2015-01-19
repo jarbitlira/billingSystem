@@ -11,6 +11,6 @@ namespace Administrator;
 
 class Client extends \ModelBase{
 
-    protected $table = 'client';
+    protected $table = 'clients';
 
 }

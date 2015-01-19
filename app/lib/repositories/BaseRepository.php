@@ -34,6 +34,11 @@ class BaseRepository
         return $this->model;
     }
 
+    public function findAll()
+    {
+        return $this->model->all();
+    }
+
     public function findById($id)
     {
         return $this->model->find($id);
@@ -63,6 +68,6 @@ class BaseRepository
 
     public function errors()
     {
-        return $this->model->hasErrors();
+        return $this->model->getErrors();
     }
 }
