@@ -13,10 +13,10 @@
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<link rel="shortcut icon" href="/public/favicon.ico"/>
 	<!-- bootstrap framework -->
-	<link href="/public/template/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<!-- custom icons -->
 		<!-- font awesome icons -->
-		<link href="/public/template/assets/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+		<link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
 		<!-- ionicons -->
 		<link href="/public/template/assets/icons/ionicons/css/ionicons.min.css" rel="stylesheet" media="screen">
 		<!-- select2 -->
@@ -27,7 +27,7 @@
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="/public/template/assets/lib/owl-carousel/owl.carousel.css">
 	<!-- main stylesheet -->
-	<link href="/public/template/assets/css/style.css" rel="stylesheet" media="screen">
+	<link href="public/template/assets/css/style.css" rel="stylesheet" media="screen">
 
 	<link href="/public/css/admin.css" rel="stylesheet" media="screen">
 	<!-- google webfonts -->
@@ -41,17 +41,17 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a href="{{URL::to('/')}}" class="navbar-brand">
-					{{site_config('site_name')}}
+					{{ site_config('site_name') }}
 				</a>
 			</div>
-			<ul class="top_links">
-				<li>
-					<a href="tasks_summary.html"><span>23</span>Tasks</a>
-				</li>
-				<li>
-					<a href="mail_inbox.html"><span>8</span>Mails</a>
-				</li>
-			</ul>
+			{{--<ul class="top_links">--}}
+				{{--<li>--}}
+					{{--<a href="tasks_summary.html"><span>23</span>Tasks</a>--}}
+				{{--</li>--}}
+				{{--<li>--}}
+					{{--<a href="mail_inbox.html"><span>8</span>Mails</a>--}}
+				{{--</li>--}}
+			{{--</ul>--}}
 			<ul class="nav navbar-nav navbar-right">
 
 				<li><a href="{{URL::to('config')}}"><span class="navbar_el_icon ion-ios7-gear"></span> <span

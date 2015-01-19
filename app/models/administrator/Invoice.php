@@ -9,7 +9,7 @@ namespace Administrator;
 class Invoice extends \ModelBase
 {
 
-    protected $table = 'invoice';
+    protected $table = 'invoices';
 
     public function client()
     {

@@ -6,11 +6,13 @@
  * Time: 10:29 PM
  */ ?>
  <!-- jQuery -->
-<script src="/public/template/assets/js/jquery.min.js"></script>
+<script src="public/vendor/jquery/dist/jquery.min.js"></script>
+<!-- bootstrap js plugins -->
+<script src="public/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- easing -->
 <script src="/public/template/assets/js/jquery.easing.1.3.min.js"></script>
-<!-- bootstrap js plugins -->
-<script src="/public/template/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- select2 -->
+<script src="public/vendor/select2/selec2.min.js"></script>
 <!-- top dropdown navigation -->
 <script src="/public/template/assets/js/tinynav.min.js"></script>
 <!-- perfect scrollbar -->
@@ -41,7 +43,7 @@
     <script src="/public/template/assets/lib/owl-carousel/owl.carousel.min.js"></script>
 
 <!-- dashboard functions -->
-<script src="/public/template/assets/js/apps/tisa_dashboard.js"></script>
+<script src="public/template/assets/js/apps/tisa_dashboard.js"></script>
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-49181536-1']);
