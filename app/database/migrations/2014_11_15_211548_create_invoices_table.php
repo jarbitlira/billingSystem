@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateInvoiceTable extends Migration {
+class CreateInvoicesTable extends Migration
+{
 
 	/**
 	 * Run the migrations.
@@ -12,7 +13,7 @@ class CreateInvoiceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('invoice', function(Blueprint $table)
+		Schema::create('invoices', function (Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->integer('ref')->nullable();
@@ -37,7 +38,7 @@ class CreateInvoiceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('invoice');
+		Schema::drop('invoices');
 	}
 
 }

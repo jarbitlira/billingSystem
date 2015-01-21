@@ -290,6 +290,12 @@
   					</div>
   				</li> -->
 				<li>
+					<a href="{{ URL::to('user') }}">
+						<span class="fa fa-users"></span>
+						<span class="nav_title">USERS</span>
+					</a>
+				</li>
+				<li>
 					<a href="{{ URL::to('config') }}">
 						<span class="fa fa-cog"></span>
 						<span class="nav_title">CONFIG</span>

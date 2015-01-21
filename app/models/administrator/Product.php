@@ -9,7 +9,7 @@ namespace Administrator;
 
 class Product extends \ModelBase
 {
-    protected $table = 'product';
+    protected $table = 'products';
 
     public function category()
     {

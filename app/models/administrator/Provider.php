@@ -11,7 +11,7 @@ namespace Administrator;
 
 class Provider extends \ModelBase {
 
-    protected $table =  'provider';
+    protected $table = 'providers';
 
     public function products(){
         return $this->hasMany('product', 'provider_id');
