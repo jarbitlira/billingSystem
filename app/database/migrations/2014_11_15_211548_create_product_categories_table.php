@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateClientTable extends Migration {
+class CreateProductCategoriesTable extends Migration
+{
 
 	/**
 	 * Run the migrations.
@@ -12,15 +13,10 @@ class CreateClientTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('client', function(Blueprint $table)
+		Schema::create('product_categories', function (Blueprint $table)
 		{
 			$table->integer('id', true);
 			$table->string('name')->nullable();
-			$table->text('address')->nullable();
-			$table->integer('phone1')->nullable();
-			$table->integer('phone2')->nullable();
-			$table->string('email')->nullable();
-			$table->boolean('registered')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -34,7 +30,7 @@ class CreateClientTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('client');
+		Schema::drop('product_categories');
 	}
 
 }

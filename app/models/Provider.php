@@ -10,7 +10,7 @@
 class Provider extends ModelBase
 {
 
-    protected $table = 'provider';
+    protected $table = 'providers';
 
     public function products()
     {

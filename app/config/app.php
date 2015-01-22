@@ -124,6 +124,7 @@ return array(
 
         /****************************************/
         'Repositories\RepositoriesServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 
 	),
 
@@ -192,7 +193,9 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
-        'Ardent'	        => '\LaravelBook\Ardent\Ardent'
+		'Ardent' => '\LaravelBook\Ardent\Ardent',
+		'Carbon' => 'Carbon\Carbon',
+		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
 
 	),
 

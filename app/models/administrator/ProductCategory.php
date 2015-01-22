@@ -8,7 +8,7 @@
 namespace Administrator;
 class ProductCategory extends \ModelBase
 {
-    protected $table = 'product_category';
+    protected $table = 'product_categories';
 
     public function products(){
         return $this->hasMany('Administrator\Product', 'category_id');
