@@ -1,10 +1,16 @@
 @section('page-top')
-<div class="col-xs-10">
+<div class="col-xs-8">
     <h1 class="page_title">Manage Products</h1>
     <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ count($categories) }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
 </div>
-<div class="col-xs-2 text-right">
+
+
+
+<div class="col-xs-4 text-right">
+
+    <a href="{{ URL::to('/print') }}" class="btn btn-success">Print Report</a>
     <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
+
 </div>
 @endsection
 
