@@ -8,7 +8,7 @@
 
 class PrintController extends \BaseController
 {
-    public function index()
+    public function getProducts()
     {
 
 

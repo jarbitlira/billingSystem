@@ -62,5 +62,5 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     //temporal billing route
     Route::controller('billing', 'Billing\InvoiceController');
     Route::get('product/json', 'Administrator\ProductsController@json');
-    Route::get('/print', 'PrintController@index');
+    Route::controller('print', 'PrintController');
 });

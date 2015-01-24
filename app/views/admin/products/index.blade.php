@@ -8,7 +8,7 @@
 
 <div class="col-xs-4 text-right">
 
-    <a href="{{ URL::to('/print') }}" class="btn btn-success">Print Report</a>
+    <a href="{{ URL::to('print/products') }}" class="btn btn-success">Print Report</a>
     <a href="{{ URL::to('product/create') }}" class="btn btn-success">Add Product</a>
 
 </div>
