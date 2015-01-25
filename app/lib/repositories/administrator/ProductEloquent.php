@@ -15,4 +15,19 @@ class ProductEloquent extends \Repositories\BaseRepository implements ProductRep
     {
         $this->model = new Product();
     }
+
+    public function whereLike($fields, $match)
+    {
+        return $this->model->where(
+            function ($query) use ($fields, $match) {
+                if (is_array($fields)) {
+                    foreach ($fields as $field) {
+                        $query->orWhere($field, 'LIKE', "%" . $match . "%");
+                    }
+                } elseif (isset($fields)) {
+                    $query->where($fields, 'LIKE', "%" . $match . "%");
+                }
+            }
+        )->get();
+    }
 }
