@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <input type="hidden" id="filter_product">
+    <input type="text" id="filter_product">
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped invoice_table">
