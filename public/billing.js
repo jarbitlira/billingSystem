@@ -61,6 +61,7 @@ $(document).on('ready', function () {
             suma += parseFloat($(this).html());
         });
         $('body #finalSubtotal>strong').html(suma);
+        $('body #finalGrandtotal>strong').html(suma);
         return false;
     };
 

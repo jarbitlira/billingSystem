@@ -1,6 +1,6 @@
 <div class="panel-body">
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label for="filter_product">PRODUCTS FILTER</label>
         <input type="text" class="form-control" id="filter_product" placeholder="Type a product..">
     </div>
@@ -39,7 +39,7 @@
                 <tr class="grand_total">
                     <td colspan="4"></td>
                     <td class="col_total text-right">Grand Total</td>
-                    <td class="col_total"><strong>C${{ '-' }}</strong></td>
+                    <td class="col_total" id="finalGrandtotal"><strong>C$</strong></td>
                 </tr>
                 </tfoot>
             </table>
