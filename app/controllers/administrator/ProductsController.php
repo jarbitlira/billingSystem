@@ -70,12 +70,29 @@ class ProductsController extends \BaseController
                 ->with('errors', $this->product->errors());
         }
     }
+
     public function destroy($id)
     {
         if ($this->product->delete($id)) {
             return \Redirect::to('product')->with('Product was deleted successfully');
         } else {
             return \Redirect::back()->with('errors', $this->product->errors());
+        }
+    }
+
+    public function json()
+    {
+        if (\Input::has('term')) {
+            $match = \Input::get('term');
+            $products = $this->product->whereLike(['name', 'sku'], $match);
+        } else {
+            $products = $this->product->lists();
+        }
+        if (count($products))
+        {
+            return \Response::json($products);
+        } else {
+            return \Response::json(['status' => 0, 'items' => 'No data']);
         }
     }
 }
