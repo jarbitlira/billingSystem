@@ -1,8 +1,12 @@
 <div class="panel-body">
-    <input type="text" id="filter_product">
+
+    <div class="col-md-4">
+        <label for="filter_product">PRODUCTS FILTER</label>
+        <input type="text" class="form-control" id="filter_product" placeholder="Type a product..">
+    </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped invoice_table">
+            <table class="table table-striped invoice_table" id="billing_table">
                 <thead>
                 <tr>
                     <th>Product</th>
@@ -14,16 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($products as $product)
-                    <tr>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->sku }}</td>
-                        <td>{{ $product->unit_price }}</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td> - </td>
-                    </tr>
-                @endforeach
+
                 </tbody>
                 <tfoot>
                 <tr>

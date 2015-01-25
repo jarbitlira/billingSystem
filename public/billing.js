@@ -3,60 +3,50 @@
  */
 $(document).on('ready', function () {
 
-    var formatResults = function (data) {
-        return data.name + '(' + data.id + ')';
-    };
-
-    var filtering = function (term, data) {
-        if ($(data).filter(function () {
-                return this.name.localeCompare(term) === 0;
-            }).length === 0) {
-            return {text: term}
+    $("#filter_product").autocomplete({
+        source: function(request, response){
+            $.ajax({
+                url: 'http://admin.billingsystem/product/json',
+                type: 'GET',
+                data: {term: request.term},
+                dataType: 'json',
+                success: function (data) {
+                    response($.map(data, function(item){
+                        return {
+                            label: item.name,
+                            value: item.id,
+                            data: item
+                        }
+                    }))
+                }
+            })
+        },
+        select: function(event, ui){
+            var _this = ui.item.data;
+            var quantity = '<input type="number" value="1" min="1" max="20" class="qtyInput" id="qty_'+_this.id +'"/>'
+            var row = '<tr>';
+            row += '<td>'+ _this.name +'</td>';
+            row += '<td>'+ _this.sku +'</td>';
+            row += '<td class="price">'+ _this.unit_price +'</td>';
+            row += '<td>'+ quantity +'</td>';
+            row += '<td>'+ '-' +'</td>';
+            row += '<td class="subtotal">'+ getSubtotal(_this.unit_price, 1) + '</td>';
+            row += '</tr>';
+            $('#billing_table > tbody').append(row)
+            return false;
         }
-        ;
+
+    });
+
+    $('body').on('change, input, keyup', '.qtyInput', function(){
+        var td = $(this).parent();
+        td.siblings('.subtotal').html(getSubtotal(td.siblings('.price').html(), $(this).val()));
+        return false;
+    });
+
+    var getSubtotal = function(price, qty){
+        return parseFloat(price) * parseFloat(qty);
     };
 
-    function extractLast(term) {
-        return split(term).pop();
-    }
 
-    //$('#filter_product').autocomplete({
-    //
-    //    source: function (request, response) {
-    //        $.getJSON('http://admin.billingsystem/product/json', {
-    //            term: extractLast(request.term)
-    //        }, response);
-    //    }
-    //});
-    var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme"];
-    $("#filter_product").autocomplete({source: availableTags});
-    var getProducts = function(){
-
-    }
-
-    //$('#filter_product').select2({
-    //    placeholder: "Select a product...",
-    //    //multiple: true,
-    //    closeOnSelect: false,
-    //    maximumSelectionSize: 1,
-    //    ajax:{
-    //        url: 'http://admin.billingsystem/product/json',
-    //        dataType: 'json',
-    //        quietMillis: 300,
-    //        data: function(term, page){
-    //            return {
-    //                q: term
-    //            };
-    //        },
-    //        results: function(data, page){
-    //            return {
-    //                results: data
-    //            };
-    //        }
-    //    },
-    //    formatResult: formatResults,
-    //    //createSearchChoice: filtering,
-    //});
-
-
-})
+});
