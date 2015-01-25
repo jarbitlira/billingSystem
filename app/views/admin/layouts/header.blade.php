@@ -34,6 +34,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>
 	<!-- moment.js (date library) -->
 	<script src="/public/template/assets/lib/moment-js/moment.min.js"></script>
+	<link rel="stylesheet" href="public/vendor/jquery-ui/themes/smoothness/jquery-ui.css">
 </head>
 <body>
 	<!-- top bar -->

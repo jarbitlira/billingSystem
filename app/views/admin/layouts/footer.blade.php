@@ -7,6 +7,7 @@
  */ ?>
  <!-- jQuery -->
 <script src="public/vendor/jquery/dist/jquery.min.js"></script>
+<script src="public/vendor/jquery-ui/jquery-ui.min.js"></script>
 <!-- bootstrap js plugins -->
 <script src="public/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- easing -->
