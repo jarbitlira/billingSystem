@@ -9,8 +9,8 @@
             <table class="table table-striped invoice_table" id="billing_table">
                 <thead>
                 <tr>
-                    <th>Product</th>
                     <th>Sku</th>
+                    <th>Product</th>
                     <th>Price</th>
                     <th>Qty</th>
                     <th>Tax</th>
@@ -24,7 +24,7 @@
                 <tr>
                     <td colspan="4"></td>
                     <td class="col_total text-right">Subtotal</td>
-                    <td class="col_total"><strong>C${{ '-' }}</strong></td>
+                    <td class="col_total" id="finalSubtotal"><strong>C$</strong></td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
