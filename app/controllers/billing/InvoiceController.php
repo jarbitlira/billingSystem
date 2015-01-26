@@ -23,9 +23,9 @@ class InvoiceController extends \BaseController
     }
 
     public function getIndex(){
-        $products = $this->product->lists();
-        $clients = $this->client->lists();
-        $this->layout->content = \View::make('billing.invoice', compact('products', 'clients'));
+        $user = \User::find(\Auth::user()->id);
+        $seller = $user->first_name." ". $user->last_name;
+        $this->layout->content = \View::make('billing.invoice', compact('seller'));
     }
 
 }
