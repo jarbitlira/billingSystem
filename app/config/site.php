@@ -1,6 +1,6 @@
 <?php
 
-return array(
-    'site_name' => 'BillingSystem',
-    'site_header' => 'Billing 4T3Co v0.1',
+ return array (
+  'site_name' => 'Billing System Origi',
+  'site_header' => 'Billing 0.1',
 );

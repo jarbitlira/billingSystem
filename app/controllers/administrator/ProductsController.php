@@ -70,6 +70,7 @@ class ProductsController extends \BaseController
                 ->with('errors', $this->product->errors());
         }
     }
+
     public function destroy($id)
     {
         if ($this->product->delete($id)) {
@@ -79,12 +80,19 @@ class ProductsController extends \BaseController
         }
     }
 
-    public function json(){
-        $products = $this->product->lists()->toArray();
-        if(count($products))
-//            return \Response::json(['status'=>1, 'data'=>$products]);
+    public function json()
+    {
+        if (\Input::has('term')) {
+            $match = \Input::get('term');
+            $products = $this->product->whereLike(['name', 'sku'], $match);
+        } else {
+            $products = $this->product->lists();
+        }
+        if (count($products))
+        {
             return \Response::json($products);
-        else
-            return \Response::json(['status'=>0, 'items'=>'No data']);
+        } else {
+            return \Response::json(['status' => 0, 'items' => 'No data']);
+        }
     }
 }
