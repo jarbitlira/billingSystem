@@ -70,4 +70,20 @@ class ClientController extends \BaseController
             return \Redirect::back()->withInput()->with('errors', $this->client->errors());
         }
     }
+
+    public function json()
+    {
+        if (\Input::has('term')) {
+            $match = \Input::get('term');
+            $clients = $this->client->whereLike(['name'], $match);
+        } else {
+            $clients = $this->client->lists();
+        }
+        if (count($clients))
+        {
+            return \Response::json($clients);
+        } else {
+            return \Response::json(['status' => 0, 'items' => 'No data']);
+        }
+    }
 }
