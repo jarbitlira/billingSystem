@@ -39,7 +39,7 @@ $(document).on('ready', function () {
         })
     };
 
-    var onSelectProduct = function(event, ui, element){
+    var onSelectProduct = function(event, ui){
         var _this = ui.item.data;
         if ($('body #qty_' + _this.id).length == 0) {
             var quantity = '<input type="number" value="1" min="1" max="20" class="qtyInput" id="qty_' + _this.id + '"/>'
@@ -55,45 +55,50 @@ $(document).on('ready', function () {
             getFinalSubtotal();
         }
         //else: or add one more of the same prod in quantity or remove it from ajax list in filter
-        $(element).val('');
         return false;
     };
 
     var onSelectClient = function(event, ui){
         var _this = ui.item.data;
         console.log(_this);
-        $(this).val('');
         return false;
     };
 
-    $('.billingFilter').autocomplete({
-        //minLength: 3,
-        source: function (request, response) {
-            console.log($(this));
-            //if($(this).attr("id") == "filter_product"){
-            ajaxProduct(request, response);
-            //}
-            //if($(this).attr("id") == "filter_client"){
-            //    ajaxClient(request, response);
-            //}
-        },
-        select: function (event, ui) {
-            //if($(this).attr('id') == 'filter_product')
-                onSelectProduct(event, ui, $(this));
-            //if($(this).attr('id') == 'filter_client')
-            //    onSelectClient(event, ui);
-        },
-        focus: function (event, ui) {
-            $(this).val(ui.item.label);
-            return false;
-        }
-    }).bind('keydown', function (e) {
-        if (e.keyCode === $.ui.keyCode.TAB && $(this).autocomplete('instance').menu.active) {
-            e.preventDefault();
-        }
+
+    $('.billingFilter').each(function(i, val){
+        var el = $(val);
+        el.autocomplete({
+            //minLength: 3,
+            source: function (request, response) {
+                console.log(el.attr('id'));
+                if(el.attr("id") == "filter_product"){
+                    ajaxProduct(request, response);
+                }
+                if(el.attr("id") == "filter_client"){
+                    ajaxClient(request, response);
+                }
+            },
+            select: function (event, ui) {
+                if(el.attr('id') == 'filter_product')
+                    onSelectProduct(event, ui);
+                if(el.attr('id') == 'filter_client')
+                    onSelectClient(event, ui, el);
+                //$(this).val('');
+                ui.item.value = '';
+            },
+            focus: function (event, ui) {
+                $(this).val(ui.item.label);
+                return false;
+            }
+        }).bind('keydown', function (e) {
+            if (e.keyCode === $.ui.keyCode.TAB && $(this).autocomplete('instance').menu.active) {
+                e.preventDefault();
+            }
+        });
     });
 
-    //missing events
+
+    //missing arrow events
     $('body').on('change, input, keyup', '.qtyInput', function () {
         var td = $(this).parent();
         td.siblings('.subtotal').html(getSubtotal(td.siblings('.price').html(), $(this).val()));
@@ -114,6 +119,5 @@ $(document).on('ready', function () {
         $('body #finalGrandtotal>strong').html(suma);
         return false;
     };
-
 
 });
