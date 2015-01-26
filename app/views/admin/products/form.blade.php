@@ -15,7 +15,7 @@
         <div class="form-group">
             <div class="col-lg-4">
                 <label for="product_up" class="req">Unit Price (C$)</label>
-                {{ Form::text('unit_price', NULL, ['class'=>'form-control', 'id'=>'product_up', 'data-parsley-required'=>"true", 'required'=>'required']) }}
+                {{ Form::text('unit_price', NULL, ['class'=>'form-control', 'id'=>'unit_price', 'data-parsley-required'=>"true", 'required'=>'required']) }}
             </div>
         </div>
             <!-- <input type="text" name="unit_price" id="product_up" class="form-control" data-parsley-required="true"> -->

@@ -70,11 +70,13 @@
                     {{ $product->weight }}
                 </td>
                 <td class="sub_col">
-                    {{ $product->category->name }}
+                    @if($product->category)
+                        {{ $product->category->name }}
+                    @endif
                 </td>
                 <td class="sub_col">
-                    @if (isset($product->provider->name))
-                    {{ $product->provider->name }}
+                    @if($product->provider->name)
+                        {{ $product->provider->name }}
                     @endif
                 </td>
                 <td class="sub_col">

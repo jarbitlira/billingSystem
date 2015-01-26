@@ -13,12 +13,12 @@
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<link rel="shortcut icon" href="/public/favicon.ico"/>
 	<!-- bootstrap framework -->
-	<link href="public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="/public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<!-- select2 -->
-	<link href="public/vendor/select2/select2.css" rel="stylesheet">
+	<link href="/public/vendor/select2/select2.css" rel="stylesheet">
 	<!-- custom icons -->
 		<!-- font awesome icons -->
-		<link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+	<link href="/public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
 		<!-- ionicons -->
 		<link href="/public/template/assets/icons/ionicons/css/ionicons.min.css" rel="stylesheet" media="screen">
 		<!-- select2 -->
@@ -29,14 +29,14 @@
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="/public/template/assets/lib/owl-carousel/owl.carousel.css">
 	<!-- main stylesheet -->
-	<link href="public/template/assets/css/style.css" rel="stylesheet" media="screen">
+	<link href="/public/template/assets/css/style.css" rel="stylesheet" media="screen">
 
 	<link href="/public/css/admin.css" rel="stylesheet" media="screen">
 	<!-- google webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>
 	<!-- moment.js (date library) -->
 	<script src="/public/template/assets/lib/moment-js/moment.min.js"></script>
-	<link rel="stylesheet" href="public/vendor/jquery-ui/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/public/vendor/jquery-ui/themes/smoothness/jquery-ui.css">
 </head>
 <body>
 	<!-- top bar -->
