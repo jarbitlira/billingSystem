@@ -55,12 +55,13 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::resource('provider', 'Administrator\ProviderController');
     Route::resource('product', 'Administrator\ProductsController', ['except'=>'show']);
     Route::resource('product/category', 'Administrator\ProductsCategoriesController');
-    Route::resource('client', 'Administrator\ClientController');
+    Route::resource('client', 'Administrator\ClientController', ['except'=>'show']);
     Route::resource('invoice', 'Administrator\InvoiceController', ['only'=>['index', 'show']]);
     Route::resource('user', 'Administrator\UserController');
     Route::controller('config', 'Administrator\ConfigController');
     //temporal billing route
     Route::controller('billing', 'Billing\InvoiceController');
     Route::get('product/json', 'Administrator\ProductsController@json');
+    Route::get('client/json', 'Administrator\ClientController@json');
     Route::controller('print', 'PrintController');
 });
