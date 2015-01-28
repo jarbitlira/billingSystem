@@ -76,7 +76,7 @@
         <td class="sub_col">provider</td>
         <td class="sub_col"><span class="label label-success">disable</span></td>
     </tr>
-    <!--  <tr>
+    <tr>
        @foreach($products as $product)
        <tr>
            <td class="sub_col">
@@ -110,7 +110,7 @@ C${{ $product->unit_price }}
 @endif
            </td>
        </tr>
-@endforeach-->
+@endforeach
 </table>
 
 </body>
