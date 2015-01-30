@@ -17,6 +17,8 @@
             <th class="sub_col">Name</th>
             <th class="sub_col">Products</th>
             <th class="sub_col">Created</th>
+            <th class="sub_col">Created by</th>
+            <th class="sub_col">Updated by</th>
             <th class="sub_col"> Actions</th>
         </tr>
         </thead>
@@ -31,6 +33,12 @@
                 </td>
                 <td class="sub_col">
                     {{ $category->created_at }}
+                </td>
+                <td class="sub_col">
+                    {{ $category->createdBy->username }}
+                </td>
+                <td class="sub_col">
+                    {{ $category->updatedBy->username }}
                 </td>
                 <td class="sub_col">
                     <div class="btn-group">
