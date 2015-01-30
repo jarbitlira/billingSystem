@@ -14,22 +14,26 @@
     <title>BillingSystem</title>
 
     <style type="text/css">
-        *{
+        * {
             margin: 0 0 0 0;
         }
-        h2{
+
+        h2 {
             margin-top: 30px !important;
             text-align: center;
         }
-        table{
+
+        table {
             margin-left: 65px !important;
             margin-top: 15px !important;
         }
-        tr{
+
+        tr {
             border-bottom: 1px;
             border-bottom-color: #000000;
         }
-        thead{
+
+        thead {
             background-color: lightgray;
         }
     </style>
@@ -77,40 +81,42 @@
         <td class="sub_col"><span class="label label-success">disable</span></td>
     </tr>
     <tr>
-       @foreach($products as $product)
-       <tr>
-           <td class="sub_col">
-               {{ $product->sku }}
-           </td>
-           <td>
-               <h5><p> {{ $product->name }} </p></h5>
-           </td>
-           <td class="sub_col"><strong>
-C${{ $product->unit_price }}
-           </strong></td>
-           <td class="sub_col">
-               {{ $product->length }}
-           </td>
-           <td class="sub_col">
-               {{ $product->weight }}
-           </td>
-           <td class="sub_col">
-               {{ $product->category->name }}
-           </td>
-           <td class="sub_col">
-@if (isset($product->provider->name))
-{{ $product->provider->name }}
-               @endif
-           </td>
-           <td class="sub_col">
-@if($product->available == 1)
-               <span class="label label-success"><i class="fa fa-thumbs-up"></i></span>
-@else
-               <span class="label label-danger"><i class="fa fa-thumbs-down"></i></span>
-@endif
-           </td>
-       </tr>
-@endforeach
+        @foreach($products as $product)
+    <tr>
+        <td class="sub_col">
+            {{ $product->sku }}
+        </td>
+        <td>
+            <h5> {{ $product->name }} </h5>
+        </td>
+        <td class="sub_col"><strong>
+                C${{ $product->unit_price }}
+            </strong></td>
+        <td class="sub_col">
+            {{ $product->length }}
+        </td>
+        <td class="sub_col">
+            {{ $product->weight }}
+        </td>
+        <td class="sub_col">
+            @if( $product->category )
+                {{ $product->category->name }}
+            @endif
+        </td>
+        <td class="sub_col">
+            @if ($product->provider)
+                {{ $product->provider->name }}
+            @endif
+        </td>
+        <td class="sub_col">
+            @if($product->available == 1)
+                <span class="label label-success"><i class="fa fa-thumbs-up"></i></span>
+            @else
+                <span class="label label-danger"><i class="fa fa-thumbs-down"></i></span>
+            @endif
+        </td>
+    </tr>
+    @endforeach
 </table>
 
 </body>

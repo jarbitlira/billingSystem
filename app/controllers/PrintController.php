@@ -23,7 +23,7 @@ class PrintController extends \BaseController
 
     public function getProducts()
     {
-        $products = $this->product->getAll()->paginate(10);
+        $products = $this->product->getAll()->get();
         $categories = $this->categories->lists();
         $pdf = PDF::loadView('reports.product_report', compact('products', 'categories'));
         // $pdf = PDF::loadView("reports.product_report", compact('products', 'categories'));
