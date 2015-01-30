@@ -17,19 +17,23 @@
         *{
             margin: 0 0 0 0;
         }
-        h2{
+
+        h2 {
             margin-top: 30px !important;
             text-align: center;
         }
-        table{
+
+        table {
             margin-left: 65px !important;
             margin-top: 15px !important;
         }
-        tr{
+
+        tr {
             border-bottom: 1px;
             border-bottom-color: #000000;
         }
-        thead{
+
+        thead {
             background-color: lightgray;
         }
     </style>
