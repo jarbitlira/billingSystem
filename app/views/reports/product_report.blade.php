@@ -52,32 +52,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td class="sub_col">1j27a111</td>
-        <td>
-            <p>Occaecati veritatis libero.</p>
-        </td>
-        <td class="sub_col"><strong>C$87.72</strong></td>
-        <td class="sub_col">27m</td>
-        <td class="sub_col">27kg</td>
-        <td class="sub_col">Category</td>
-        <td class="sub_col">provider</td>
-        <td class="sub_col"><span class="label label-success">enabled</span></td>
-    </tr>
-    <tr>
-        <td class="sub_col">2k38b222</td>
-        <td>
-            <p>ad verbum strong</p>
-        </td>
-        <td class="sub_col"><strong>C$50.00</strong></td>
-        <td class="sub_col">0.3m</td>
-        <td class="sub_col">0.5kg</td>
-        <td class="sub_col">Category</td>
-        <td class="sub_col">provider</td>
-        <td class="sub_col"><span class="label label-success">disable</span></td>
-    </tr>
-    <tr>
-       @foreach($products as $product)
+           @foreach($products as $product)
        <tr>
            <td class="sub_col">
                {{ $product->sku }}
@@ -104,9 +79,9 @@ C${{ $product->unit_price }}
            </td>
            <td class="sub_col">
 @if($product->available == 1)
-               <span class="label label-success"><i class="fa fa-thumbs-up"></i></span>
+               <p>Si</p>
 @else
-               <span class="label label-danger"><i class="fa fa-thumbs-down"></i></span>
+               <p>No</p>
 @endif
            </td>
        </tr>
