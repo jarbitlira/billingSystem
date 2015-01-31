@@ -16,6 +16,11 @@ class Invoice extends \ModelBase
         return $this->belongsTo('Administrator\Client', 'client_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('User', 'user_id');
+    }
+
     public function products()
     {
         return $this->belongsToMany('Administrator\Product', 'invoices_products')->withPivot('quantity');
