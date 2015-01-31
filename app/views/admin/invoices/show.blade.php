@@ -46,10 +46,10 @@
             <table class="table table-striped invoice_table">
                 <thead>
                 <tr>
-                    <th>Product</th>
                     <th>Sku</th>
+                    <th>Product</th>
                     <th>Price</th>
-                    <th>Qty</th>
+                    <th>Quantity</th>
                     <th>Tax</th>
                     <th>Subtotal</th>
                 </tr>
@@ -57,12 +57,12 @@
                 <tbody>
                 @foreach($invoice->products as $product)
                 <tr>
-                    <td>{{ $product->name }}</td>
                     <td>{{ $product->sku }}</td>
+                    <td>{{ $product->name }}</td>
                     <td>{{ $product->unit_price }}</td>
+                    <td> {{ $quantity = float($invoice->subtotal) / float($product->unit_price) }} </td>
                     <td> - </td>
-                    <td> - </td>
-                    <td> - </td>
+                    <td> {{ (float)$quantity * float($product->unit_price) }} </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -70,22 +70,22 @@
                 <tr>
                     <td colspan="4"></td>
                     <td class="col_total text-right">Subtotal</td>
-                    <td class="col_total"><strong>C${{ $invoice->subtotal }}</strong></td>
+                    <td class="col_total">C$<strong>{{ $invoice->subtotal }}</strong></td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
                     <td class="col_total text-right">Tax</td>
-                    <td class="col_total"><strong> - </strong></td>
+                    <td class="col_total">C$<strong> 0.00 </strong></td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
                     <td class="col_total text-right">Discount</td>
-                    <td class="col_total"><strong>C${{ $invoice->disccount }} </strong></td>
+                    <td class="col_total">C$<strong>{{ $invoice->disccount }} </strong></td>
                 </tr>
                 <tr class="grand_total">
                     <td colspan="4"></td>
                     <td class="col_total text-right">Grand Total</td>
-                    <td class="col_total"><strong>C${{ $invoice->total }}</strong></td>
+                    <td class="col_total">C$<strong>{{ $invoice->total }}</strong></td>
                 </tr>
                 </tfoot>
             </table>
