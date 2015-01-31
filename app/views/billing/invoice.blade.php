@@ -56,11 +56,11 @@
                 <tfoot>
                     <tr>
                         {{--<td colspan="4"></td>--}}
-                        <td colspan="3" rowspan="4">
+                        <td colspan="5" rowspan="4">
                             <label for="invoice_notes" class="text-left">Notes:</label>
                             <textarea id="invoice_notes" class="form-control" cols="5" rows="4"></textarea>
                         </td>
-                        <td colspan="2" rowspan="4"></td>
+                        {{--<td colspan="2" rowspan="4"></td>--}}
                         <td class="col_total text-right">Subtotal</td>
                         <td class="col_total" id="finalSubtotal">C$ <strong>0.00</strong></td>
                     </tr>
