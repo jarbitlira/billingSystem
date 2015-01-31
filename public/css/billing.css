@@ -1,15 +1,5 @@
-.alert-warning .filter-container{
-    background-color: #363F44 !important;
-    /*border: 1px solid #363F44;*/
-    /*border-radius: 3px;*/
-    /*padding: 12px;*/
-    /*margin-bottom: 10px;*/
-    /*box-shadow: #c0c0c0;*/
-    /*width: 80%;*/
-
-}
-
-.client_data{
-    /*font-weight: inherit;*/
-    /*font-style: italic;*/
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
