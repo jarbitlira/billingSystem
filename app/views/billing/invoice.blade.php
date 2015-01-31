@@ -31,7 +31,7 @@
             <table class="table table-striped table-bordered invoice_table text-center" id="billing_table">
                 <thead>
                     <tr id="client_data">
-                        <th colspan="4">
+                        <th colspan="5">
                             <span id="client_name">Client: <strong> - </strong></span><br>
                             <span id="client_address">Address: <strong> - </strong></span>
                         </th>
@@ -62,22 +62,22 @@
                         </td>
                         <td colspan="2" rowspan="4"></td>
                         <td class="col_total text-right">Subtotal</td>
-                        <td class="col_total" id="finalSubtotal">C$<strong>0.00</strong></td>
+                        <td class="col_total" id="finalSubtotal">C$ <strong>0.00</strong></td>
                     </tr>
                     <tr>
                         {{--<td colspan="1"></td>--}}
                         <td class="col_total text-right">Tax</td>
-                        <td class="col_total">C$<strong> 0.00 </strong></td>
+                        <td class="col_total">C$ <strong> 0.00 </strong></td>
                     </tr>
                     <tr>
                         {{--<td colspan="1"></td>--}}
                         <td class="col_total text-right">Discount</td>
-                        <td class="col_total">C$<strong>{{ '0.00' }} </strong></td>
+                        <td class="col_total">C$ <strong>{{ '0.00' }} </strong></td>
                     </tr>
                     <tr class="grand_total">
                         {{--<td colspan="1"></td>--}}
                         <td class="col_total text-right"> Total</td>
-                        <td class="col_total" id="finalGrandtotal">C$<strong>0.00</strong></td>
+                        <td class="col_total" id="finalGrandtotal">C$ <strong>0.00</strong></td>
                     </tr>
                 </tfoot>
             </table>

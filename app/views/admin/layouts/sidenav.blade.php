@@ -11,6 +11,9 @@
   				<li>
   					<a href="{{ URL::to('/') }}"><span class="ion-speedometer"></span> <span class="nav_title">DASHBOARD</span></a>
   				</li>
+				<li>
+  					<a href="{{ URL::to('billing') }}"><span class="ion-calculator"></span> <span class="nav_title">BILLING</span></a>
+  				</li>
   				<li>
                     <a href="#">
                         <span class="ion-bag"></span>
@@ -20,15 +23,15 @@
 						<div class="side_inner">
 							<h4 class="panel_heading panel_heading_first">Products</h4>
 							<ul>
-								<li><a href="{{ URL::to('product') }}"><span class="side_icon ion-ios7-folder-outline"></span> List</a></li>
+								<li><a href="{{ URL::to('product') }}"><span class="side_icon ion-ios7-folder-outline"></span> Product List</a></li>
 								<li><a href="{{ URL::to('product/category') }}"><span class="side_icon ion-ios7-star-outline"></span> Categories</a></li>
 							</ul>
-							<h4 class="panel_heading">Top Products</h4>
-							<ul>
-								<li><a href="#"><span class="badge badge-success">$2 344.00</span> Product A</a></li>
-								<li><a href="#"><span class="badge badge-default">$1 217.53</span> Product B</a></li>
-								<li><a href="#"><span class="badge badge-default">$684.62</span> Product C</a></li>
-							</ul>
+							{{--<h4 class="panel_heading">Top Products</h4>--}}
+							{{--<ul>--}}
+								{{--<li><a href="#"><span class="badge badge-success">$2 344.00</span> Product A</a></li>--}}
+								{{--<li><a href="#"><span class="badge badge-default">$1 217.53</span> Product B</a></li>--}}
+								{{--<li><a href="#"><span class="badge badge-default">$684.62</span> Product C</a></li>--}}
+							{{--</ul>--}}
 							<h4 class="panel_heading">Reports</h4>
 							<ul>
 								<li><a href="#">Sales Report</a></li>
@@ -37,28 +40,28 @@
 					</div>
                 </li>
 				<li>
-					<a href="#">
+					<a href="{{ URL::to('provider') }}">
 						<span class="ion-home"></span>
 						<span class="nav_title">PROVIDERS</span>
 					</a>
-					<div class="sub_panel">
-						<div class="side_inner">
-							<h4 class="panel_heading panel_heading_first">Contacts</h4>
-							<ul>
-								<li><a href="{{ URL::to('provider') }}"><span class="side_icon ion-ios7-folder-outline"></span> List</a></li>
-							</ul>
-							<h4 class="panel_heading">Top Providers</h4>
-							<ul>
-								<li><a href="#"><span class="badge badge-success">*</span> Provider A</a></li>
-								<li><a href="#"><span class="badge badge-default">*</span> Provider B</a></li>
-								<li><a href="#"><span class="badge badge-default">*</span> Provider C</a></li>
-							</ul>
-							<h4 class="panel_heading">Reports</h4>
-							<ul>
-								<li><a href="#">Provider Report</a></li>
-							</ul>
-						</div>
-					</div>
+					{{--<div class="sub_panel">--}}
+						{{--<div class="side_inner">--}}
+							{{--<h4 class="panel_heading panel_heading_first">Contacts</h4>--}}
+							{{--<ul>--}}
+								{{--<li><a href="{{ URL::to('provider') }}"><span class="side_icon ion-ios7-folder-outline"></span> List</a></li>--}}
+							{{--</ul>--}}
+							{{--<h4 class="panel_heading">Top Providers</h4>--}}
+							{{--<ul>--}}
+								{{--<li><a href="#"><span class="badge badge-success">*</span> Provider A</a></li>--}}
+								{{--<li><a href="#"><span class="badge badge-default">*</span> Provider B</a></li>--}}
+								{{--<li><a href="#"><span class="badge badge-default">*</span> Provider C</a></li>--}}
+							{{--</ul>--}}
+							{{--<h4 class="panel_heading">Reports</h4>--}}
+							{{--<ul>--}}
+								{{--<li><a href="#">Provider Report</a></li>--}}
+							{{--</ul>--}}
+						{{--</div>--}}
+					{{--</div>--}}
 				</li>
 				<li>
 					<a href="{{ URL::to('client') }}">
