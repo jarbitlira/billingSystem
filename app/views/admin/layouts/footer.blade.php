@@ -6,13 +6,14 @@
  * Time: 10:29 PM
  */ ?>
  <!-- jQuery -->
-<script src="public/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/public/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/public/vendor/jquery-ui/jquery-ui.min.js"></script>
 <!-- bootstrap js plugins -->
-<script src="public/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/public/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- easing -->
 <script src="/public/template/assets/js/jquery.easing.1.3.min.js"></script>
 <!-- select2 -->
-<script src="public/vendor/select2/select2.min.js"></script>
+<script src="/public/vendor/select2/select2.min.js"></script>
 <!-- top dropdown navigation -->
 <script src="/public/template/assets/js/tinynav.min.js"></script>
 <!-- perfect scrollbar -->
@@ -23,7 +24,7 @@
 <script src="/public/template/assets/js/tisa_style_switcher.js"></script>
 <!-- select2 -->
 <script src="/public/template/assets/lib/select2-stable/select2.min.js"></script>
-<script src="/public/billing.js"></script>
+<script src="/public/js/billing.js"></script>
 <!-- page specific plugins -->
     <!-- nvd3 charts -->
     <script src="/public/template/assets/lib/d3/d3.min.js"></script>
@@ -43,7 +44,7 @@
     <script src="/public/template/assets/lib/owl-carousel/owl.carousel.min.js"></script>
 
 <!-- dashboard functions -->
-<script src="public/template/assets/js/apps/tisa_dashboard.js"></script>
+<script src="/public/template/assets/js/apps/tisa_dashboard.js"></script>
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-49181536-1']);

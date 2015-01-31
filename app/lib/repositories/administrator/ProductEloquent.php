@@ -15,4 +15,5 @@ class ProductEloquent extends \Repositories\BaseRepository implements ProductRep
     {
         $this->model = new Product();
     }
+
 }

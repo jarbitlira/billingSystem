@@ -59,8 +59,9 @@ class InvoiceController extends \BaseController
     public function show($id)
     {
         $invoice = $this->invoice->findById($id);
+        $seller = $invoice->user;
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.invoices.show', compact('invoice'));
+        $this->layout->content = \View::make('admin.invoices.show', compact('invoice', 'seller'));
     }
 
     /**

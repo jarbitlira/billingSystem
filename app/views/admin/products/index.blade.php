@@ -26,25 +26,6 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="col_sm sub_col">
-                <input type="checkbox" class="check_row" name="prod_check_1" id="prod_check_1">
-            </td>
-            <td class="col_sm visible-lg"><img src="assets/img/examples/image_60x60.gif" class="img-thumbnail" alt=""></td>
-            <td class="sub_col">1j27a111</td>
-            <td>
-                <a href="newsletter_report.html">Occaecati veritatis libero.</a><br/>
-                <span class="text-muted">Added 12 Feb 2014 12:45</span>
-            </td>
-            <td class="sub_col"><strong>C$87.72</strong></td>
-            <td class="sub_col">27m</td>
-            <td class="sub_col">27kg</td>
-            <td class="sub_col">Category</td>
-            <td class="sub_col">provider</td>
-            <td class="sub_col"><span class="label label-success">enabled</span></td>
-            <td class="sub_col"><a href="#" class="btn btn-default btn-sm"><span class="fa fa-pencil-square-o fa-lg"></span> Details</a></td>
-        </tr>
-        <tr>
             @foreach($products as $product)
             <tr>
                 <td class="col_sm sub_col">
@@ -70,11 +51,13 @@
                     {{ $product->weight }}
                 </td>
                 <td class="sub_col">
-                    {{ $product->category->name }}
+                    @if($product->category)
+                        {{ $product->category->name }}
+                    @endif
                 </td>
                 <td class="sub_col">
-                    @if (isset($product->provider->name))
-                    {{ $product->provider->name }}
+                    @if($product->provider)
+                        {{ $product->provider->name }}
                     @endif
                 </td>
                 <td class="sub_col">

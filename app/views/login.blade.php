@@ -15,11 +15,10 @@
  	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
  	<!-- bootstrap framework -->
- 	<link href="/public/template/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 <link href="public/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
  	<!-- google webfonts -->
  	{{--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>--}}
-
- 	<link href="/public/template/assets/css/login.css" rel="stylesheet">
+ 	<link href="public/template/assets/css/login.css" rel="stylesheet">
 
  </head>
  <body>
@@ -79,9 +78,9 @@
  	</div>
 
  	<!-- jQuery -->
- 	<script src="/public/template/assets/js/jquery.min.js"></script>
+ 	<script src="public/vendor/jquery/dist/jquery.min.js"></script>
  	<!-- bootstrap js plugins -->
- 	<script src="/public/template/assets/bootstrap/js/bootstrap.min.js"></script>
+ 	<script src="public/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
  	<script>
  		$(function() {
  			// switch forms
