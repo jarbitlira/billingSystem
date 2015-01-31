@@ -50,7 +50,6 @@ $(document).on('ready', function () {
         $('#client_name > strong').html(_this.name);
         $('#client_address > strong').html(_this.address);
         $('#client_data').data('client', _this.id);
-        console.log(_this);
         return false;
     };
 
@@ -117,16 +116,16 @@ $(document).on('ready', function () {
         if(confirm('Are your sure to generate invoice?')){
             var data = {};
             var completed = true;
-            data.product_id = [];
+            data.products = [];
             data.user_id = $('body #current_user').data('user');
             data.client_id = $('body #client_data').data('client');
             $('body .product_data').each(function(i, val){
-                data.product_id.push($(this).data('product'));
+                var id =  $(this).data('product');
+                data.products.push({product_id: id, quantity: $('body #qty_'+ id).val() });
             });
             data.subtotal = getFinalSubtotal();
             data.total = getFinalSubtotal();
             data.notes = $('#invoice_notes').val();
-            console.log(data);
             $.each(data, function(i,val){
                if (!val){
                    alert('Missing '+ i);
@@ -140,7 +139,6 @@ $(document).on('ready', function () {
                     data: data,
                     success: function(data){
                         $('.loading').toggleClass('hide');
-                        console.log(data);
                     }
                 });
                 $('.loading').toggleClass('hide');

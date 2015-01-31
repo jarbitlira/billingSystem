@@ -18,7 +18,7 @@ class InvoiceEloquent extends \Repositories\BaseRepository implements InvoiceRep
 
     public function create($fields)
     {
-        $products = array_pull($fields, 'product_id');
+        $products = array_pull($fields, 'products');
         $this->model = parent::create($fields);
         if ($this->model->id) {
             $this->model->products()->sync(array_filter($products));
