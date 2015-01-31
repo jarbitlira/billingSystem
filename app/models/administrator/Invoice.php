@@ -18,7 +18,7 @@ class Invoice extends \ModelBase
 
     public function products()
     {
-        return $this->belongsToMany('Administrator\Product', 'invoices_products');
+        return $this->belongsToMany('Administrator\Product', 'invoices_products')->withPivot('quantity');
     }
 
 }
