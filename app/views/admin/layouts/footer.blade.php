@@ -24,7 +24,7 @@
 <script src="/public/template/assets/js/tisa_style_switcher.js"></script>
 <!-- select2 -->
 <script src="/public/template/assets/lib/select2-stable/select2.min.js"></script>
-<script src="/public/billing.js"></script>
+<script src="/public/js/billing.js"></script>
 <!-- page specific plugins -->
     <!-- nvd3 charts -->
     <script src="/public/template/assets/lib/d3/d3.min.js"></script>

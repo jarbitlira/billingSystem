@@ -32,6 +32,7 @@
 	<link href="/public/template/assets/css/style.css" rel="stylesheet" media="screen">
 
 	<link href="/public/css/admin.css" rel="stylesheet" media="screen">
+	<link href="/public/css/billing.css" rel="stylesheet">
 	<!-- google webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400&amp;subset=latin-ext,latin' rel='stylesheet' type='text/css'>
 	<!-- moment.js (date library) -->
