@@ -64,6 +64,6 @@
     })();
 </script>
 
-<script src="/public/charts.js"></script>
+<script src="/public/js/charts.js"></script>
  </body>
 </html>
