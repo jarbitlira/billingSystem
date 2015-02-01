@@ -12,7 +12,6 @@ use Repositories\Administrator\InvoiceRepository;
 use Repositories\Administrator\ProductRepository;
 use Repositories\Administrator\ProviderRepository;
 
-
 class DashboardController extends \BaseController
 {
 
@@ -37,10 +36,24 @@ class DashboardController extends \BaseController
 
     public function index()
     {
+//        $this->chartsLastMonthSales();
         $clients = $this->client->lists();
         $products = $this->product->lists();
         $invoices = $this->invoice->lists();
         $this->layout->content = \View::make('admin.dashboard.index', compact('clients', 'products', 'invoices'));
     }
 
+    public function chartsLastMonthSales()
+    {
+        $lastMonth = \Carbon::now()->subDays(30);
+        $data = [];
+        while (!$lastMonth->isTomorrow()) {
+            $label = $lastMonth->format('M d');
+            $day = $this->invoice->groupByDate($lastMonth->day, $lastMonth->month, $lastMonth->year);
+            $sales = $day->sum('total');
+            $data[] = [$label, $sales];
+            $lastMonth->addDay();
+        }
+        return \Response::json($data);
+    }
 }

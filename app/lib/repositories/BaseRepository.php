@@ -11,8 +11,8 @@ class BaseRepository
 
     protected $model = NULL;
 
-    public function lists(){
-
+    public function lists()
+    {
         return $this->model->all();
     }
 
@@ -84,5 +84,10 @@ class BaseRepository
                 }
             }
         )->get();
+    }
+
+    public function groupBy($field)
+    {
+        return $this->model->groupBy($field)->get();
     }
 }
