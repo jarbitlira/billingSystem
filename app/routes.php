@@ -64,4 +64,6 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::get('product/json', 'Administrator\ProductsController@json');
     Route::get('client/json', 'Administrator\ClientController@json');
     Route::controller('print', 'PrintController');
+    // Dashboard
+    Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
 });

@@ -1,3 +1,20 @@
+/* Charts*/
+.chart {
+    min-height: 300px;
+    height: 50%;
+    width: 100%;
+    margin: auto;
+    text-align: center
+}
+
+#monthSales {
+    min-height: 300px;
+    height: 50%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
 .navbar-header .navbar-brand {
     padding: 10px;
     color: #ffffff;

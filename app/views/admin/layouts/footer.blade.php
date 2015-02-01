@@ -45,7 +45,14 @@
 
 <!-- dashboard functions -->
 <script src="/public/template/assets/js/apps/tisa_dashboard.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
 <script type="text/javascript">
+    google.load('visualization', '1.1', {packages: ['line']});
+
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-49181536-1']);
     _gaq.push(['_trackPageview']);
@@ -56,5 +63,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
+
+<script src="/public/charts.js"></script>
  </body>
 </html>

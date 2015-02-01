@@ -87,12 +87,23 @@
 </div>
 </div>
 -->
-<div class="row">
+{{--<div class="row">--}}
+{{--<div class="col-md-12">--}}
+    {{--<div class="panel panel-default">--}}
+        {{--<div class="panel-body">--}}
+            {{--<div id="nvd3_cumulativeLine" style="width:100%;height:300px">--}}
+                {{--<svg></svg>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
+</div>
+ <div class="row">
 <div class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <div id="nvd3_cumulativeLine" style="width:100%;height:300px">
-                <svg></svg>
+            <div class="chart">
+                <div id="monthSales"></div>
             </div>
         </div>
     </div>
