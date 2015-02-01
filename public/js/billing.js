@@ -86,7 +86,7 @@ $(document).on('ready', function () {
 
 
     //missing arrow events
-    $('body').on('change, input, keyup', '.qtyInput', function () {
+    $('body').on('change, input, keyup mouseup', '.qtyInput', function () {
         var td = $(this).parent();
         td.siblings('.subtotal').html(getSubtotal(td.siblings('.price').html(), $(this).val()));
         getFinalSubtotal();
