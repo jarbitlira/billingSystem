@@ -139,6 +139,7 @@ $(document).on('ready', function () {
                     data: data,
                     success: function(data){
                         $('.loading').toggleClass('hide');
+                        window.location.href = data.url;
                     }
                 });
                 $('.loading').toggleClass('hide');

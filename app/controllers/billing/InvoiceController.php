@@ -35,6 +35,7 @@ class InvoiceController extends \BaseController
     {
         $input = \Input::all();
         $match = $this->invoice->create($input);
-        \Redirect::to('invoice/' . $match->id);
+
+        return \Response::json(['url' => \URL::to('invoice/' . $match->id), 'invoice' => $match->id]);
     }
 }
