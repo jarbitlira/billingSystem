@@ -29,7 +29,7 @@ class PrintController extends \BaseController
         $products = $this->product->getAll()->get();
         $categories = $this->categories->lists();
         $pdf = PDF::loadView('reports.product_report', compact('products', 'categories'));
-        return $pdf->stream("reporteproductos.pdf");
+        return $pdf->stream("reporteproductos_".date("d-m-Y") . ".pdf");
     }
 
     public function getInvoice($id, $created_at)
@@ -37,7 +37,9 @@ class PrintController extends \BaseController
         $invoice = $this->invoice->findById($id);
         $seller = $invoice->user;
              $pdf = PDF::loadView('reports.invoice_report', compact('invoice', 'seller'));
-           $name= "factura_" . $id ."_" . date ($created_at) . ".pdf";
+            $date = $created_at;
+            $date =
+             $name= "factura_" . $id ."_" . $created_at . ".pdf";
         return $pdf->stream($name);
 
     }
