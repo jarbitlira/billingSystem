@@ -23,7 +23,7 @@ class EloquentValidation extends Ardent
     public function hasErrors()
     {
         $errors = $this->errors();
-        return !empty($errors);
+        return count($errors);
     }
 
     /**
