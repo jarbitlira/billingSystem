@@ -15,9 +15,9 @@ class AddQuantityAndMeasureIdToProductsTable extends Migration
     {
 
         Schema::table('products', function (Blueprint $table) {
-            $table->integer("quantity")->after("provider_id")->unsigned();
-            $table->float("measure_size")->after("provider_id")->unsigned();
-            $table->integer("measure_id")->after("provider_id");
+            $table->integer("quantity")->after("brand")->unsigned();
+            $table->integer("measure_id")->after("brand");
+            $table->float("measure_size")->after("brand")->unsigned();
         });
     }
 
@@ -30,8 +30,9 @@ class AddQuantityAndMeasureIdToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn("measure_id");
             $table->dropColumn("quantity");
+            $table->dropColumn("measure_id");
+            $table->dropColumn("measure_size");
         });
     }
 

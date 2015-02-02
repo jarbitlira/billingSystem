@@ -23,7 +23,7 @@
             <th class="sub_col">SKU</th>
             <th class="sub_col">Name</th>
             <th class="sub_col">Unit Price</th>
-            <th class="sub_col">Quantity</th>
+            <th class="sub_col">Measure</th>
             <th class="sub_col">Category</th>
             <th class="sub_col">Provider</th>
             <th class="sub_col">Available</th>
@@ -44,13 +44,13 @@
                 </td>
                 <td>
                     <h5><a href="newsletter_report.html"> {{ $product->name }} </a></h5>
-                    <span class="text-muted">Added {{ $product->created_at }}</span>
+                    <span class="text-muted">Added {{ $product->created_at->format('d-m-Y') }}</span>
                 </td>
                 <td class="sub_col"><strong>
                     C${{ $product->unit_price }}
                 </strong></td>
                 <td class="sub_col">
-                    {{ $product->quantity }} @if($product->measure){{ $product->measure->abbreviation }}@endif
+                    {{ $product->measure_size }} @if($product->measure){{ $product->measure->abbreviation }}@endif
                 </td>
                 <td class="sub_col">
                     @if($product->category)

@@ -58,8 +58,9 @@ class ProductsController extends \BaseController
         $product = $this->product->findById($id);
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
+        $measures = \Measure::all();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'));
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers', 'measures'));
     }
 
     public function update($id)
