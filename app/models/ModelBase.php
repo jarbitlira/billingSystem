@@ -15,6 +15,7 @@ class ModelBase extends EloquentValidation
     public static $rules = [];
     protected $softDelete = true;
     protected $guarded = [];
+    protected $fillable = [];
     protected $defaults = [];
 
     public function beforeCreate()
@@ -26,6 +27,16 @@ class ModelBase extends EloquentValidation
     public function beforeUpdate()
     {
         $this->updated_by = Auth::id();
+    }
+
+    public function afterSave()
+    {
+        Event::fire('register.query');
+    }
+
+    public function afterDelete()
+    {
+        Event::fire('register.query');
     }
 
     public function getId()

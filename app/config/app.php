@@ -126,6 +126,7 @@ return array(
         /****************************************/
         'Repositories\RepositoriesServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
+		'hisorange\BrowserDetect\Provider\BrowserDetectService',
 
 	),
 
@@ -198,6 +199,8 @@ return array(
 		'Ardent' => '\LaravelBook\Ardent\Ardent',
 		'Carbon' => 'Carbon\Carbon',
 		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+		'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
+
 
 	),
 

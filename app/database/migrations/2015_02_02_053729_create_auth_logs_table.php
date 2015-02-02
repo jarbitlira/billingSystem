@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateMeasuresTable extends Migration
+class CreateAuthLogsTable extends Migration
 {
 
     /**
@@ -13,15 +13,16 @@ class CreateMeasuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('measures', function (Blueprint $table) {
+        Schema::create('auth_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("description");
-            $table->string("abbreviation");
-            $table->integer("created_by")->nullable();
-            $table->integer("updated_by")->nullable();
+            $table->string("browser");
+            $table->string("device");
+            $table->string("mobile_info");
+            $table->string("ip");
+            $table->string("system");
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
-
     }
 
 
@@ -32,7 +33,7 @@ class CreateMeasuresTable extends Migration
      */
     public function down()
     {
-        Schema::drop('measures');
+        Schema::drop('auth_logs');
     }
 
 }

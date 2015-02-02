@@ -1,7 +1,9 @@
 @section('page-top')
 <div class="col-xs-8">
     <h1 class="page_title">Manage Products</h1>
-    <p class="text-muted">{{ count($products) }} <a href="#">products</a> in {{ count($categories) }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
+
+    <p class="text-muted">{{ count($productsTotal) }} <a href="{{ URL::to('product') }}">products</a>
+        in {{ count($categories) }} <a href="{{ URL::to( 'product/category') }}">categories</a></p>
 </div>
 
 
@@ -72,7 +74,7 @@
                 <td class="sub_col">
                     <div class="btn-group">
                         {{ Form::open(['method' => 'DELETE','route' => ['product.destroy', $product->id ]]) }}
-                        <a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>
+                        {{--<a href="#" class="btn btn-xs"><i class="fa fa-eye"></i></a>--}}
                         <a href="{{ ('product/'.$product->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
                         <button class="btn btn-xs" type="submit"><i class="fa fa-close"></i></button>
                         {{ Form::close() }}

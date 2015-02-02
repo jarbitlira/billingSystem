@@ -98,8 +98,12 @@ function site_config($index)
     return isset($siteConfig[$index]) ? $siteConfig[$index] : '';
 }
 
-Event::listen('illuminate.query', function ($query, $bindings, $time, $name) {
-    $data = compact('bindings', 'time', 'name');
+Event::listen('register.query', function () {
+    $logs = DB::getQueryLog();
+    $log = end($logs);
+
+    $query = $log["query"];
+    $bindings = $log["bindings"];
 
     // Format binding data for sql insertion
     foreach ($bindings as $i => $binding) {
@@ -114,5 +118,19 @@ Event::listen('illuminate.query', function ($query, $bindings, $time, $name) {
     $query = str_replace(array('%', '?'), array('%%', '%s'), $query);
     $query = vsprintf($query, $bindings);
 
-    Log::info($query, $data);
+    QueryLog::create(array(
+        'query' => $query,
+        'user_id' => Auth::user()->id
+    ));
+});
+
+Event::listen('auth.login', function ($user) {
+    AuthLog::create(array(
+        'browser' => BrowserDetect::browserFamily(),
+        'system' => BrowserDetect::osName(),
+        'mobile_info' => BrowserDetect::deviceModel(),
+        'device' => BrowserDetect::deviceFamily(),
+        'ip' => Request::ip(),
+        'user_id' => $user->id
+    ));
 });

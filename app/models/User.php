@@ -16,8 +16,8 @@ class User extends \ModelBase implements UserInterface, RemindableInterface {
 	 */
 
 	public static $rules = [
-		'username' => 'required|unique:users',
-		'email' => 'required|unique:users|email',
+		'username' => 'required|unique:users,id',
+		'email' => 'required|unique:users,id|email',
 		'password' => 'min:5|required|confirmed',
 		'password_confirmation' => 'min:5|required|same:password'
 	];

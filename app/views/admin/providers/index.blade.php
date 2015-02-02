@@ -1,7 +1,8 @@
 @section('page-top')
     <div class="col-xs-10">
         <h1 class="page-title">Provider List</h1>
-        <p class="muted">Providers registered: <b>{{ count($providers) }}</b></p>
+
+        <p class="muted">Providers registered: <b>{{ count($totalProviders) }}</b></p>
     </div>
     <div class="col-xs-2 text-right">
         <a href="{{ URL::to('provider/create') }}" class="btn btn-success">Add Provider</a>
