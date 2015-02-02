@@ -84,7 +84,7 @@ class BaseRepository
                     $query->where($fields, 'LIKE', "%" . $match . "%");
                 }
             }
-        )->get();
+        );
     }
 
     public function groupBy($field)

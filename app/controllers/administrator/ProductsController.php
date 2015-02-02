@@ -89,7 +89,7 @@ class ProductsController extends \BaseController
     {
         if (\Input::has('term')) {
             $match = \Input::get('term');
-            $products = $this->product->whereLike(['name', 'sku'], $match);
+            $products = $this->product->whereLike(['name', 'sku'], $match)->where('available', 1)->get();
         } else {
             $products = $this->product->lists();
         }
