@@ -93,3 +93,4 @@ C${{ $product->unit_price }}
 </table>
 
 </body>
+</html>

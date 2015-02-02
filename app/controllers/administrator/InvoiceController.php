@@ -23,7 +23,7 @@ class InvoiceController extends \BaseController
      */
     public function index()
     {
-        $invoices = $this->invoice->getAll()->paginate(10);
+       $invoices = $this->invoice->getAll()->paginate(10);
         $this->layout->content = \View::make('admin.invoices.index', compact('invoices'));
     }
 
