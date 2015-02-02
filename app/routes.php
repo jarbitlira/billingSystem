@@ -17,17 +17,11 @@ Route::group(array('domain' => $domain), function () {
 });
 
 Route::group(array('domain' => 'admin.' . $domain), function () {
+    Route::controller('login', 'LoginController');
+
     Route::group(array('before' => 'auth'), function () {
         Route::get('/', 'Administrator\DashboardController@index');
-
-        Route::any('/login', function () {
-            return Redirect::to('/');
-        });
-
-        Route::get('/logout', function () {
-            Auth::logout();
-            return Redirect::to("/login");
-        });
+        Route::get('/logout', 'LoginController@logout');
 
         Route::get('profile', 'UsersController@profile');
         Route::put('profile', 'UsersController@profile');
@@ -44,25 +38,6 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         Route::get('product/json', 'Administrator\ProductsController@json');
         Route::get('client/json', 'Administrator\ClientController@json');
         Route::controller('print', 'PrintController');
-    });
-
-    Route::get("/login", function () {
-        if (!Auth::check()) {
-            return View::make("login")->with('error', 'Email or password is not correct');
-        } else {
-            return Redirect::to("/");
-        }
-    });
-
-    Route::post("/login", function () {
-        $user = [];
-        $user["email"] = Input::get("email");
-        $user["password"] = Input::get("password");
-        if (Auth::attempt($user)) {
-            return Redirect::to("/");
-        } else {
-            return Redirect::back()->withInput();
-        }
     });
 
 });
