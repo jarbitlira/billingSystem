@@ -63,12 +63,14 @@
 
     table {
         margin-top: 15px !important;
-        margin-left: 10px;
+
+
     }
 
      td{
-       padding: 0 20 0 20;
+       padding: 0 16 0 18;
        border: 2px red;
+
    }
 
     thead{
@@ -119,6 +121,7 @@
                 <tr>
                     <th>Sku</th>
                     <th>Product</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Tax</th>
@@ -130,6 +133,7 @@
                 <tr>
                     <td>{{ $product->sku }}</td>
                     <td>{{ $product->name }}</td>
+                    <td>{{ $product->description }}</td>
                     <td>{{ $product->unit_price }}</td>
                     <td> {{ $product->pivot->quantity }} </td>
                     <td> - </td>
@@ -139,7 +143,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="3" rowspan="4">
+                    <td colspan="4" rowspan="4">
                         <label for="invoice_notes" class="text-left">Notes:</label>
                         <textarea id="invoice_notes" class="form-control" cols="5" rows="4" readonly>{{ $invoice->notes }}</textarea>
                     </td>
