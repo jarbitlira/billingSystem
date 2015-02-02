@@ -15,34 +15,27 @@
         <div class="form-group">
             <div class="col-lg-4">
                 <label for="product_up" class="req">Unit Price (C$)</label>
-                {{ Form::text('unit_price', NULL, ['class'=>'form-control', 'id'=>'unit_price', 'data-parsley-required'=>"true", 'required'=>'required']) }}
+                {{ Form::text('unit_price', NULL, ['class'=>'form-control', 'id'=>'unit_price',
+                 'data-parsley-required'=>"true", 'required'=>'required',]) }}
+            </div>
+            <div class="col-xs-4 col-xs-offset-2">
+                <label for="product_up" class="req">Quantity</label>
+                {{ Form::text('quantity', NULL, ['class'=>'required form-control', 'id'=>'product_quantity',
+                 'data-parsley-required'=>"true", 'required'=>'required', 'pattern'=>'\d+']) }}
             </div>
         </div>
-            <!-- <input type="text" name="unit_price" id="product_up" class="form-control" data-parsley-required="true"> -->
-
-            <!--<div class="col col-lg-4">
-            <label for="product_name" class="req">Sale Price</label>
-            <input type="text" id="product_name" class="form-control" data-parsley-required="true">
-            </div> -->
-            <!--<div class="col col-lg-4">
-            <label for="product_name" class="req">Sale Price</label>
-            <input type="text" id="product_name" class="form-control" data-parsley-required="true">
-            </div> -->
     </div>
     <div class="row">
         <div class="form-group">
             <div class="col-xs-6">
-                <label for="product_length" class="req">Length  (Mts)</label>
-                {{ Form::text('length', NULL, ['class'=>'form-control', 'id'=>'product_length']) }}
+                <label for="product_measure_size" class="req">Size</label>
+                {{ Form::text('measure_size', NULL, ['class'=>'form-control', 'id'=>'product_measure_size']) }}
             </div>
             <div class="col-xs-6">
-                <label for="product_weight" class="req">Weight  (Lbs)</label>
-                {{ Form::text('weight', NULL, ['class'=>'form-control', 'id'=>'product_weight']) }}
+                <label for="product_measure_id" class="req">Measure Type</label>
+                {{ Form::select('measure_id', [''=>'Choose a measure...'] + array_match($measures, 'id', 'description'),
+                NULL, ['class'=>'required form-control', 'id'=>'product_measure_id']) }}
             </div>
-            <!-- <div class="col col-lg-4">
-            <label for="product_name" class="req">Sale Price</label>
-            <input type="text" id="product_name" class="form-control" data-parsley-required="true">
-            </div> -->
         </div>
     </div>
     <div class="row">
@@ -50,16 +43,17 @@
             <div class="col-md-5">
                 <label for="product_category" class="req">Category</label>
                 {{ Form::select('category_id',
-                                ['-1'=>'Choose a category...'] + array_match($categories, 'id', 'name'),
+                                [''=>'Choose a category...'] + array_match($categories, 'id', 'name'),
                                 NULL, ['class' => 'input required form-control', 'id' => 'product_category', 'required'=>'required']) }}
             </div>
             <div class="col-md-5">
                 <label for="product_provider" class="req">Provider</label>
-                {{ Form::select('provider_id', ['-1'=>'Choose its provider..'] + array_match($providers, 'id', 'name'),
+                {{ Form::select('provider_id', [''=>'Choose its provider..'] + array_match($providers, 'id', 'name'),
                                 NULL, ['class'=>'required form-control', 'id'=>'product_provider',
                                         'required'=>'required', 'data-parsley-trigger'=>'change']) }}
             </div>
             <br/>
+
             <div class="col-xs-2">
                 <label for="product_available" class="checkbox checkbox-inline">
                     {{ Form::checkbox('available', 1, '', ['id'=>'product_available']) }}

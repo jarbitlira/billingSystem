@@ -34,8 +34,9 @@ class ProductsController extends \BaseController
     {
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
+        $measures = \Measure::all();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'));
+        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers', 'measures'));
     }
 
     public function store()
@@ -46,6 +47,9 @@ class ProductsController extends \BaseController
         $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product')->with('notice', 'Product was created successfully');
+        } else {
+            return \Redirect::back()->withInput()
+                ->withErrors($this->product->errors());
         }
     }
 

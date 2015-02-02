@@ -23,8 +23,7 @@
             <th class="sub_col">SKU</th>
             <th class="sub_col">Name</th>
             <th class="sub_col">Unit Price</th>
-            <th class="sub_col">Length</th>
-            <th class="sub_col">Weight</th>
+            <th class="sub_col">Quantity</th>
             <th class="sub_col">Category</th>
             <th class="sub_col">Provider</th>
             <th class="sub_col">Available</th>
@@ -51,10 +50,7 @@
                     C${{ $product->unit_price }}
                 </strong></td>
                 <td class="sub_col">
-                    {{ $product->length }}
-                </td>
-                <td class="sub_col">
-                    {{ $product->weight }}
+                    {{ $product->quantity }} @if($product->measure){{ $product->measure->abbreviation }}@endif
                 </td>
                 <td class="sub_col">
                     @if($product->category)

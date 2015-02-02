@@ -9,11 +9,24 @@ namespace Administrator;
 
 class Product extends \ModelBase
 {
+    public static $rules = array(
+        'unit_price' => 'required|numeric',
+        'measure_size' => 'required|numeric',
+        'measure_id' => 'required|numeric',
+        'quantity' => 'required|numeric',
+        'category_id' => 'required',
+        'provider_id' => 'required'
+    );
     protected $table = 'products';
 
     public function category()
     {
         return $this->belongsTo('Administrator\ProductCategory', 'category_id');
+    }
+
+    public function measure()
+    {
+        return $this->belongsTo('Measure', 'measure_id');
     }
 
     public function provider()
