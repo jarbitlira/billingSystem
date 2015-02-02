@@ -4,6 +4,13 @@ namespace Administrator;
 
 use Repositories\Administrator\UserRepository;
 
+
+/**
+ * Class UserController
+ * @package Administrator
+ * @property UserRepository $user
+ */
+
 class UserController extends \BaseController
 {
 
@@ -51,15 +58,11 @@ class UserController extends \BaseController
     {
         $input = array_except(\Input::all(), ['_method', '_token']);
 
-        $v = \Validator::make($input, $this->user->rules);
-
-//		$this->user->create($input);
-//		if ($this->user->succeeded()) {
-        if ($v->passes()) {
-            $this->user->create($input);
+        $this->user->create($input);
+        if ($this->user->succeeded()) {
             return \Redirect::to('user');
         } else {
-            return \Redirect::back()->withInput()->withErrors($v->errors());
+            return \Redirect::back()->withInput()->withErrors($this->user->errors());
         }
     }
 
@@ -98,7 +101,14 @@ class UserController extends \BaseController
      */
     public function update($id)
     {
-        //
+        $data = array_except(\Input::all(), array());
+        $this->user->update($id, $data);
+        if ($this->user->succeeded()) {
+            return \Redirect::to("user")->with("notice", "User Updated");
+        } else {
+            return \Redirect::back()->withInput()
+                ->withErrors($this->user->errors());
+        }
     }
 
     /**

@@ -46,7 +46,8 @@ class BaseRepository
 
     public function create($attributes)
     {
-        return $this->model->create($attributes);
+        $this->model = $this->model->create($attributes);
+        return $this->model;
     }
 
     public function update($id, $attributes)

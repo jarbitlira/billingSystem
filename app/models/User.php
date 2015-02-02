@@ -8,8 +8,6 @@ use Zizaco\Entrust\HasRole;
 
 class User extends \ModelBase implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
-	use HasRole;
 
 	/**
 	 * The rules for  the model.
@@ -17,12 +15,17 @@ class User extends \ModelBase implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 
-	protected static $rules = [
+	public static $rules = [
 		'username' => 'required|unique:users',
 		'email' => 'required|unique:users|email',
 		'password' => 'min:5|required|confirmed',
 		'password_confirmation' => 'min:5|required|same:password'
 	];
+	public $forceEntityHydrationFromInput = true;
+
+	use UserTrait, RemindableTrait;
+	use HasRole;
+	public $autoHydrateEntityFromInput = true;
 	/**
 	 * The database table used by the model.
 	 *
@@ -35,11 +38,6 @@ class User extends \ModelBase implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
-
-	public function rules()
-	{
-		return static::$rules;
-	}
 
 	public function afterValidate()
 	{

@@ -12,11 +12,8 @@ use User;
 class UserEloquent extends \Repositories\BaseRepository implements UserRepository
 {
 
-    public $rules;
-
     public function __construct()
     {
         $this->model = new User();
-        $this->rules = $this->model->rules();
     }
 }

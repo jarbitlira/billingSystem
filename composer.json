@@ -10,7 +10,8 @@
     "require": {
         "laravel/framework": "4.2.*",
         "barryvdh/laravel-dompdf": "0.4.*",
-        "zizaco/entrust": "~1.3"
+        "zizaco/entrust": "~1.3",
+        "laravelbook/ardent": "~2.4"
     },
     "require-dev": {
         "way/generators": "~2.0",
