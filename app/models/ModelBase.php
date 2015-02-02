@@ -29,6 +29,16 @@ class ModelBase extends EloquentValidation
         $this->updated_by = Auth::id();
     }
 
+    public function afterSave()
+    {
+        Event::fire('register.query');
+    }
+
+    public function afterDelete()
+    {
+        Event::fire('register.query');
+    }
+
     public function getId()
     {
         return $this->primaryKey;
