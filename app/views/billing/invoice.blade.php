@@ -10,11 +10,11 @@
         <h5>Filters</h5>
         <div class="row">
             <div class="col-xs-3">
-                <label for="filter_product">PRODUCTS</label>
+                <label for="filter_product">PRODUCTO</label>
                 <input type="text" id="filter_product" class="form-control billingFilter" placeholder="Type a product..">
             </div>
             <div class="col-xs-3">
-                <label for="filter-client">CLIENTS</label>
+                <label for="filter-client">CLIENTE</label>
                 <input type="text" id="filter_client"class="form-control billingFilter" placeholder="Type a client name.."/>
             </div>
             <div class="col-xs-3 col-md-push-3">

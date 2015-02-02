@@ -9,16 +9,19 @@
 use Repositories\Administrator\ProductRepository;
 use Repositories\Administrator\ProductCategoryRepository;
 use Repositories\Administrator\ProviderRepository;
+use Repositories\Administrator\InvoiceRepository;
 class PrintController extends \BaseController
 {
 
-   protected $product, $categories, $providers;
+   protected $product, $categories, $providers, $invoice;
 
-    public function __construct(ProductRepository $product, ProductCategoryRepository $categories, ProviderRepository $providers)
+    public function __construct(ProductRepository $product, ProductCategoryRepository $categories, ProviderRepository $providers, InvoiceRepository $invoice)
     {
         $this->product = $product;
         $this->categories = $categories;
         $this->providers = $providers;
+        $this->invoice = $invoice;
+
     }
 
     public function getProducts()
@@ -26,9 +29,18 @@ class PrintController extends \BaseController
         $products = $this->product->getAll()->get();
         $categories = $this->categories->lists();
         $pdf = PDF::loadView('reports.product_report', compact('products', 'categories'));
-        // $pdf = PDF::loadView("reports.product_report", compact('products', 'categories'));
-        // $pdf = PDF::loadHTML(View::make("reports.product_report", compact('products', 'categories')));
-        //$pdf = PDF::loadHTML($codigo);
-        return $pdf->stream("factura.pdf");
+        return $pdf->stream("reporteproductos.pdf");
     }
+
+    public function getInvoice($id, $created_at)
+    {
+        $invoice = $this->invoice->findById($id);
+        $seller = $invoice->user;
+             $pdf = PDF::loadView('reports.invoice_report', compact('invoice', 'seller'));
+           $name= "factura_" . $id ."_" . date ($created_at) . ".pdf";
+        return $pdf->stream($name);
+
+    }
+
+
 }
