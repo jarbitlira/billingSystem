@@ -22,9 +22,21 @@
 
  </head>
  <body>
+ <form action="{{ URL::route('language-chooser')}}" method="post">
+	 <select name="language">
+		 <option value="en">English</option>
+		 <option value="es">Español</option>
+	 </select>
+	 <input type="submit" value="Choose">
+	 {{ Form::token() }}
+
+ </form>
  <div class="login_container">
 		<form id="login_form" action="{{URL::to("/login")}}" method="post">
  			<h1 class="login_heading">Login <span>/ <a href="#" class="open_register_form">register</a></span></h1>
+
+			{{trans('welcome.welcome')}}
+
 			@include('admin.layouts.messages')
 			<div class="form-group">
 				<label for="login_username">email</label>

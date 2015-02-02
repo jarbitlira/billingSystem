@@ -64,3 +64,4 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
     Route::get('product/json', 'Administrator\ProductsController@json');
     Route::get('client/json', 'Administrator\ClientController@json');
 });
+Route::post('/language',array('before' => 'csrf', 'as' => 'language-chooser', 'uses' => 'LanguageController@chooser')); //Nuevo controlador
