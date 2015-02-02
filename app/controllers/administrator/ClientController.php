@@ -75,7 +75,7 @@ class ClientController extends \BaseController
     {
         if (\Input::has('term')) {
             $match = \Input::get('term');
-            $clients = $this->client->whereLike(['name'], $match);
+            $clients = $this->client->whereLike(['name'], $match)->get();
         } else {
             $clients = $this->client->lists();
         }
