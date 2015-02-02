@@ -29,6 +29,8 @@ class MeasuresTableSeeder extends Seeder
             'BOTELLA' => "btl"
         );
 
+        Measure::truncate();
+
         foreach ($measures as $measure => $value) {
             Measure::create(array("description" => $measure, "abbreviation" => $value));
         }

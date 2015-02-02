@@ -22,8 +22,6 @@ class CreateMeasuresTable extends Migration
             $table->timestamps();
         });
 
-        Artisan::call("db:seed", array("--class" => "MeasuresTableSeeder"));
-
     }
 
 
