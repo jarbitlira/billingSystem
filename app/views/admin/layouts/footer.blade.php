@@ -24,7 +24,7 @@
 <script src="/public/template/assets/js/tisa_style_switcher.js"></script>
 <!-- select2 -->
 <script src="/public/template/assets/lib/select2-stable/select2.min.js"></script>
-<script src="/public/billing.js"></script>
+<script src="/public/js/billing.js"></script>
 <!-- page specific plugins -->
     <!-- nvd3 charts -->
     <script src="/public/template/assets/lib/d3/d3.min.js"></script>
@@ -45,7 +45,14 @@
 
 <!-- dashboard functions -->
 <script src="/public/template/assets/js/apps/tisa_dashboard.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
 <script type="text/javascript">
+    google.load('visualization', '1.1', {packages: ['line']});
+
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-49181536-1']);
     _gaq.push(['_trackPageview']);
@@ -56,5 +63,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
+
+<script src="/public/js/charts.js"></script>
  </body>
 </html>

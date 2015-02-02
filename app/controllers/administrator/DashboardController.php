@@ -7,18 +7,53 @@
  * Time: 10:11 PM
  */
 namespace Administrator;
+use Repositories\Administrator\ClientRepository;
+use Repositories\Administrator\InvoiceRepository;
+use Repositories\Administrator\ProductRepository;
+use Repositories\Administrator\ProviderRepository;
+
 class DashboardController extends \BaseController
 {
 
 //    protected $layout = 'layouts.dashboard';
     protected $layout = 'admin.layouts.main';
+    protected $product;
+    protected $client;
+    protected $invoice;
+    protected $provider;
 
-    public function __construct()
-    {
+    public function __construct(
+        ProductRepository $product,
+        ClientRepository $client,
+        InvoiceRepository $invoice,
+        ProviderRepository $provider
+    ) {
+        $this->product = $product;
+        $this->client = $client;
+        $this->invoice = $invoice;
+        $this->provider = $provider;
     }
 
     public function index()
     {
-        $this->layout->content = \View::make('admin.dashboard.index');
+//        $this->chartsLastMonthSales();
+        $clients = $this->client->lists();
+        $products = $this->product->lists();
+        $invoices = $this->invoice->lists();
+        $this->layout->content = \View::make('admin.dashboard.index', compact('clients', 'products', 'invoices'));
+    }
+
+    public function chartsLastMonthSales()
+    {
+        $lastMonth = \Carbon::now()->subDays(30);
+        $data = [];
+        while (!$lastMonth->isTomorrow()) {
+            $label = $lastMonth->format('M d');
+            $day = $this->invoice->groupByDate($lastMonth->day, $lastMonth->month, $lastMonth->year);
+            $sales = $day->sum('total');
+            $data[] = [$label, $sales];
+            $lastMonth->addDay();
+        }
+        return \Response::json($data);
     }
 }
