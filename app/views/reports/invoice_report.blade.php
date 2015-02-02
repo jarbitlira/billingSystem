@@ -1,51 +1,120 @@
-@section('page-top')
-    <div class="col-md-8">
-        <h1 class="page_title">Invoice #{{ $invoice->id }}</h1>
-        {{--<p class="text-muted">date: 24.05.2014; due by: 17.06.2014</p>--}}
-        <p class="text-muted">Due By: {{ $seller->first_name.' '.$seller->last_name }}</p>
-        <p class="text-muted">Date: {{ $invoice->created_at }}</p>
-    </div>
-    <div class="col-md-4 text-right">
-        <div class="btn-group btn-group-sm">
-            <button class="btn btn-default">CSV</button>
-            <button class="btn btn-default">XML</button>
-            <a href="{{ URL::to('print/invoice/'.$invoice->id, $invoice->created_at) }}" class="btn btn-default">PDF</a>
-            <button class="btn btn-default"><i class="fa fa-print fa-lg"></i> Print</button>
-        </div>
-    </div>
-@endsection
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Yass
+ * Date: 02-01-15
+ * Time: 11:32 AM
+ */
+?>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
 
-<div class="panel-body">
+    <style type="text/css">
+    .topdata{
+        border: solid 1px;
+        margin: 0px;
+           }
+    #titulo{
+        text-align: center;
+    }
+
+    #num_fact{
+        display: inline;
+        margin-left: 130px;
+        float: right;
+    }
+    #vendor{
+        display: inline;
+        float: left;
+            }
+    #date{
+        margin-left: 120px;
+        display: inline;
+        float: left;
+    }
+
+    .col-sm-6{
+        margin-top: 10px;
+        background-color:#D8D8D8;
+        padding: 10 0 10 0;
+    }
+
+    .client{
+        display: inline;
+            }
+    .telf{
+        float: right;
+        display: inline;
+        margin-left: 400px;
+    }
+
+    .email{
+        float: right;
+        display: inline;
+          }
+    .dir{
+        display: inline;
+        float: left;
+
+    }
+
+    table {
+        margin-top: 15px !important;
+        margin-left: 10px;
+    }
+
+     td{
+       padding: 0 20 0 20;
+       border: 2px red;
+   }
+
+    thead{
+        background-color: green;
+        color: white;
+    }
+    tbody{
+        background-color: #999988;
+        color: white;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="topdata">
+
+        <h1 id="titulo"> Nombre del Comercio, S.A   </h1>
+        {{--<p class="text-muted">date: 24.05.2014; due by: 17.06.2014</p>--}}
+        <p id="vendor">Vendedor: {{ $seller->first_name.' '.$seller->last_name }}</p>
+        <p id="date">Fecha: {{ $invoice->created_at }}</p>
+        <h3 id="num_fact">Factura # {{ $invoice->id }}</h3>
+    </div>
+
+
+    <div class="panel-body">
     <div class="row">
-        <!--<div class="col-sm-6">
-            <h3 class="heading_a">From</h3>
-            <address>
-                <p class="addres_name">Ebro Admin HQ</p>
-                <p>Av Almozara, 79</p>
-                <p>50003 Zaragoza</p>
-                <p class="sepH_b">Spain</p>
-                <p><small><span class="text-muted">Phone:</span> (+321) 123 456 789</small></p>
-                <p><small><span class="text-muted">E-mail:</span> <a href="mailto:example.com">tisa@example.com</a></small></p>
-            </address>
-        </div> -->
+
         <div class="col-sm-6">
-            <h3 class="heading_a">Client:</h3>
-            <p>{{ $invoice->client->name }}</p>
-            <p><small><span class="text-muted">Phone:</span> {{ $invoice->client->phone1 }}</small></p>
-            <p><small><span class="text-muted">E-mail:</span> <a href="#">{{ $invoice->client->email }}</a></small></p>
-            <p><small><span class="text-muted">Address:</span>
-            <address>
-                <p class="addres_name">{{ $invoice->client->address }}</p>
-                <!-- <p>Alayna Fall 968</p>
-                <p>92101 South Wilton</p>
-                <p>Schaeferberg</p>-->
+            <h3 class="client">Cliente:</h3>
+            <p class="client">{{ $invoice->client->name }}</p>
+            <h3 class="telf">Telefono:</h3>
+            <p class="telf"><small> {{ $invoice->client->phone1 }}</small></p>
+            <h3 class="email">Email:</h3>
+            <pclass="email"><small><a href="#">{{ $invoice->client->email }}</a></small></p>
+            <br>
+            <h3 class="dir">Dirección:</h3>
+            <address class="dir">
+                <p class="dir">{{ $invoice->client->address }}</p>
             </address>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped table-bordered text-center invoice_table">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>Sku</th>
@@ -57,7 +126,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($invoice->products as $product)
+@foreach($invoice->products as $product)
                 <tr>
                     <td>{{ $product->sku }}</td>
                     <td>{{ $product->name }}</td>
@@ -66,7 +135,7 @@
                     <td> - </td>
                     <td> {{ (float)$product->unit_price * (float)$product->pivot->quantity }} </td>
                 </tr>
-                @endforeach
+@endforeach
                 </tbody>
                 <tfoot>
                 <tr>
@@ -98,3 +167,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>
