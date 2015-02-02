@@ -8,7 +8,7 @@
 
 class LanguageController extends BaseController {
     public function chooser(){
-        echo Input::get('locale');
+        echo Input::get('locale'); //cambio
     }
 
 }
