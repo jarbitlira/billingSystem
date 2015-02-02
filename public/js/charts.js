@@ -2,7 +2,7 @@
  * Created by CarlosRenato on 01/02/2015.
  */
 $(function(){
-    var sales, topProducts;
+    var sales, topProducts, browsers = [];
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -41,13 +41,35 @@ $(function(){
                 }
             });
         }
-        console.log(topProducts);
         var pie = google.visualization.arrayToDataTable(topProducts);
         var pieOptions = {
             title: 'Top Product Categories'
         };
         var pieChart = new google.visualization.PieChart(document.getElementById('piechart'));
         pieChart.draw(pie, pieOptions);
+
+        // Browsers
+        if (browsers == ''){
+            $.ajax({
+                url: 'json/browserAccess',
+                type: 'GET',
+                async: false,
+                success: function(response){
+                    browsers = response;
+                }
+            })
+        }
+        console.log(browsers);
+        var browserCont = google.visualization.arrayToDataTable(browsers);
+
+        var optionsBrowsers = {
+            title: 'Browser access',
+            pieHole: 0.4
+        };
+
+        var pieBrowser = new google.visualization.PieChart(document.getElementById('donutBrowser'));
+        pieBrowser.draw(browserCont, optionsBrowsers);
+
     }
 
     $(window).resize(function(){

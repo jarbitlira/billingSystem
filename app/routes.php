@@ -41,6 +41,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         // Dashboard
         Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
         Route::get('json/topCategories', 'Administrator\DashboardController@topProductCategories');
+        Route::get('json/browserAccess', 'Administrator\DashboardController@browsers');
     });
     
 });
