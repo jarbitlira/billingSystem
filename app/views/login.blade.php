@@ -23,9 +23,10 @@
  </head>
  <body>
  <form action="{{ URL::route('language-chooser')}}" method="post">
-	 <select name="language">
-		 <option value="en">English</option>
+	 <select name="locale">
 		 <option value="es">Español</option>
+		 <option value="en" {{ Lang::locale() === 'en' ? 'selected ' : '' }}>English</option>
+
 	 </select>
 	 <input type="submit" value="Choose">
 	 {{ Form::token() }}
@@ -35,7 +36,7 @@
 		<form id="login_form" action="{{URL::to("/login")}}" method="post">
  			<h1 class="login_heading">Login <span>/ <a href="#" class="open_register_form">register</a></span></h1>
 
-			{{trans('welcome.welcome')}}
+			<h1>{{trans('welcome.welcome')}}</h1>
 
 			@include('admin.layouts.messages')
 			<div class="form-group">

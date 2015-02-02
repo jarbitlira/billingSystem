@@ -8,7 +8,8 @@
 
 class LanguageController extends BaseController {
     public function chooser(){
-        echo Input::get('locale'); //cambio
+        Session::set('locale', Input::get('locale'));
+        return Redirect::back();
     }
 
 }

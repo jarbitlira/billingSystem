@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'welcome' => 'Loguear',
+    'welcome' => 'Entrar',
     'password' => 'Contraseña',
     'user' => 'Usuario'
 );
