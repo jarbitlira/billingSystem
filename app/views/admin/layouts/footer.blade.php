@@ -50,7 +50,7 @@
 
 
 <script type="text/javascript">
-    google.load('visualization', '1.1', {packages: ['line']});
+    google.load('visualization', '1.1', {packages: ['line', 'corechart']});
 
 
     var _gaq = _gaq || [];

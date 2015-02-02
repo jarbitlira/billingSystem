@@ -40,6 +40,7 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         Route::controller('print', 'PrintController');
         // Dashboard
         Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
+        Route::get('json/topCategories', 'Administrator\DashboardController@topProductCategories');
     });
-
+    
 });

@@ -99,7 +99,7 @@
 {{--</div>--}}
 </div>
  <div class="row">
-<div class="col-md-12">
+<div class="col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="chart">
@@ -113,52 +113,38 @@
 <div class="col-md-6">
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="heading_b">Social Networks</div>
+            <div class="heading_b">Product Categories</div>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-xs-5">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Social Network</th>
-                                <th class="col_md sub_col">Visits</th>
-                                <th class="col_md sub_col">Pageviews</th>
+                                <th>Category</th>
+                                <th class="col_md sub_col">Products</th>
                             </tr>
                         </thead>
                         <tbody>
+                           @foreach($categories as $category)
                             <tr>
-                                <td><a href="#">Twitter</a></td>
-                                <td class="sub_col">423</td>
-                                <td class="sub_col">631</td>
+                                <td><a href="#">{{ $category->name }}</a></td>
+                                <td class="sub_col">{{ $category->products->count() }}</td>
                             </tr>
-                            <tr>
-                                <td><a href="#">Google+</a></td>
-                                <td class="sub_col">316</td>
-                                <td class="sub_col">549</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">LinkedIn</a></td>
-                                <td class="sub_col">264</td>
-                                <td class="sub_col">388</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Facebook</a></td>
-                                <td class="sub_col">152</td>
-                                <td class="sub_col">274</td>
-                            </tr>
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-5">
-                    <div id="flot_social" class="chart" style="height:240px;width:100%">
-                        <script>
-                            chart_social_data = [
-                                { label: "Twitter", data: 423, color: '#1f77b4' },
-                                { label: "Google+", data: 316, color: '#ff7f0e' },
-                                { label: "LinkedIn", data: 264, color: '#2ca02c' },
-                                { label: "Facebook", data: 152, color: '#d62728' }
-                            ];
-                        </script>
-                    </div>
+                <div class="col-xs-7">
+                    <div id="piechart" class="chart"></div>
+                    {{--<div id="flot_social" class="chart" style="height:240px;width:100%">--}}
+                        {{--<script>--}}
+                            {{--chart_social_data = [--}}
+                                {{--{ label: "Twitter", data: 423, color: '#1f77b4' },--}}
+                                {{--{ label: "Google+", data: 316, color: '#ff7f0e' },--}}
+                                {{--{ label: "LinkedIn", data: 264, color: '#2ca02c' },--}}
+                                {{--{ label: "Facebook", data: 152, color: '#d62728' }--}}
+                            {{--];--}}
+                        {{--</script>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -225,79 +211,81 @@
     </div>
 </div>
 </div>
-<div class="row">
-<div class="col-md-8">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="heading_b">Latest Images</div>
-            <div id="latest-images" class="owl-carousel owl-theme">
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image001_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image002_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image003_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image004_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image005_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image006_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image007_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image008_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image009_tn.jpg" alt=""></div>
-                <div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image010_tn.jpg" alt=""></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <div id="mini-clndr">
-        <script>
-            // todo calendar events
-            var currentMonth = moment().format('YYYY-MM'),
-                nextMonth    = moment().add('month', 1).format('YYYY-MM');
 
-            todo_events = [
-                { date: currentMonth + '-' + '07', title: 'Dolore est beatae.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '08', title: 'A ex reiciendis et.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '08', title: 'Officiis accusantium non.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '12', title: 'Impedit eos minima rerum.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '19', title: 'Ut ad enim.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '19', title: 'Eum ut nesciunt dolores.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '22', title: 'Earum rerum.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '25', title: 'Voluptatem vel doloremque reiciendis expedita.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '25', title: 'Corrupti voluptates impedit.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '25', title: 'Sunt possimus labore sint reprehenderit.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '28', title: 'Vitae hic laboriosam aut aut.', url: 'javascript:void(0)' },
-                { date: currentMonth + '-' + '28', title: 'Velit voluptatibus quasi.', url: 'javascript:void(0)' },
-                { date: nextMonth + '-' + '04',    title: 'Rem reiciendis in et.', url: 'javascript:void(0)' },
-                { date: nextMonth + '-' + '18',    title: 'Nam nobis in molestiae itaque.', url: 'javascript:void(0)' }
-            ]
-        </script>
-        <script id="mini-clndr-template" type="text/template">
-            <div class="controls">
-                <div class="clndr-previous-button"><span class="glyphicon glyphicon-chevron-left"></span></div><div class="month"><%= month+' '+year %></div><div class="clndr-next-button"><span class="glyphicon glyphicon-chevron-right"></span></div>
-            </div>
+{{--<div class="row">--}}
+{{--<div class="col-md-8">--}}
+    {{--<div class="panel panel-default">--}}
+        {{--<div class="panel-body">--}}
+            {{--<div class="heading_b">Latest Images</div>--}}
+            {{--<div id="latest-images" class="owl-carousel owl-theme">--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image001_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image002_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image003_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image004_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image005_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image006_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image007_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image008_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image009_tn.jpg" alt=""></div>--}}
+                {{--<div class="item"><img class="img-thumbnail" src="/public/template/assets/img/gallery/Image010_tn.jpg" alt=""></div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
+    {{----}}
+{{--<div class="col-md-4">--}}
+    {{--<div id="mini-clndr">--}}
+        {{--<script>--}}
+            {{--// todo calendar events--}}
+{{--//            var currentMonth = moment().format('YYYY-MM'),--}}
+{{--//                nextMonth    = moment().add('month', 1).format('YYYY-MM');--}}
+{{--//--}}
+{{--//            todo_events = [--}}
+{{--//                { date: currentMonth + '-' + '07', title: 'Dolore est beatae.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '08', title: 'A ex reiciendis et.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '08', title: 'Officiis accusantium non.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '12', title: 'Impedit eos minima rerum.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '19', title: 'Ut ad enim.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '19', title: 'Eum ut nesciunt dolores.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '22', title: 'Earum rerum.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '25', title: 'Voluptatem vel doloremque reiciendis expedita.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '25', title: 'Corrupti voluptates impedit.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '25', title: 'Sunt possimus labore sint reprehenderit.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '28', title: 'Vitae hic laboriosam aut aut.', url: 'javascript:void(0)' },--}}
+{{--//                { date: currentMonth + '-' + '28', title: 'Velit voluptatibus quasi.', url: 'javascript:void(0)' },--}}
+{{--//                { date: nextMonth + '-' + '04',    title: 'Rem reiciendis in et.', url: 'javascript:void(0)' },--}}
+{{--//                { date: nextMonth + '-' + '18',    title: 'Nam nobis in molestiae itaque.', url: 'javascript:void(0)' }--}}
+{{--//            ]--}}
+        {{--</script>--}}
+        {{--<script id="mini-clndr-template" type="text/template">--}}
+            {{--<div class="controls">--}}
+                {{--<div class="clndr-previous-button"><span class="glyphicon glyphicon-chevron-left"></span></div><div class="month"><%= month+' '+year %></div><div class="clndr-next-button"><span class="glyphicon glyphicon-chevron-right"></span></div>--}}
+            {{--</div>--}}
 
-            <div class="days-container">
-                <div class="days">
-                    <div class="headers">
-                        <% _.each(daysOfTheWeek, function(day) { %><div class="day-header"><%= day %></div><% }); %>
-                    </div>
-                    <% _.each(days, function(day) { %><div class="<%= day.classes %>" id="<%= day.id %>"><%= day.day %></div><% }); %>
-                </div>
-                <div class="events">
-                    <div class="headers">
-                        <div class="x-button"><span class="glyphicon glyphicon-remove"></span></div>
-                        <div class="event-header">EVENTS</div>
-                    </div>
-                    <div class="events-list-wrapper">
-                        <div class="events-list">
-                            <% _.each(eventsThisMonth, function(event) { %>
-                                <div class="event">
-                                    <a href="<%= event.url %>"><%= moment(event.date).format('MMM Do') %>: <%= event.title %></a>
-                                </div>
-                              <% }); %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </script>
-    </div>
-</div>
-</div>
+            {{--<div class="days-container">--}}
+                {{--<div class="days">--}}
+                    {{--<div class="headers">--}}
+                        {{--<% _.each(daysOfTheWeek, function(day) { %><div class="day-header"><%= day %></div><% }); %>--}}
+                    {{--</div>--}}
+                    {{--<% _.each(days, function(day) { %><div class="<%= day.classes %>" id="<%= day.id %>"><%= day.day %></div><% }); %>--}}
+                {{--</div>--}}
+                {{--<div class="events">--}}
+                    {{--<div class="headers">--}}
+                        {{--<div class="x-button"><span class="glyphicon glyphicon-remove"></span></div>--}}
+                        {{--<div class="event-header">EVENTS</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="events-list-wrapper">--}}
+                        {{--<div class="events-list">--}}
+                            {{--<% _.each(eventsThisMonth, function(event) { %>--}}
+                                {{--<div class="event">--}}
+                                    {{--<a href="<%= event.url %>"><%= moment(event.date).format('MMM Do') %>: <%= event.title %></a>--}}
+                                {{--</div>--}}
+                              {{--<% }); %>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</script>--}}
+    {{--</div>--}}
+{{--</div>--}}
+{{--</div>--}}

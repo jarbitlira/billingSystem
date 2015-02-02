@@ -9,6 +9,7 @@
 namespace Administrator;
 use Repositories\Administrator\ClientRepository;
 use Repositories\Administrator\InvoiceRepository;
+use Repositories\Administrator\ProductCategoryRepository;
 use Repositories\Administrator\ProductRepository;
 use Repositories\Administrator\ProviderRepository;
 
@@ -18,41 +19,61 @@ class DashboardController extends \BaseController
 //    protected $layout = 'layouts.dashboard';
     protected $layout = 'admin.layouts.main';
     protected $product;
+    protected $category;
     protected $client;
     protected $invoice;
     protected $provider;
+    private $topCategories;
 
     public function __construct(
         ProductRepository $product,
+        ProductCategoryRepository $category,
         ClientRepository $client,
         InvoiceRepository $invoice,
         ProviderRepository $provider
     ) {
         $this->product = $product;
+        $this->category = $category;
         $this->client = $client;
         $this->invoice = $invoice;
         $this->provider = $provider;
+
+        $this->topCategories = $this->category->getAll()->take(5)->get();
     }
 
     public function index()
     {
-//        $this->chartsLastMonthSales();
         $clients = $this->client->lists();
         $products = $this->product->lists();
+        $categories = $this->topCategories;
         $invoices = $this->invoice->lists();
-        $this->layout->content = \View::make('admin.dashboard.index', compact('clients', 'products', 'invoices'));
+        $this->layout->content = \View::make(
+            'admin.dashboard.index',
+            compact('clients', 'products', 'categories', 'invoices')
+        );
     }
 
     public function chartsLastMonthSales()
     {
-        $lastMonth = \Carbon::now()->subDays(30);
         $data = [];
+        $lastMonth = \Carbon::now()->subDays(30);
         while (!$lastMonth->isTomorrow()) {
             $label = $lastMonth->format('M d');
             $day = $this->invoice->groupByDate($lastMonth->day, $lastMonth->month, $lastMonth->year);
             $sales = $day->sum('total');
             $data[] = [$label, $sales];
             $lastMonth->addDay();
+        }
+
+        return \Response::json($data);
+    }
+
+    public function topProductCategories()
+    {
+        $data = [];
+        $data[] = ['Name', 'Products belong'];
+        foreach($this->topCategories as $category){
+            $data[] = [$category->name, $category->products()->count()];
         }
         return \Response::json($data);
     }
