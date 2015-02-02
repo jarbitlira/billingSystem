@@ -7,10 +7,10 @@
  */
 namespace Billing;
 use Repositories\Administrator\InvoiceRepository;
+
 class InvoiceController extends \BaseController
 {
 
-    //Change this with billing layout
     protected $layout = 'admin.layouts.main';
     protected $invoice;
 
@@ -19,22 +19,23 @@ class InvoiceController extends \BaseController
         $this->invoice = $invoice;
     }
 
-    public function getIndex(){
-        if(\Auth::check()){
+    public function getIndex()
+    {
+        if (\Auth::check()) {
             $client_id = \Auth::user()->id;
             $user = \User::find($client_id);
-            $seller = $user->first_name." ". $user->last_name;
+            $seller = $user->first_name . " " . $user->last_name;
             $this->layout->content = \View::make('billing.invoice', compact('seller', 'client_id'));
-        }
-        else{
+        } else {
             \Redirect::to('login');
         }
     }
 
-    public function postIndex(){
-        $match = \Input::all();
-//        $this->invoice->create($match);
-        dd($match);
-    }
+    public function postIndex()
+    {
+        $input = \Input::all();
+        $match = $this->invoice->create($input);
 
+        return \Response::json(['url' => \URL::to('invoice/' . $match->id), 'invoice' => $match->id]);
+    }
 }

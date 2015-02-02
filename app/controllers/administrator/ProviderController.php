@@ -22,8 +22,10 @@ class ProviderController extends \BaseController
 
     public function index()
     {
-        $providers = $this->provider->getAll()->paginate(10);
-        $this->layout->content = \View::make('admin.providers.index', compact('providers'));
+        $providers = $this->provider->getAll();
+        $totalProviders = $providers->get();
+        $providers = $providers->paginate(10);
+        $this->layout->content = \View::make('admin.providers.index', compact('totalProviders', 'providers'));
     }
 
     public function create()

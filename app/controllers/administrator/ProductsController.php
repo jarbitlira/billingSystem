@@ -25,17 +25,20 @@ class ProductsController extends \BaseController
 
     public function index()
     {
-        $products = $this->product->getAll()->paginate(10);
+        $products = $this->product->getAll();
+        $productsTotal = $products->get();
+        $products = $products->paginate(10);
         $categories = $this->categories->lists();
-        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'productsTotal', 'categories'));
     }
 
     public function create()
     {
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
+        $measures = \Measure::all();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers'));
+        $this->layout->content = \View::make('admin.products.create', compact('categories', 'providers', 'measures'));
     }
 
     public function store()
@@ -46,6 +49,9 @@ class ProductsController extends \BaseController
         $this->product->create($input);
         if ($this->product->succeeded()) {
             return \Redirect::to('product')->with('notice', 'Product was created successfully');
+        } else {
+            return \Redirect::back()->withInput()
+                ->withErrors($this->product->errors());
         }
     }
 
@@ -54,8 +60,9 @@ class ProductsController extends \BaseController
         $product = $this->product->findById($id);
         $categories = $this->categories->lists();
         $providers = $this->providers->lists();
+        $measures = \Measure::all();
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers'));
+        $this->layout->content = \View::make('admin.products.edit', compact('product', 'categories', 'providers', 'measures'));
     }
 
     public function update($id)
@@ -84,7 +91,7 @@ class ProductsController extends \BaseController
     {
         if (\Input::has('term')) {
             $match = \Input::get('term');
-            $products = $this->product->whereLike(['name', 'sku'], $match);
+            $products = $this->product->whereLike(['name', 'sku'], $match)->where('available', 1)->get();
         } else {
             $products = $this->product->lists();
         }

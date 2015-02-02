@@ -11,8 +11,8 @@ class BaseRepository
 
     protected $model = NULL;
 
-    public function lists(){
-
+    public function lists()
+    {
         return $this->model->all();
     }
 
@@ -46,7 +46,8 @@ class BaseRepository
 
     public function create($attributes)
     {
-        return $this->model->create($attributes);
+        $this->model = $this->model->create($attributes);
+        return $this->model;
     }
 
     public function update($id, $attributes)
@@ -83,6 +84,11 @@ class BaseRepository
                     $query->where($fields, 'LIKE', "%" . $match . "%");
                 }
             }
-        )->get();
+        );
+    }
+
+    public function groupBy($field)
+    {
+        return $this->model->groupBy($field)->get();
     }
 }

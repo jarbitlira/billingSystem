@@ -29,6 +29,7 @@ $(document).on('ready', function () {
         if ($('body #qty_' + _this.id).length == 0) {
             var quantity = '<input type="number" value="1" min="1" max="20" class="qtyInput" id="qty_' + _this.id + '"/>'
             var row = '<tr class="product_data" data-product="'+ _this.id +'">';
+            row += '<td><button class="btn btn-xs text-danger remove-product" type="text"><i class="fa fa-close"></i></button></td>';
             row += '<td>' + _this.sku + '</td>';
             row += '<td>' + _this.name + '</td>';
             row += '<td class="price">' + _this.unit_price + '</td>';
@@ -49,7 +50,6 @@ $(document).on('ready', function () {
         $('#client_name > strong').html(_this.name);
         $('#client_address > strong').html(_this.address);
         $('#client_data').data('client', _this.id);
-        console.log(_this);
         return false;
     };
 
@@ -57,7 +57,7 @@ $(document).on('ready', function () {
     $('.billingFilter').each(function (i, val) {
         var el = $(val);
         el.autocomplete({
-            //minLength: 3,
+            minLength: 3,
             source: function (request, response) {
                 if (el.attr("id") == "filter_product") {
                     ajax(request, response, 'product');
@@ -86,11 +86,14 @@ $(document).on('ready', function () {
 
 
     //missing arrow events
-    $('body').on('change, input, keyup', '.qtyInput', function () {
+    $('body').on('change, input, keyup mouseup', '.qtyInput', function () {
         var td = $(this).parent();
         td.siblings('.subtotal').html(getSubtotal(td.siblings('.price').html(), $(this).val()));
         getFinalSubtotal();
         return false;
+    })
+        .on('click', '.remove-product', function(){
+            $(this).parents('tr').remove();
     });
 
     var getSubtotal = function (price, qty) {
@@ -102,39 +105,48 @@ $(document).on('ready', function () {
         $('body .subtotal').each(function (i, obj) {
             suma += parseFloat($(this).html());
         });
+        suma = suma.toFixed(2);
         $('body #finalSubtotal>strong').html(suma);
         $('body #finalGrandtotal>strong').html(suma);
         return suma;
     };
 
     // Generate invoice
-    $('#invoice_generateBtn').on('click', function(){
+    $('#invoice_generateBtn').on('click', function(e){
         if(confirm('Are your sure to generate invoice?')){
             var data = {};
-            data.product_id = [];
+            var completed = true;
+            data.products = [];
             data.user_id = $('body #current_user').data('user');
             data.client_id = $('body #client_data').data('client');
             $('body .product_data').each(function(i, val){
-                data.product_id.push($(this).data('product'));
-                //data.products.push({product_id: $(this).data('product')});
+                var id =  $(this).data('product');
+                data.products.push({product_id: id, quantity: $('body #qty_'+ id).val() });
             });
             data.subtotal = getFinalSubtotal();
             data.total = getFinalSubtotal();
             data.notes = $('#invoice_notes').val();
-            console.log(data);
-            $('.loading').toggleClass('hide');
-            $.ajax({
-                url: 'http://admin.billingsystem/billing',
-                type:  'POST',
-                data: data,
-                success: function(data){
-                    $('.loading').toggleClass('hide');
-                    console.log(data);
-                }
-            })
+            $.each(data, function(i,val){
+               if (!val){
+                   alert('Missing '+ i);
+                   completed = false;
+               }
+            });
+            if (completed){
+                $.ajax({
+                    url: 'http://admin.billingsystem/billing',
+                    type:  'POST',
+                    data: data,
+                    success: function(data){
+                        $('.loading').toggleClass('hide');
+                        window.location.href = data.url;
+                    }
+                });
+                $('.loading').toggleClass('hide');
+            }
         }
         else{
-            return false;
+            e.preventDefault();
         }
     });
 
