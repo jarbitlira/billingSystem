@@ -25,9 +25,11 @@ class ProductsController extends \BaseController
 
     public function index()
     {
-        $products = $this->product->getAll()->paginate(10);
+        $products = $this->product->getAll();
+        $productsTotal = $products->get();
+        $products = $products->paginate(10);
         $categories = $this->categories->lists();
-        $this->layout->content = \View::make('admin.products.index', compact('products', 'categories'));
+        $this->layout->content = \View::make('admin.products.index', compact('products', 'productsTotal', 'categories'));
     }
 
     public function create()

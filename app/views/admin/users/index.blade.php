@@ -2,7 +2,7 @@
     <div class="col-xs-10">
         <h1 class="page-title">Users List</h1>
 
-        <p class="muted">Users registered: <b>{{ count($users) }}</b></p>
+        <p class="muted">Users registered: <b>{{ count($totalUsers) }}</b></p>
     </div>
     <div class="col-xs-2 text-right">
         <a href="{{ URL::to('user/create') }}" class="btn btn-success">Add User</a>

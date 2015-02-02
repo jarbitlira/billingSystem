@@ -32,8 +32,10 @@ class UserController extends \BaseController
      */
     public function index()
     {
-        $users = $this->user->getAll()->paginate(10);
-        $this->layout->content = \View::make('admin.users.index', compact('users'));
+        $users = $this->user->getAll();
+        $totalUsers = $users->get();
+        $users = $users->paginate(10);
+        $this->layout->content = \View::make('admin.users.index', compact('users', 'totalUsers'));
     }
 
     /**

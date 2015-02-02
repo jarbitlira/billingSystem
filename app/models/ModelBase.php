@@ -15,6 +15,7 @@ class ModelBase extends EloquentValidation
     public static $rules = [];
     protected $softDelete = true;
     protected $guarded = [];
+    protected $fillable = [];
     protected $defaults = [];
 
     public function beforeCreate()
