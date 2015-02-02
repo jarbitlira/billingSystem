@@ -26,4 +26,13 @@ class InvoiceEloquent extends \Repositories\BaseRepository implements InvoiceRep
 
         return $this->model;
     }
+
+    public function groupByDate($day, $month, $year)
+    {
+        return $this->model
+            ->whereRaw('DAY(created_at) = ' . $day)
+            ->whereRaw('MONTH(created_at) = ' . $month)
+            ->whereRaw('YEAR(created_at) = ' . $year)
+            ->get();
+    }
 }

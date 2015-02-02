@@ -12,23 +12,31 @@ class ModelBase extends EloquentValidation
 {
     use SoftDeletingTrait;
 
-    protected static $rules = [];
+    public static $rules = [];
     protected $softDelete = true;
     protected $guarded = [];
+    protected $fillable = [];
     protected $defaults = [];
 
-    public static function boot()
+    public function beforeCreate()
     {
-        parent::boot();
+        $this->created_by = Auth::id();
+        $this->updated_by = Auth::id();
+    }
 
-        static::creating(function ($model) {
-            $model->created_by = Auth::id();
-            $model->updated_by = Auth::id();
-        });
+    public function beforeUpdate()
+    {
+        $this->updated_by = Auth::id();
+    }
 
-        static::updating(function ($model) {
-            $model->updated_by = Auth::id();
-        });
+    public function afterSave()
+    {
+        Event::fire('register.query');
+    }
+
+    public function afterDelete()
+    {
+        Event::fire('register.query');
     }
 
     public function getId()

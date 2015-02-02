@@ -17,52 +17,30 @@ Route::group(array('domain' => $domain), function () {
 });
 
 Route::group(array('domain' => 'admin.' . $domain), function () {
+    Route::controller('login', 'LoginController');
+
     Route::group(array('before' => 'auth'), function () {
         Route::get('/', 'Administrator\DashboardController@index');
+        Route::get('/logout', 'LoginController@logout');
 
-        Route::any('/login', function () {
-            return Redirect::to('/');
-        });
+        Route::get('profile', 'UsersController@profile');
+        Route::put('profile', 'UsersController@profile');
 
-        Route::get('/logout', function () {
-            Auth::logout();
-            return Redirect::to("/login");
-        });
+        Route::resource('provider', 'Administrator\ProviderController');
+        Route::resource('product', 'Administrator\ProductsController', ['except' => 'show']);
+        Route::resource('product/category', 'Administrator\ProductsCategoriesController');
+        Route::resource('client', 'Administrator\ClientController', ['except' => 'show']);
+        Route::resource('invoice', 'Administrator\InvoiceController', ['only' => ['index', 'show']]);
+        Route::resource('user', 'Administrator\UserController');
+        Route::controller('config', 'Administrator\ConfigController');
+        //temporal billing route
+        Route::controller('billing', 'Billing\InvoiceController');
+        Route::get('product/json', 'Administrator\ProductsController@json');
+        Route::get('client/json', 'Administrator\ClientController@json');
+        Route::controller('print', 'PrintController');
+        // Dashboard
+        Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
+        Route::get('json/topCategories', 'Administrator\DashboardController@topProductCategories');
     });
-
-    Route::get("/login", function () {
-        if (!Auth::check()) {
-            return View::make("login")->with('error', 'Email or password is not correct');
-        } else {
-            return Redirect::to("/");
-        }
-    });
-
-    Route::post("/login", function () {
-        $user = [];
-        $user["email"] = Input::get("email");
-        $user["password"] = Input::get("password");
-        if (Auth::attempt($user)) {
-            return Redirect::to("/");
-        } else {
-            return Redirect::back()->withInput();
-        }
-    });
-
-    Route::get('profile', 'UsersController@profile');
-    Route::put('profile', 'UsersController@profile');
-
-    Route::resource('provider', 'Administrator\ProviderController');
-    Route::resource('product', 'Administrator\ProductsController', ['except'=>'show']);
-    Route::resource('product/category', 'Administrator\ProductsCategoriesController');
-    Route::resource('client', 'Administrator\ClientController', ['except'=>'show']);
-    Route::resource('invoice', 'Administrator\InvoiceController', ['only'=>['index', 'show']]);
-    Route::resource('user', 'Administrator\UserController');
-    Route::controller('config', 'Administrator\ConfigController');
-    //temporal billing route
-    Route::controller('billing', 'Billing\InvoiceController');
-    Route::get('product/json', 'Administrator\ProductsController@json');
-    Route::get('client/json', 'Administrator\ClientController@json');
-    Route::controller('print', 'PrintController');
-
+    
 });

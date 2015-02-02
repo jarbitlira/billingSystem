@@ -15,11 +15,11 @@
     </div>
     <div class="form-group">
         <label for="client_phone1">Phone Contact</label>
-        {{ Form::text('phone1', null, ['class'=>'form-control', 'id'=>'client_phone1']) }}
+        {{ Form::text('phone1', null, ['class'=>'form-control', 'id'=>'client_phone1','placeholder'=>'2222-2222']) }}
     </div>
     <div class="form-group">
         <label for="client_phone2">Phone Number</label>
-        {{ Form::text('phone2', null, ['class'=>'form-control', 'id'=>'client_phone2']) }}
+        {{ Form::text('phone2', null, ['class'=>'form-control', 'id'=>'client_phone2','placeholder'=>'2222-2222']) }}
     </div>
     <div class="row text-right">
         <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-save"></i>Save</button>

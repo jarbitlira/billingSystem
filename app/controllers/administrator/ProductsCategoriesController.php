@@ -57,7 +57,7 @@ class ProductsCategoriesController extends \BaseController
         if ($this->category->succeeded()) {
             return \Redirect::to('product/category')->with('notice', 'Category was updated successfully');
         } else {
-            return \Rediret::back()->withInput()->with('errors', $this->category->errors());
+            return \Redirect::back()->withInput()->with('errors', $this->category->errors());
         }
     }
 
