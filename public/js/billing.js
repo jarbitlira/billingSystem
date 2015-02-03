@@ -6,7 +6,7 @@ $(document).on('ready', function () {
     // Ajax to get data for filters
     var ajax = function (request, response, route) {
         $.ajax({
-            url: 'http://admin.billingsystem/' + route + '/json',
+            url: '/' + route + '/json',
             type: 'GET',
             data: {term: request.term},
             dataType: 'json',
@@ -134,7 +134,7 @@ $(document).on('ready', function () {
             });
             if (completed){
                 $.ajax({
-                    url: 'http://admin.billingsystem/billing',
+                    url: '/billing',
                     type:  'POST',
                     data: data,
                     success: function(data){

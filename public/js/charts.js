@@ -13,7 +13,7 @@ $(function(){
         if (typeof(sales) == 'undefined'){
             $.ajax({
                 type: 'GET',
-                url: 'http://admin.billingsystem/json/lastMonthSales',
+                url: '/json/lastMonthSales',
                 async: false,
                 success: function(response){
                     sales = response;
@@ -33,7 +33,7 @@ $(function(){
         // Product Categories
         if (typeof(topProducts) == 'undefined'){
             $.ajax({
-               url: 'http://admin.billingsystem/json/topCategories',
+                url: '/json/topCategories',
                 type: 'GET',
                 asycn: false,
                 success: function(response){
@@ -51,7 +51,7 @@ $(function(){
         // Browsers
         if (browsers == ''){
             $.ajax({
-                url: 'json/browserAccess',
+                url: '/json/browserAccess',
                 type: 'GET',
                 async: false,
                 success: function(response){
