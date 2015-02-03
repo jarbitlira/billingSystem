@@ -44,5 +44,12 @@ class PrintController extends \BaseController
 
     }
 
+    public function getInvoices()
+    {
+        $invoices = $this->invoice->getAll()->get();
+        $pdf = PDF::loadView('reports.invoices_report', compact('invoices'));
+        return $pdf->stream("reportefacturas_".date("d-m-Y") . ".pdf");
+    }
+
 
 }
