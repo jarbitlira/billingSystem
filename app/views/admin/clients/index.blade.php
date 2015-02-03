@@ -27,6 +27,7 @@
                     <th>{{ $client->email }}</th>
                     <th>{{ $client->phone1 }}</th>
                     <th>{{ $client->phone2 }}</th>
+                    <th>{{ $client->created_at->format('d-m-Y') }}</th>
                     <th>
                         {{ Form::open(['method'=>'DELETE', 'route'=>['client.destroy', $client->id]]) }}
                         <a href="{{ URL::to('client/'.$client->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>

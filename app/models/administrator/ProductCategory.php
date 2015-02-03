@@ -9,7 +9,7 @@ namespace Administrator;
 class ProductCategory extends \ModelBase
 {
     public static $rules = array(
-        'name' => 'required|alpha'
+        'name' => 'required' // |alpha_dash|string
     );
     protected $table = 'product_categories';
 

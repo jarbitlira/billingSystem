@@ -32,7 +32,7 @@
                     {{ count($category->products)  }}
                 </td>
                 <td class="sub_col">
-                    {{ $category->created_at }}
+                    {{ $category->created_at->format('d-m-Y') }}
                 </td>
                 <td class="sub_col">
                     {{ $category->createdBy->username }}
