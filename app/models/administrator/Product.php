@@ -13,7 +13,7 @@ class Product extends \ModelBase
         'unit_price' => 'required|numeric',
         'measure_size' => 'required|numeric',
         'measure_id' => 'required|numeric',
-        'current_stock' => 'required|numeric',
+        'current_stock' => 'required|numeric', //|between:min_stock,max_stock',
         'min_stock' => 'required|numeric',
         'max_stock' => 'required|numeric',
         'category_id' => 'required',

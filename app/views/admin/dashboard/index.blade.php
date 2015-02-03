@@ -115,7 +115,7 @@
         <div class="panel-body">
             <div class="heading_b">Product Categories</div>
             <div class="row">
-                <div class="col-xs-5">
+                <div class="col-xs-4">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -133,7 +133,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-xs-8">
                     <div id="piechart" class="chart"></div>
                     {{--<div id="flot_social" class="chart" style="height:240px;width:100%">--}}
                         {{--<script>--}}
@@ -155,7 +155,7 @@
         <div class="panel-body">
             <div class="heading_b">Browsers</div>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-xs-4">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -165,46 +165,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $total = array_pull($browsers, 'total'); ?>
+                            @foreach($browsers as $item)
                             <tr>
-                                <td><a href="#">Firefox</a></td>
-                                <td class="sub_col">1428</td>
-                                <td class="sub_col">54%</td>
+                                <td><a href="#">{{$item->browser}}</a></td>
+                                <td class="sub_col">{{ $item->counter }}</td>
+                                <td class="sub_col"> {{ (int)(($item->counter / $total) * 100) }}%</td>
                             </tr>
-                            <tr>
-                                <td><a href="#">Chrome</a></td>
-                                <td class="sub_col">858</td>
-                                <td class="sub_col">21%</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Safari</a></td>
-                                <td class="sub_col">647</td>
-                                <td class="sub_col">11%</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Internet Explorer</a></td>
-                                <td class="sub_col">433</td>
-                                <td class="sub_col">6%</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Opera</a></td>
-                                <td class="sub_col">141</td>
-                                <td class="sub_col">2%</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-5">
-                    <div id="flot_browsers" class="chart" style="height:240px;width:100%">
-                        <script>
-                            chart_browsers_data = [
-                                { label: "Firefox", data: 1428, color: '#1f77b4' },
-                                { label: "Chrome", data: 858, color: '#aec7e8' },
-                                { label: "Safari", data: 647, color: '#ff7f0e' },
-                                { label: "IE", data: 433, color: '#ffbb78' },
-                                { label: "Opera", data: 141, color: '#2ca02c' }
-                            ];
-                        </script>
-                    </div>
+                <div class="col-xs-8">
+                    <div id="donutBrowser" class="chart"></div>
                 </div>
             </div>
         </div>

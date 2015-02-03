@@ -31,6 +31,8 @@
                     {{ Form::open(['method'=>'DELETE', 'route'=>['user.destroy', $user->id]]) }}
                     <a href="{{ URL::to('user/'.$user->id.'/edit') }}" class="btn btn-xs"><i
                                 class="fa fa-pencil"></i></a>
+                    <a href="{{ URL::to('user/'.$user->id.'/permissions') }}" class="btn btn-xs"><i
+                                class="fa fa-key"></i></a>
                     <button type="submit" class="btn btn-xs text-danger"><i class="fa fa-close"></i></button>
                     {{ Form::close() }}
                 </th>

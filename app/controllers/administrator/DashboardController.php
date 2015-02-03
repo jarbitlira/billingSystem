@@ -43,13 +43,16 @@ class DashboardController extends \BaseController
 
     public function index()
     {
+//        dd($this->browsers());
         $clients = $this->client->lists();
         $products = $this->product->lists();
         $categories = $this->topCategories;
         $invoices = $this->invoice->lists();
+        $browsers = \AuthLog::select(\DB::raw('COUNT(*) as counter, browser'))->groupBy('browser')->get();
+        $browsers['total'] = \AuthLog::all()->count();
         $this->layout->content = \View::make(
             'admin.dashboard.index',
-            compact('clients', 'products', 'categories', 'invoices')
+            compact('clients', 'products', 'categories', 'invoices', 'browsers')
         );
     }
 
@@ -74,6 +77,16 @@ class DashboardController extends \BaseController
         $data[] = ['Name', 'Products belong'];
         foreach($this->topCategories as $category){
             $data[] = [$category->name, $category->products()->count()];
+        }
+        return \Response::json($data);
+    }
+
+    public function browsers(){
+        $data = [];
+        $data[] = ['browser', 'count'];
+        $browsers =  \AuthLog::select(\DB::raw('COUNT(*) as counter, browser'))->groupBy('browser');
+        foreach ($browsers->get() as $item){
+            $data[] = [$item->browser, $item->counter];
         }
         return \Response::json($data);
     }
