@@ -165,7 +165,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <? $total = array_pull($browsers, 'total'); ?>
+                        <?php $total = array_pull($browsers, 'total'); ?>
                             @foreach($browsers as $item)
                             <tr>
                                 <td><a href="#">{{$item->browser}}</a></td>
