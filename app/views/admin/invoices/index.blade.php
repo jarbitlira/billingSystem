@@ -3,6 +3,12 @@
         <h1 class="page-title">Manage invoices</h1>
         <p class="text-muted">...</p>
     </div>
+
+<div class="col-xs-2 text-right">
+
+    <a href="{{ URL::to('print/invoices') }}" class="btn btn-success">Print Report</a>
+
+</div>
 @endsection
 
 <div class="panel-body">

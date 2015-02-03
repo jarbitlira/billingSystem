@@ -47,6 +47,7 @@
     <tr>
         <th class="sub_col">SKU</th>
         <th class="sub_col">Name</th>
+        <th class="sub_col">Description</th>
         <th class="sub_col">Unit Price</th>
         <th class="sub_col">Length</th>
         <th class="sub_col">Weight</th>
@@ -64,8 +65,11 @@
            <td>
                <h5><p> {{ $product->name }} </p></h5>
            </td>
+           <td class="sub_col">
+               {{ $product->description }}
+           </td>
            <td class="sub_col"><strong>
-C${{ $product->unit_price }}
+            C${{ $product->unit_price }}
            </strong></td>
            <td class="sub_col">
                {{ $product->length }}
