@@ -17,6 +17,7 @@
                 <th class="sub_col">Email</th>
                 <th class="sub_col">Phone 1</th>
                 <th class="sub_col">Phone 2</th>
+                <th class="sub_col">Registered</th>
                 <th class="sub_col">Actions</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <th class="sub_col"> {{ $provider->email }}</th>
                 <th class="sub_col"> {{ $provider->phone1 }}</th>
                 <th class="sub_col"> {{ $provider->phone2 }}</th>
+                <th class="sub_col"> {{ $provider->created_at->format('d-m-Y') }}</th>
                 <th class="sub_col">
                     {{ Form::open(['method'=>'DELETE', 'route'=>['provider.destroy', $provider->id]]) }}
                     <a href="{{ URL::to('provider/'.$provider->id.'/edit') }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>

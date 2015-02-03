@@ -11,7 +11,7 @@
             </div>
             <div class="col-xs-4">
                 <label for="product_brand" class="req">Brand</label>
-                {{ Form::text('brand', NULL, ['class'=>'form-control', 'id'=>'product_brand', 'required'=>'required'] ) }}
+                {{ Form::text('brand', NULL, ['class'=>'form-control', 'id'=>'product_brand'] ) }}
             </div>
         </div>
     </div>
@@ -20,12 +20,12 @@
             <div class="col-xs-3">
                 <label for="unit_price" class="req">Unit Price (C$)</label>
                 {{ Form::text('unit_price', NULL, ['class'=>'form-control', 'id'=>'unit_price',
-                 'data-parsley-required'=>"true", 'required'=>'required', 'pattern'=>'\d*']) }}
+                 'data-parsley-required'=>"true", 'required'=>'required']) }}
             </div>
             <div class="col-xs-3">
                 <label for="current_stock" class="req">Current Stock</label>
                 {{ Form::number('current_stock', NULL, ['class'=>'required form-control', 'id'=>'current_stock',
-                 'min'=>0, 'max'=>1000, 'required'=>'required', 'pattern'=>'\d*']) }}
+                 'min'=>0, 'required'=>'required', 'pattern'=>'\d*']) }}
             </div>
             <div class="col-xs-3">
                 <label for="min_stock" class="req">Minimum Stock</label>
