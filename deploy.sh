@@ -1,6 +1,5 @@
 #!/bin/sh
-#git pull
-#composer update --no-dev
-#php artisan migrate
-#php artisan dump-autoload
-echo "lol"
+git pull
+composer update --no-dev --no-scripts
+php artisan dump-autoload
+php artisan migrate
