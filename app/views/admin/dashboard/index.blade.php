@@ -4,44 +4,52 @@
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="stat_box stat_up">
+                    <a href="{{ URL::to('product') }}" class="text-muted">
                     <div class="stat_ico color_f"><i class="ion ion-bag"></i></div>
                     <div class="stat_content">
                         <span class="stat_count">{{ $products->count() }}</span>
                         <span class="stat_name">Products in Stock</span>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="stat_box stat_up">
+                    <a href="{{ URL::to('billing') }}" class="text-muted">
                     <div class="stat_ico color_g"><i class="ion-ios7-cart-outline"></i></div>
                     <div class="stat_content">
                         <span class="stat_count">C$ {{ $invoices->sum('total') }}</span>
                         <span class="stat_name">Sale (last month)</span>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="stat_box stat_down">
+                    <a href="{{ URL::to('invoice') }}" class="text-muted">
                     <div class="stat_ico color_a"><i class="ion-clipboard"></i></div>
                     <div class="stat_content">
                         <span class="stat_count">{{ $invoices->count() }}</span>
                         <span class="stat_name">Invoices</span>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-default">
                 <div class="stat_box stat_up">
+                    <a href="{{ URL::to('client') }}" class="text-muted">
                     <div class="stat_ico color_d"><i class="fa fa-user"></i></div>
                     <div class="stat_content">
                         <span class="stat_count">{{ $clients->count() }}</span>
                         <span class="stat_name">Clients</span>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -50,54 +58,6 @@
 </div>
 @endsection
 
-<!--
-<div class="row">
-<div class="col-lg-4">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="easy_chart easy_chart_pages pull-left" data-percent="81"><i class="ion-document-text"></i></div>
-            <div class="easy_chart_desc">
-                <h4>132 New Pages</h4>
-                <p>Lorem ipsum dolor sit&hellip;</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="easy_chart easy_chart_user pull-left" data-percent="56"><i class="ion-ios7-contact-outline"></i></div>
-            <div class="easy_chart_desc">
-                <h4>4 662 Unique Users</h4>
-                <p>Lorem ipsum dolor sit&hellip;</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="easy_chart easy_chart_images pull-left" data-percent="56"><i class="ion-images"></i></div>
-            <div class="easy_chart_desc">
-                <h4>731 Images Uploaded</h4>
-                <p>Lorem ipsum dolor sit&hellip;</p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
--->
-{{--<div class="row">--}}
-{{--<div class="col-md-12">--}}
-    {{--<div class="panel panel-default">--}}
-        {{--<div class="panel-body">--}}
-            {{--<div id="nvd3_cumulativeLine" style="width:100%;height:300px">--}}
-                {{--<svg></svg>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
-</div>
  <div class="row">
 <div class="col-xs-12">
     <div class="panel panel-default">
@@ -126,7 +86,8 @@
                         <tbody>
                            @foreach($categories as $category)
                             <tr>
-                                <td><a href="#">{{ $category->name }}</a></td>
+                                {{-- Set a filter in products by category--}}
+                                <td><strong>{{ $category->name }}</strong></td>
                                 <td class="sub_col">{{ $category->products->count() }}</td>
                             </tr>
                            @endforeach
@@ -135,16 +96,6 @@
                 </div>
                 <div class="col-xs-8">
                     <div id="piechart" class="chart"></div>
-                    {{--<div id="flot_social" class="chart" style="height:240px;width:100%">--}}
-                        {{--<script>--}}
-                            {{--chart_social_data = [--}}
-                                {{--{ label: "Twitter", data: 423, color: '#1f77b4' },--}}
-                                {{--{ label: "Google+", data: 316, color: '#ff7f0e' },--}}
-                                {{--{ label: "LinkedIn", data: 264, color: '#2ca02c' },--}}
-                                {{--{ label: "Facebook", data: 152, color: '#d62728' }--}}
-                            {{--];--}}
-                        {{--</script>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -168,7 +119,7 @@
                         <?php $total = array_pull($browsers, 'total'); ?>
                             @foreach($browsers as $item)
                             <tr>
-                                <td><a href="#">{{$item->browser}}</a></td>
+                                <td><strong>{{$item->browser}}</strong></td>
                                 <td class="sub_col">{{ $item->counter }}</td>
                                 <td class="sub_col"> {{ (int)(($item->counter / $total) * 100) }}%</td>
                             </tr>

@@ -2,7 +2,9 @@
  * Created by CarlosRenato on 01/02/2015.
  */
 $(function(){
-    var sales, topProducts, browsers = [];
+    var sales = '';
+    var topProducts = '';
+    var browsers = '';
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -10,7 +12,7 @@ $(function(){
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Month');
         data.addColumn('number', 'Sales');
-        if (typeof(sales) == 'undefined'){
+        if (sales == ''){
             $.ajax({
                 type: 'GET',
                 url: '/json/lastMonthSales',
@@ -31,7 +33,7 @@ $(function(){
         chart.draw(data, options);
 
         // Product Categories
-        if (typeof(topProducts) == 'undefined'){
+        if (topProducts == ''){
             $.ajax({
                 url: '/json/topCategories',
                 type: 'GET',
@@ -59,7 +61,6 @@ $(function(){
                 }
             })
         }
-        console.log(browsers);
         var browserCont = google.visualization.arrayToDataTable(browsers);
 
         var optionsBrowsers = {
