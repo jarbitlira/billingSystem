@@ -45,7 +45,8 @@ $(function(){
         }
         var pie = google.visualization.arrayToDataTable(topProducts);
         var pieOptions = {
-            title: 'Top Product Categories'
+            title: 'Top Product Categories',
+            is3D: true
         };
         var pieChart = new google.visualization.PieChart(document.getElementById('piechart'));
         pieChart.draw(pie, pieOptions);
@@ -65,7 +66,9 @@ $(function(){
 
         var optionsBrowsers = {
             title: 'Browser access',
-            pieHole: 0.4
+            pieHole: 0.4,
+            pieStartAngle: 100,
+            pieSliceText: 'label'
         };
 
         var pieBrowser = new google.visualization.PieChart(document.getElementById('donutBrowser'));

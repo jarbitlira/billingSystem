@@ -1,9 +1,8 @@
 @section('page-top')
     <div class="col-md-8">
         <h1 class="page_title">Invoice #{{ $invoice->id }}</h1>
-        {{--<p class="text-muted">date: 24.05.2014; due by: 17.06.2014</p>--}}
         <p class="text-muted">Due By: {{ $seller->first_name.' '.$seller->last_name }}</p>
-        <p class="text-muted">Date: {{ $invoice->created_at }}</p>
+        <p class="text-muted">Date: {{ $invoice->created_at->format('D M dS, Y') }}</p>
     </div>
     <div class="col-md-4 text-right">
         <div class="btn-group btn-group-sm">
@@ -17,37 +16,29 @@
 
 <div class="panel-body">
     <div class="row">
-        <!--<div class="col-sm-6">
-            <h3 class="heading_a">From</h3>
-            <address>
-                <p class="addres_name">Ebro Admin HQ</p>
-                <p>Av Almozara, 79</p>
-                <p>50003 Zaragoza</p>
-                <p class="sepH_b">Spain</p>
-                <p><small><span class="text-muted">Phone:</span> (+321) 123 456 789</small></p>
-                <p><small><span class="text-muted">E-mail:</span> <a href="mailto:example.com">tisa@example.com</a></small></p>
-            </address>
-        </div> -->
-        <div class="col-sm-6">
-            <h3 class="heading_a">Client:</h3>
-            <p>{{ $invoice->client->name }}</p>
-            <p><small><span class="text-muted">Phone:</span> {{ $invoice->client->phone1 }}</small></p>
-            <p><small><span class="text-muted">E-mail:</span> <a href="#">{{ $invoice->client->email }}</a></small></p>
-            <p><small><span class="text-muted">Address:</span>
-            <address>
-                <p class="addres_name">{{ $invoice->client->address }}</p>
-                <!-- <p>Alayna Fall 968</p>
-                <p>92101 South Wilton</p>
-                <p>Schaeferberg</p>-->
-            </address>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
         <div class="col-md-12">
             <table class="table table-striped table-bordered text-center invoice_table">
                 <thead>
-                <tr>
+                <tr id="client_data">
+                    <th class="bg-primary" colspan="5">
+                        <h3 class="heading_a">Client information:</h3>
+                        <div class="col-md-6">
+                            <p id="client_name"><small>Name: </small><ins><strong><a style="color:#fff" href="{{ URL::to('client/'.$invoice->client->id.'/edit') }}">{{ $invoice->client->name }}</a></strong></ins>  </p>
+                            <p id="client_address"><small>Address: </small><ins><strong>{{ $invoice->client->address }}</strong></ins></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="client_email"><small>Email: </small><ins><strong>{{ $invoice->client->email }}</strong></ins></p>
+                            <p id="client_phone"><small>Phone: </small><ins><strong>{{ $invoice->client->phone1 }}</strong></ins></p>
+                        </div>
+                    </th>
+                    <th class="bg-primary" colspan="2">
+                        <p class="pull-right">
+                            <small>No.:</small> {{ $invoice->id }}<br/>
+                            <small>Date: </small>{{ $invoice->created_at->format('D M dS, Y') }}
+                        </p>
+                    </th>
+                </tr>
+                <tr class="product_headers">
                     <th>Sku</th>
                     <th>Product</th>
                     <th>Price</th>

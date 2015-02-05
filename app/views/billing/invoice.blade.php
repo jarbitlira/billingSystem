@@ -7,14 +7,22 @@
 
 <div class="panel-body">
     <div class="alert alert-info filter-container">
-        <h5>Filters</h5>
+        <h4 class="heading_a">Filters</h4>
+        <p><b>Instructions:</b></p>
+        <ol>
+            <li>Select products that You need to bill. (Required)</li>
+            <li>Select a client to set client name into invoice. (Required)</li>
+            <li>Inside the table, select the quantity of every product.</li>
+            <li>At footer, include a note. (Optional)</li>
+            <li>Build invoice to press Generate button.</li>
+        </ol>
         <div class="row">
             <div class="col-xs-3">
-                <label for="filter_product">PRODUCTO</label>
+                <label for="filter_product">PRODUCT</label>
                 <input type="text" id="filter_product" class="form-control billingFilter" placeholder="Type a product..">
             </div>
             <div class="col-xs-3">
-                <label for="filter-client">CLIENTE</label>
+                <label for="filter-client">CLIENT</label>
                 <input type="text" id="filter_client"class="form-control billingFilter" placeholder="Type a client name.."/>
             </div>
             <div class="col-xs-3 col-md-push-3">
@@ -31,13 +39,13 @@
             <table class="table table-striped table-bordered invoice_table text-center" id="billing_table">
                 <thead>
                     <tr id="client_data">
-                        <th colspan="5">
-                            <span id="client_name">Client: <strong> - </strong></span><br>
-                            <span id="client_address">Address: <strong> - </strong></span>
+                        <th class="bg-primary" colspan="5">
+                            <p id="client_name"><small>Client: </small> -  </p>
+                            <p id="client_address"><small>Address: </small> -  </p>
                         </th>
-                        <th colspan="2">
-                            <span>Date: {{ date('d-m-Y', time()) }} </span><br/>
-                            No.:
+                        <th class="bg-primary" colspan="2">
+                            <p class="pull-right clearfix"><small>Date: </small>{{ date('D M dS, Y', time()) }} </p>
+                            {{--No.:--}}
                         </th>
                     </tr>
                     <tr class="product_headers">

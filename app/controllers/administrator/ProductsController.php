@@ -99,7 +99,7 @@ class ProductsController extends \BaseController
         {
             return \Response::json($products);
         } else {
-            return \Response::json(['status' => 0, 'items' => 'No data']);
+            return \Response::json([['id' => -1, 'name' => 'Product not Found']]);
         }
     }
 }
