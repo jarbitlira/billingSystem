@@ -40,6 +40,7 @@ class PrintController extends \BaseController
             $date = $created_at;
             $date =
              $name= "factura_" . $id ."_" . $created_at . ".pdf";
+
         return $pdf->stream($name);
 
     }
