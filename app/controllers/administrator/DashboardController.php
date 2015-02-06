@@ -83,7 +83,7 @@ class DashboardController extends \BaseController
 
     public function browsers(){
         $data = [];
-        $data[] = ['browser', 'count'];
+        $data[] = ['Browser', 'Count'];
         $browsers =  \AuthLog::select(\DB::raw('COUNT(*) as counter, browser'))->groupBy('browser');
         foreach ($browsers->get() as $item){
             $data[] = [$item->browser, $item->counter];

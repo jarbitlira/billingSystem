@@ -26,7 +26,7 @@ $(document).on('ready', function () {
     // Callback when product is selected
     var onSelectProduct = function (event, ui) {
         var _this = ui.item.data;
-        if ($('body #qty_' + _this.id).length == 0) {
+        if (($('body #qty_' + _this.id).length == 0) && (ui.item.value != -1)) {
             var quantity = '<input type="number" value="1" min="1" max="20" class="qtyInput" id="qty_' + _this.id + '"/>'
             var row = '<tr class="product_data" data-product="'+ _this.id +'">';
             row += '<td><button class="btn btn-xs text-danger remove-product" type="text"><i class="fa fa-close"></i></button></td>';
@@ -47,9 +47,11 @@ $(document).on('ready', function () {
     // Callback when client is selected
     var onSelectClient = function (event, ui) {
         var _this = ui.item.data;
-        $('#client_name > strong').html(_this.name);
-        $('#client_address > strong').html(_this.address);
-        $('#client_data').data('client', _this.id);
+        if (ui.item.value != -1){
+            $('#client_name').append('<ins><strong>'+_this.name+'</strong></ins>');
+            $('#client_address').append('<ins><strong>'+_this.address+'</strong></ins>');
+            $('#client_data').data('client', _this.id);
+        }
         return false;
     };
 
@@ -126,10 +128,12 @@ $(document).on('ready', function () {
             data.subtotal = getFinalSubtotal();
             data.total = getFinalSubtotal();
             data.notes = $('#invoice_notes').val();
-            $.each(data, function(i,val){
+            $.each(data, function(i, val){
                if (!val){
+                   if (i != 'notes'){
                    alert('Missing '+ i);
                    completed = false;
+                   }
                }
             });
             if (completed){
