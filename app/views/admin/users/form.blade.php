@@ -11,7 +11,9 @@
         <label for="user_email">Email</label>
         {{ Form::email('email', null, ['class'=>'form-control', 'id'=>'user_email', 'required']) }}
     </div>
-    <?php $selectedRole = count($user->roles) ? $user->roles[0]->toArray() : null ?>
+    <?php
+    $selectedRole = isset($user) && count($user->roles) ? $user->roles[0]->toArray() : null
+    ?>
     <div class="form-group">
         <label for="product_measure_id" class="req">Role</label>
         {{ Form::select('role_id', [''=>'Choose a role...'] + array_match($roles, 'id', 'name'),
