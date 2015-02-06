@@ -2,7 +2,15 @@
     <div class="col-xs-10">
         <h1 class="page-title"><span class="text-muted">Profile:</span> {{ $user->username }}</h1>
 
-        <p><span class="text-muted">Role:</span> SuperAdmin</p>
+        <p><span class="text-muted">Roles:</span>
+            <?php $roles = array() ?>
+            @if($user->roles)
+                @foreach($user->roles as $role)
+                    <?php array_push($roles, $role->name) ?>
+                @endforeach
+            @endif
+            {{ implode(",",$roles) }}
+        </p>
     </div>
 @endsection
 
