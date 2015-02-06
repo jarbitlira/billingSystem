@@ -22,7 +22,7 @@ class UserEloquent extends \Repositories\BaseRepository implements UserRepositor
         $roleId = $attributes["role_id"];
         $userValues = array_except($attributes, "role_id");
         $this->model = $this->model->create($userValues);
-        $this->model->roles()->attach($roleId);
+        $this->model->roles()->sync(array($roleId));
         return $this->model;
     }
 
@@ -30,7 +30,7 @@ class UserEloquent extends \Repositories\BaseRepository implements UserRepositor
     {
         $this->model = $this->model->find($id);
         $roleId = $attributes["role_id"];
-        $this->model->roles()->attach($roleId);
+        $this->model->roles()->sync(array($roleId));
         $userValues = array_except($attributes, "role_id");
         return $this->model->fill($userValues)->save();
     }
