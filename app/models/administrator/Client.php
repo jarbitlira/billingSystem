@@ -12,7 +12,7 @@ namespace Administrator;
 class Client extends \ModelBase{
 
     public static $rules = array(
-        'name' => 'required|alpha',
+        'name' => 'required|alpha_spaces',
         'email' => 'required|email',
         'phone1' => ['required', 'regex:/^[1-9]{4}-[0-9]{4}|[1-9]{8}$/'],
         'phone2' => ['regex:/^[1-9]{4}-[0-9]{4}|[1-9]{8}$/']

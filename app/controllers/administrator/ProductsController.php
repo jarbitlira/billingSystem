@@ -18,6 +18,12 @@ class ProductsController extends \BaseController
 
     public function __construct(ProductRepository $product, ProductCategoryRepository $categories, ProviderRepository $providers)
     {
+
+        $this->beforeFilter("read_product", array("only" => array("index", "show")));
+        $this->beforeFilter("create_product", array("only" => array("create", "store")));
+        $this->beforeFilter("update_product", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_product", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_product", array("only" => "destroy"));
         $this->product = $product;
         $this->categories = $categories;
         $this->providers = $providers;

@@ -299,6 +299,12 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{ URL::to('role') }}">
+						<span class="fa fa-user-secret"></span>
+						<span class="nav_title">ROLES</span>
+					</a>
+				</li>
+				<li>
 					<a href="{{ URL::to('config') }}">
 						<span class="fa fa-cog"></span>
 						<span class="nav_title">CONFIG</span>

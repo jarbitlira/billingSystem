@@ -120,7 +120,7 @@ Event::listen('register.query', function () {
 
     QueryLog::create(array(
         'query' => $query,
-        'user_id' => Auth::user()->id
+        'user_id' => Auth::user() ? Auth::user()->id : null
     ));
 });
 
@@ -134,3 +134,14 @@ Event::listen('auth.login', function ($user) {
         'user_id' => $user->id
     ));
 });
+
+
+$permissions = Permission::all();
+
+foreach ($permissions as $permission) {
+    Route::filter($permission->name, function () use ($permission) {
+        if (!Entrust::can($permission->name)) {
+            return Redirect::to("/");
+        }
+    });
+}

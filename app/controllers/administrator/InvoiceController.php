@@ -12,6 +12,11 @@ class InvoiceController extends \BaseController
 
     public function __construct(InvoiceRepository $invoice)
     {
+        $this->beforeFilter("read_invoice", array("only" => array("index", "show")));
+        $this->beforeFilter("create_invoice", array("only" => array("create", "store")));
+        $this->beforeFilter("update_invoice", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_invoice", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_invoice", array("only" => "destroy"));
         $this->invoice = $invoice;
     }
 

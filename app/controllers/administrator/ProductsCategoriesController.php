@@ -17,6 +17,11 @@ class ProductsCategoriesController extends \BaseController
 
     public function __construct(ProductCategoryRepository $category)
     {
+        $this->beforeFilter("read_product_category", array("only" => array("index", "show")));
+        $this->beforeFilter("create_product_category", array("only" => array("create", "store")));
+        $this->beforeFilter("update_product_category", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_product_category", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_product_category", array("only" => "destroy"));
         $this->category = $category;
     }
 

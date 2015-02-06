@@ -17,6 +17,11 @@ class ClientController extends \BaseController
 
     public function __construct(ClientRepository $client)
     {
+        $this->beforeFilter("read_client", array("only" => array("index", "show")));
+        $this->beforeFilter("create_client", array("only" => array("create", "store")));
+        $this->beforeFilter("update_client", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_client", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_client", array("only" => "destroy"));
         $this->client = $client;
     }
 

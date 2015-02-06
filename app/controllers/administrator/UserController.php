@@ -3,6 +3,7 @@
 namespace Administrator;
 
 use Repositories\Administrator\UserRepository;
+use Repositories\Administrator\RoleRepository;
 
 
 /**
@@ -10,7 +11,6 @@ use Repositories\Administrator\UserRepository;
  * @package Administrator
  * @property UserRepository $user
  */
-
 class UserController extends \BaseController
 {
 
@@ -19,9 +19,15 @@ class UserController extends \BaseController
     protected $breadcrumbs = ['Dashboard' => '/', 'Users' => 'user'];
     protected $user;
 
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $user, RoleRepository $role)
     {
+        $this->beforeFilter("read_user", array("only" => array("index", "show")));
+        $this->beforeFilter("create_user", array("only" => array("create", "store")));
+        $this->beforeFilter("update_user", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_user", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_user", array("only" => "destroy"));
         $this->user = $user;
+        $this->role = $role;
     }
 
     /**
@@ -47,7 +53,8 @@ class UserController extends \BaseController
     public function create()
     {
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.users.create')->with("title", "Create User");
+        $roles = $this->role->lists();
+        $this->layout->content = \View::make('admin.users.create', compact("roles"))->with("title", "Create User");
     }
 
     /**
@@ -59,10 +66,9 @@ class UserController extends \BaseController
     public function store()
     {
         $input = array_except(\Input::all(), ['_method', '_token']);
-
         $this->user->create($input);
         if ($this->user->succeeded()) {
-            return \Redirect::to('user');
+            return \Redirect::to('user')->with("notice", "User Created");
         } else {
             return \Redirect::back()->withInput()->withErrors($this->user->errors());
         }
@@ -91,7 +97,8 @@ class UserController extends \BaseController
     {
         $user = $this->user->findById($id);
         $this->layout->breadcrumbs = $this->breadcrumbs;
-        $this->layout->content = \View::make('admin.users.edit', compact('user'))->with("title", "Edit User");
+        $roles = $this->role->lists();
+        $this->layout->content = \View::make('admin.users.edit', compact('roles', 'user'))->with("title", "Edit User");
     }
 
     /**

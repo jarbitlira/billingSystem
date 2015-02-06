@@ -32,6 +32,9 @@ Route::group(array('domain' => 'admin.' . $domain), function () {
         Route::resource('client', 'Administrator\ClientController', ['except' => 'show']);
         Route::resource('invoice', 'Administrator\InvoiceController', ['only' => ['index', 'show']]);
         Route::resource('user', 'Administrator\UserController');
+        Route::get('role/{id}/permissions', 'Administrator\PermissionController@getPermissions');
+        Route::post('role/{id}/permissions', 'Administrator\PermissionController@postPermissions');
+        Route::resource('role', 'Administrator\RoleController');
         Route::controller('config', 'Administrator\ConfigController');
         //temporal billing route
         Route::controller('billing', 'Billing\InvoiceController');

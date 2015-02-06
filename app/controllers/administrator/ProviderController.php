@@ -17,6 +17,11 @@ class ProviderController extends \BaseController
 
     public function __construct(ProviderRepository $provider)
     {
+        $this->beforeFilter("read_provider", array("only" => array("index", "show")));
+        $this->beforeFilter("create_provider", array("only" => array("create", "store")));
+        $this->beforeFilter("update_provider", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_provider", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_product", array("only" => "destroy"));
         $this->provider = $provider;
     }
 

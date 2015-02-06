@@ -31,8 +31,10 @@ class MeasuresTableSeeder extends Seeder
 
         Measure::truncate();
 
-        foreach ($measures as $measure => $value) {
-            Measure::create(array("description" => $measure, "abbreviation" => $value));
+        foreach ($measures as $description => $value) {
+            $measure = new Measure();
+            $measure->description = $description;
+            $measure->abbreviation = $value;
         }
     }
 
