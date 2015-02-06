@@ -15,7 +15,11 @@ class RoleController extends \BaseController
 
     public function __construct(RoleRepository $role, PermissionRepository $permission)
     {
-
+        $this->beforeFilter("read_role", array("only" => array("index", "show")));
+        $this->beforeFilter("create_role", array("only" => array("create", "store")));
+        $this->beforeFilter("update_role", array("only" => array("edit", "update")));
+        $this->beforeFilter("update_role", array("only" => array("edit", "update")));
+        $this->beforeFilter("delete_role", array("only" => "destroy"));
         $this->role = $role;
         $this->permission = $permission;
     }
