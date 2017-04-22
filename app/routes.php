@@ -9,42 +9,42 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-$domain = App::environment() == 'local' ? 'billingsystem' : 'billingsystem.uni.me';
+/*$domain = App::environment() == 'local' ? 'billingsystem' : 'billingsystem.jarbitlira.com';
 Route::group(array('domain' => $domain), function () {
     Route::get('/', function () {
         return View::make('index');
     });
 });
+*/
+//Route::group(array('domain' => 'admin.' . $domain), function () {
+Route::controller('login', 'LoginController');
 
-Route::group(array('domain' => 'admin.' . $domain), function () {
-    Route::controller('login', 'LoginController');
+Route::group(array('before' => 'auth'), function () {
+    Route::get('/', 'Administrator\DashboardController@index');
+    Route::get('/logout', 'LoginController@logout');
 
-    Route::group(array('before' => 'auth'), function () {
-        Route::get('/', 'Administrator\DashboardController@index');
-        Route::get('/logout', 'LoginController@logout');
+    Route::get('profile', 'UsersController@profile');
+    Route::put('profile', 'UsersController@profile');
 
-        Route::get('profile', 'UsersController@profile');
-        Route::put('profile', 'UsersController@profile');
-
-        Route::resource('provider', 'Administrator\ProviderController');
-        Route::resource('product', 'Administrator\ProductsController', ['except' => 'show']);
-        Route::resource('product/category', 'Administrator\ProductsCategoriesController');
-        Route::resource('client', 'Administrator\ClientController', ['except' => 'show']);
-        Route::resource('invoice', 'Administrator\InvoiceController', ['only' => ['index', 'show']]);
-        Route::resource('user', 'Administrator\UserController');
-        Route::get('role/{id}/permissions', 'Administrator\PermissionController@getPermissions');
-        Route::post('role/{id}/permissions', 'Administrator\PermissionController@postPermissions');
-        Route::resource('role', 'Administrator\RoleController');
-        Route::controller('config', 'Administrator\ConfigController');
-        //temporal billing route
-        Route::controller('billing', 'Billing\InvoiceController');
-        Route::get('product/json', 'Administrator\ProductsController@json');
-        Route::get('client/json', 'Administrator\ClientController@json');
-        Route::controller('print', 'PrintController');
-        // Dashboard
-        Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
-        Route::get('json/topCategories', 'Administrator\DashboardController@topProductCategories');
-        Route::get('json/browserAccess', 'Administrator\DashboardController@browsers');
-    });
-    
+    Route::resource('provider', 'Administrator\ProviderController');
+    Route::resource('product', 'Administrator\ProductsController', ['except' => 'show']);
+    Route::resource('product/category', 'Administrator\ProductsCategoriesController');
+    Route::resource('client', 'Administrator\ClientController', ['except' => 'show']);
+    Route::resource('invoice', 'Administrator\InvoiceController', ['only' => ['index', 'show']]);
+    Route::resource('user', 'Administrator\UserController');
+    Route::get('role/{id}/permissions', 'Administrator\PermissionController@getPermissions');
+    Route::post('role/{id}/permissions', 'Administrator\PermissionController@postPermissions');
+    Route::resource('role', 'Administrator\RoleController');
+    Route::controller('config', 'Administrator\ConfigController');
+    //temporal billing route
+    Route::controller('billing', 'Billing\InvoiceController');
+    Route::get('product/json', 'Administrator\ProductsController@json');
+    Route::get('client/json', 'Administrator\ClientController@json');
+    Route::controller('print', 'PrintController');
+    // Dashboard
+    Route::get('json/lastMonthSales', 'Administrator\DashboardController@chartsLastMonthSales');
+    Route::get('json/topCategories', 'Administrator\DashboardController@topProductCategories');
+    Route::get('json/browserAccess', 'Administrator\DashboardController@browsers');
 });
+
+//});
